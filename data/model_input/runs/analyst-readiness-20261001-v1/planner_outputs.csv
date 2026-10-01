@@ -1,0 +1,2 @@
+occupation,geography,demand,available_supply,gap,forecast_6_month,forecast_12_month,severity,forecast_confidence,training_capacity_recommendation,status
+Data Analyst,Pune,,,,,,not_assessed,,,missing_comparable_demand_supply_and_history

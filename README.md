@@ -4,6 +4,8 @@ Actual downloaded data, usable CSV extracts, tested acquisition scripts, and an 
 
 ## Start here
 
+**New: [Data Analyst model-input pack](docs/MODEL_INPUT_PACK.md)** — your updated workflow is captured in an additive, validated snapshot. It contains 165 deduplicated prototype postings, 86 contextual observations, skill features/evidence, safe import templates and explicit readiness flags. Gap, forecast, severity and training-capacity numbers are withheld until comparable evidence exists. The previous data and archives remain untouched.
+
 1. [NCS findings and real API endpoints](docs/NCS_ACCESS.md)
 2. [Source register](config/sources.json) - access, fields, dates, geography, frequency, quality, licence and module for each source
 3. [Acquisition order and starter pack](docs/ACQUISITION.md)

@@ -1,0 +1,16 @@
+{
+  "available_supply_import_template.csv": "8efc0327c1a9141442b83aca133de621e0c00af2b34b7fecb9527041a79f1bf1",
+  "context_observations.csv": "fb867f4c8092da80f22e3b02a0ef6717109f8ea7f43e351c0125fd7cbe94d404",
+  "demand_history_import_template.csv": "79db152b999a25d3668535ead8644ce070bc1cfe4eac98dec63363f295dc2657",
+  "dgt_maharashtra_iti_grading_2026_27.csv": "57c15ad1dfc69094ef46b965c6f5063e8e4cc27535f1a180eb959d69a0cf62a0",
+  "dvet_pune_institute_trade_links.csv": "fa964ecda9b087010b33dc95683fe3447ca1dc8c75f7bc0e29e9cfa0d111bce3",
+  "import_rejections.csv": "ad79e429751d96e871aae2d5757a02ef18ffde55d014da305b72570b52110ae2",
+  "input_preservation.json": "6416c92bcff8804ecbf9b2e30d9ec8d43b9af86482a0bb7c977f3982c9340904",
+  "job_import_template.csv": "f05ec0b01c5a41a219f6c97d6d233d0f16a1a7e2e032ee05c40be0b6f6de44ed",
+  "planner_outputs.csv": "e6bb7505eb4d3c29aad7b554ffda8d1dbe40ec6cc7288b4099e944d63be9d15f",
+  "production_duplicate_links.csv": "2319b663ee2d0d40083c6c8f040edb337f0dcaa970f1826b80abadb20324a6a4",
+  "production_jobs.csv": "e156cd59f8dab05686856dcd518464528371ec1733443fea40388fb79abb204b",
+  "readiness.json": "db8c029eba899a7627b4a41c922c710733d6e5abb5452c19c922e829b6a665ca",
+  "skill_evidence.csv": "225d85a3400abf0bb17ea7bf6527f598d22d03962b77f854e35590f43450112f",
+  "skill_features.csv": "6a8e25057a22491a3d91b609ed1b2390693938b81647df0f7a8236e5c71a74bb"
+}

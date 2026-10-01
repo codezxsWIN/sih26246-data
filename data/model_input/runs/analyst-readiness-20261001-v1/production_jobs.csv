@@ -1,0 +1,1 @@
+record_id,source_id,source_job_id,job_url,job_title,occupation,role_scope,company,location,geography_scope,description,skills_raw,posted_date,observed_at,closing_date,status,experience_min_years,experience_max_years,salary_min_lpa,salary_max_lpa,salary_disclosed,vacancy_count,usage_permission,date_quality,source_tier,eligible_for_verified_demand,quality_flags
