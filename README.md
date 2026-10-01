@@ -4,6 +4,11 @@ Actual downloaded data, usable CSV extracts, tested acquisition scripts, and an 
 
 ## Start here
 
+**Team database entry point:** [DATABASES/](DATABASES/) — open
+[recruiter.sqlite](DATABASES/recruiter.sqlite) for employer/posting evidence and
+[job_seekers.sqlite](DATABASES/job_seekers.sqlite) for NCS/PLFS workforce
+evidence. CSV previews and the honest readiness limits are documented there.
+
 **Latest public-access progress:** [Live employer observations, PLFS API workforce baselines and historical context](docs/PUBLIC_ACCESS_PROGRESS.md). Added 180 official rate observations, 60 derived all-role baselines and one current employer-published Pune analyst posting. This does not close the live NCS or Pune skill-supply gaps; those limitations remain explicit.
 
 **New: [Data Analyst model-input pack](docs/MODEL_INPUT_PACK.md)** — your updated workflow is captured in an additive, validated snapshot. It contains 165 deduplicated prototype postings, 86 contextual observations, skill features/evidence, safe import templates and explicit readiness flags. Gap, forecast, severity and training-capacity numbers are withheld until comparable evidence exists. The previous data and archives remain untouched.

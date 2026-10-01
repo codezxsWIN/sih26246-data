@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "source_files": [
+    {
+      "path": "data\\processed\\live_employers\\employer-snapshot-20261001-v1\\public_employer_posting_observations.csv",
+      "sha256": "73c5280dfd09aed765f6bf9c9191dbe4746b621cb7e27127ced5a2c70bbc1346"
+    },
+    {
+      "path": "data\\processed\\live_employers\\employer-snapshot-20261001-v1\\skill_mentions.csv",
+      "sha256": "de39310d081a77a056621dd9e83cd4a80b4553c9258d5ab1e6932144f283a7d7"
+    },
+    {
+      "path": "data\\processed\\ncs\\ncs_maharashtra_year_metrics.csv",
+      "sha256": "a189973b2c41db095bb9081fd30bda280f936a20566f5f6aad18eda59a890d6d"
+    },
+    {
+      "path": "data\\processed\\public_labour\\public-labour-20261001-v2\\plfs_workforce_rates.csv",
+      "sha256": "68616e61a6eecf411c840fe4b8a37665f8e04043e87201c52067982c39edb68e"
+    },
+    {
+      "path": "data\\processed\\public_labour\\public-labour-20261001-v2\\workforce_baseline_estimates.csv",
+      "sha256": "1f501f5b2feb0e7d5befe8f78c05ca49016034fd96a7300640324848ed2ab000"
+    }
+  ],
+  "databases": {
+    "recruiter.sqlite": {
+      "sha256": "aec8d60d256dd9baf9e7e94b0dfce590fab1fcfa4d36f38be209a77906c52a37",
+      "csv_folder": "recruiter_data",
+      "row_counts": {
+        "employers": 1,
+        "job_postings": 1,
+        "job_skills": 5,
+        "aggregate_demand": 24
+      }
+    },
+    "job_seekers.sqlite": {
+      "sha256": "17462908196723b56653f3c161d3682376e552c64ef31da681939e6a03041f2f",
+      "csv_folder": "job_seeker_data",
+      "row_counts": {
+        "candidate_profiles": 0,
+        "candidate_skills": 0,
+        "aggregate_jobseekers": 24,
+        "labour_rates": 180,
+        "workforce_baselines": 60
+      }
+    }
+  },
+  "readiness": {
+    "individual_jobseekers_available": false,
+    "reliable_gap_or_forecast_ready": false
+  }
+}

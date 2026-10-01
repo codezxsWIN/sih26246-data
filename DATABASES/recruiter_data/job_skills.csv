@@ -1,0 +1,6 @@
+job_id,skill_id,matched_text,evidence_scope,source_url,observed_at
+7b25ec1c-4887-488c-a1f1-83daaa8dc659,python,Python,rule-based match in employer feed description; full text not retained,https://jobs.lever.co/parallelwireless/7b25ec1c-4887-488c-a1f1-83daaa8dc659,2026-10-01T18:03:23.228027+00:00
+7b25ec1c-4887-488c-a1f1-83daaa8dc659,sql,SQL,rule-based match in employer feed description; full text not retained,https://jobs.lever.co/parallelwireless/7b25ec1c-4887-488c-a1f1-83daaa8dc659,2026-10-01T18:03:23.228027+00:00
+7b25ec1c-4887-488c-a1f1-83daaa8dc659,pandas,pandas,rule-based match in employer feed description; full text not retained,https://jobs.lever.co/parallelwireless/7b25ec1c-4887-488c-a1f1-83daaa8dc659,2026-10-01T18:03:23.228027+00:00
+7b25ec1c-4887-488c-a1f1-83daaa8dc659,numpy,NumPy,rule-based match in employer feed description; full text not retained,https://jobs.lever.co/parallelwireless/7b25ec1c-4887-488c-a1f1-83daaa8dc659,2026-10-01T18:03:23.228027+00:00
+7b25ec1c-4887-488c-a1f1-83daaa8dc659,statistics,Statistics,rule-based match in employer feed description; full text not retained,https://jobs.lever.co/parallelwireless/7b25ec1c-4887-488c-a1f1-83daaa8dc659,2026-10-01T18:03:23.228027+00:00

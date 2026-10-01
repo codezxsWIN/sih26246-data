@@ -1,0 +1,25 @@
+metric,geography,period,value,source_url,quality_flag
+Vacancies,Maharashtra,2015-16,3746,https://ncs.gov.in/NCSReportDashboard,publisher_snapshot;2026_2027_partial;metric_definitions_require_confirmation
+Vacancies,Maharashtra,2016-17,204466,https://ncs.gov.in/NCSReportDashboard,publisher_snapshot;2026_2027_partial;metric_definitions_require_confirmation
+Vacancies,Maharashtra,2017-18,116145,https://ncs.gov.in/NCSReportDashboard,publisher_snapshot;2026_2027_partial;metric_definitions_require_confirmation
+Vacancies,Maharashtra,2018-19,104409,https://ncs.gov.in/NCSReportDashboard,publisher_snapshot;2026_2027_partial;metric_definitions_require_confirmation
+Vacancies,Maharashtra,2019-20,304566,https://ncs.gov.in/NCSReportDashboard,publisher_snapshot;2026_2027_partial;metric_definitions_require_confirmation
+Vacancies,Maharashtra,2020-21,76927,https://ncs.gov.in/NCSReportDashboard,publisher_snapshot;2026_2027_partial;metric_definitions_require_confirmation
+Vacancies,Maharashtra,2021-22,89530,https://ncs.gov.in/NCSReportDashboard,publisher_snapshot;2026_2027_partial;metric_definitions_require_confirmation
+Vacancies,Maharashtra,2022-23,119141,https://ncs.gov.in/NCSReportDashboard,publisher_snapshot;2026_2027_partial;metric_definitions_require_confirmation
+Vacancies,Maharashtra,2023-24,313528,https://ncs.gov.in/NCSReportDashboard,publisher_snapshot;2026_2027_partial;metric_definitions_require_confirmation
+Vacancies,Maharashtra,2024-25,305636,https://ncs.gov.in/NCSReportDashboard,publisher_snapshot;2026_2027_partial;metric_definitions_require_confirmation
+Vacancies,Maharashtra,2025-26,897580,https://ncs.gov.in/NCSReportDashboard,publisher_snapshot;2026_2027_partial;metric_definitions_require_confirmation
+Vacancies,Maharashtra,2026-2027,214210,https://ncs.gov.in/NCSReportDashboard,publisher_snapshot;2026_2027_partial;metric_definitions_require_confirmation
+Active Employer,Maharashtra,2015-16,71,https://ncs.gov.in/NCSReportDashboard,publisher_snapshot;2026_2027_partial;metric_definitions_require_confirmation
+Active Employer,Maharashtra,2016-17,53,https://ncs.gov.in/NCSReportDashboard,publisher_snapshot;2026_2027_partial;metric_definitions_require_confirmation
+Active Employer,Maharashtra,2017-18,48,https://ncs.gov.in/NCSReportDashboard,publisher_snapshot;2026_2027_partial;metric_definitions_require_confirmation
+Active Employer,Maharashtra,2018-19,179,https://ncs.gov.in/NCSReportDashboard,publisher_snapshot;2026_2027_partial;metric_definitions_require_confirmation
+Active Employer,Maharashtra,2019-20,5476,https://ncs.gov.in/NCSReportDashboard,publisher_snapshot;2026_2027_partial;metric_definitions_require_confirmation
+Active Employer,Maharashtra,2020-21,10388,https://ncs.gov.in/NCSReportDashboard,publisher_snapshot;2026_2027_partial;metric_definitions_require_confirmation
+Active Employer,Maharashtra,2021-22,7004,https://ncs.gov.in/NCSReportDashboard,publisher_snapshot;2026_2027_partial;metric_definitions_require_confirmation
+Active Employer,Maharashtra,2022-23,158407,https://ncs.gov.in/NCSReportDashboard,publisher_snapshot;2026_2027_partial;metric_definitions_require_confirmation
+Active Employer,Maharashtra,2023-24,275661,https://ncs.gov.in/NCSReportDashboard,publisher_snapshot;2026_2027_partial;metric_definitions_require_confirmation
+Active Employer,Maharashtra,2024-25,320996,https://ncs.gov.in/NCSReportDashboard,publisher_snapshot;2026_2027_partial;metric_definitions_require_confirmation
+Active Employer,Maharashtra,2025-26,282271,https://ncs.gov.in/NCSReportDashboard,publisher_snapshot;2026_2027_partial;metric_definitions_require_confirmation
+Active Employer,Maharashtra,2026-2027,4124,https://ncs.gov.in/NCSReportDashboard,publisher_snapshot;2026_2027_partial;metric_definitions_require_confirmation
