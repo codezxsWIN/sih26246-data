@@ -1,0 +1,8 @@
+{
+  "source_url": "https://ncs.gov.in/NCSReportDashboard",
+  "publisher_updated_at": "15 July 2026",
+  "original_html_sha256": "8e3aab1e516fc34ba4785534942a99e7cfdece74a1ff0c3f4d951f7c4bc14907",
+  "original_bundle_sha256": "e7077d07e3e859d760f1c1441c6e48a98b8716cddd95ccdb997769d3b71b84f5",
+  "packaging": "Extracted factual table markup and table literals only; unrelated website code and keys excluded",
+  "retrieval_timestamp": "Initial page retrieval timestamp not recorded; imported offline 1 October 2026"
+}

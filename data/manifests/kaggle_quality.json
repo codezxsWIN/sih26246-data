@@ -1,0 +1,51 @@
+{
+  "rows": 23201,
+  "pune_location_mentions": 5327,
+  "distinct_nonempty_job_urls": 21071,
+  "duplicate_nonempty_job_url_rows": 2130,
+  "scraped_at_values": {
+    "2025-06-10": 23201
+  },
+  "data_source_values": {
+    "naukri.com": 23201
+  },
+  "truncated_description_rows": 21764,
+  "columns": [
+    "job_id",
+    "job_title",
+    "company_name",
+    "company_rating",
+    "location",
+    "scraped_city",
+    "role_category",
+    "experience_raw",
+    "experience_min_yrs",
+    "experience_max_yrs",
+    "salary_raw",
+    "salary_min_lpa",
+    "salary_max_lpa",
+    "salary_disclosed",
+    "skills_required",
+    "skills_count",
+    "job_description",
+    "posted_date_raw",
+    "work_mode",
+    "company_size_bucket",
+    "job_url",
+    "data_source",
+    "scraped_at",
+    "salary_tier",
+    "experience_tier",
+    "is_senior",
+    "primary_city",
+    "skill_domain",
+    "salary_midpoint_lpa",
+    "days_since_posted",
+    "is_fresher_friendly",
+    "salary_negotiable"
+  ],
+  "suitability": "offline collector/parser development only; dates inconsistent; descriptions mostly truncated",
+  "license": "Uploader lists CC BY-SA 4.0; original job-board rights are not independently established",
+  "attribution": "Shreyash Gade (shree0910), Indian Tech Job Market 2026 | 23K+ Records, Kaggle",
+  "source_url": "https://www.kaggle.com/datasets/shree0910/india-tech-job-market-2026-23k-records"
+}

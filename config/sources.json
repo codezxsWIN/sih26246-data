@@ -1,0 +1,482 @@
+[
+  {
+    "id": "nco_2015",
+    "url": "https://www.dge.gov.in/nco-2015",
+    "download_url": "https://dge.gov.in/sites/default/files/2024-05/National_Classification_of_Occupations_Vol_I-2015.pdf",
+    "filename": "skills/nco_2015_vol_1.pdf",
+    "format": "pdf",
+    "tier": 1,
+    "official_public_status": "Official government or recognized sector skill council",
+    "access_method": "public static download",
+    "fields_available": "Occupation codes, titles, hierarchy, descriptions",
+    "date_coverage": "2015",
+    "geography_granularity": "National",
+    "update_frequency": "Edition based",
+    "license_usage_constraints": "Public download; dataset-specific open licence unverified. Attribute publisher; do not assume unrestricted redistribution.",
+    "quality_reliability": "Official source; historical vintage retained. See data dictionary for unit and coverage limits.",
+    "project_modules": [
+      "skills"
+    ],
+    "acquisition_status": "downloaded",
+    "scraping_required": false
+  },
+  {
+    "id": "pmkvy_mh_centres_2021",
+    "url": "https://msde.gov.in/static/uploads/2024/05/PMKVY-district-wise-TCs-in-Maharashtra.pdf",
+    "download_url": "https://msde.gov.in/static/uploads/2024/05/PMKVY-district-wise-TCs-in-Maharashtra.pdf",
+    "filename": "training/pmkvy_maharashtra_centres_asof_2021_11_21.pdf",
+    "format": "pdf",
+    "tier": 1,
+    "official_public_status": "Official government or recognized sector skill council",
+    "access_method": "public static download",
+    "fields_available": "TCState, TCDistrict, PartnerName, TCName",
+    "date_coverage": "21 November 2021",
+    "geography_granularity": "Training centre / district",
+    "update_frequency": "Static annexure",
+    "license_usage_constraints": "Public download; dataset-specific open licence unverified. Attribute publisher; do not assume unrestricted redistribution.",
+    "quality_reliability": "Official source; historical vintage retained. See data dictionary for unit and coverage limits.",
+    "project_modules": [
+      "training"
+    ],
+    "acquisition_status": "downloaded",
+    "scraping_required": false
+  },
+  {
+    "id": "pmkvy_district_training_2021_22",
+    "url": "https://www.msde.gov.in/static/uploads/2024/05/Annexure-2.pdf",
+    "download_url": "https://www.msde.gov.in/static/uploads/2024/05/Annexure-2.pdf",
+    "filename": "training/pmkvy_district_trained_2021_22.pdf",
+    "format": "pdf",
+    "tier": 1,
+    "official_public_status": "Official government or recognized sector skill council",
+    "access_method": "public static download",
+    "fields_available": "State, district, trained count",
+    "date_coverage": "FY 2021-22",
+    "geography_granularity": "District",
+    "update_frequency": "Static annexure",
+    "license_usage_constraints": "Public download; dataset-specific open licence unverified. Attribute publisher; do not assume unrestricted redistribution.",
+    "quality_reliability": "Official source; historical vintage retained. See data dictionary for unit and coverage limits.",
+    "project_modules": [
+      "training",
+      "supply"
+    ],
+    "acquisition_status": "downloaded",
+    "scraping_required": false
+  },
+  {
+    "id": "census_pune_2011",
+    "url": "https://censusindia.gov.in/nada/index.php/catalog/821",
+    "download_url": "https://censusindia.gov.in/nada/index.php/catalog/821/download/2930/DH_2011_2725_PART_B_DCHB_PUNE.pdf",
+    "filename": "geography/census_pune_2011_part_b.pdf",
+    "format": "pdf",
+    "tier": 1,
+    "official_public_status": "Official government or recognized sector skill council",
+    "access_method": "public static download",
+    "fields_available": "Population, sex, literacy, main/marginal workers, households, codes",
+    "date_coverage": "2011 Census",
+    "geography_granularity": "District / subdistrict / village / town",
+    "update_frequency": "Census edition",
+    "license_usage_constraints": "Public download; dataset-specific open licence unverified. Attribute publisher; do not assume unrestricted redistribution.",
+    "quality_reliability": "Official source; historical vintage retained. See data dictionary for unit and coverage limits.",
+    "project_modules": [
+      "geography",
+      "baseline"
+    ],
+    "acquisition_status": "downloaded",
+    "scraping_required": false
+  },
+  {
+    "id": "mh_economic_survey_2024_25",
+    "url": "https://finance.maharashtra.gov.in/en/publication/economic-survey-of-maharashtra-2023-24/",
+    "download_url": "https://cdnbbsr.s3waas.gov.in/s323af4b45f1e166141a790d1a3126e77a/uploads/2025/07/20250710874839541.pdf",
+    "filename": "baseline/maharashtra_economic_survey_2024_25.pdf",
+    "format": "pdf",
+    "tier": 1,
+    "official_public_status": "Official government or recognized sector skill council",
+    "access_method": "public static download",
+    "fields_available": "Economic, industry, employment and education tables; units vary",
+    "date_coverage": "Survey 2024-25; historical tables vary",
+    "geography_granularity": "State; selected district tables",
+    "update_frequency": "Annual",
+    "license_usage_constraints": "Public download; dataset-specific open licence unverified. Attribute publisher; do not assume unrestricted redistribution.",
+    "quality_reliability": "Official source; historical vintage retained. See data dictionary for unit and coverage limits.",
+    "project_modules": [
+      "baseline"
+    ],
+    "acquisition_status": "downloaded",
+    "scraping_required": false
+  },
+  {
+    "id": "automotive_qp",
+    "url": "https://www.asdc.org.in/images/job_roles/ASC_Q3604_v4.0.pdf_.pdf",
+    "download_url": "https://www.asdc.org.in/images/job_roles/ASC_Q3604_v4.0.pdf_.pdf",
+    "filename": "skills/automotive_ASC_Q3604_v4.pdf",
+    "format": "pdf",
+    "tier": 1,
+    "official_public_status": "Official government or recognized sector skill council",
+    "access_method": "public static download",
+    "fields_available": "ASC/Q3604 v4.0; Automotive Assembly Operator; NSQF 3; NOS criteria",
+    "date_coverage": "Version 4.0; confirm current validity",
+    "geography_granularity": "National role standard",
+    "update_frequency": "Versioned revisions",
+    "license_usage_constraints": "Public download; dataset-specific open licence unverified. Attribute publisher; do not assume unrestricted redistribution.",
+    "quality_reliability": "Official source; historical vintage retained. See data dictionary for unit and coverage limits.",
+    "project_modules": [
+      "skills",
+      "training"
+    ],
+    "acquisition_status": "downloaded",
+    "scraping_required": false
+  },
+  {
+    "id": "ncs_integration_evidence",
+    "url": "https://labour.gov.in/sites/default/files/final_rfp_27.08.2024.pdf",
+    "download_url": "https://labour.gov.in/sites/default/files/final_rfp_27.08.2024.pdf",
+    "filename": "ncs/ncs_api_integration_evidence_2024.pdf",
+    "format": "pdf",
+    "tier": 2,
+    "official_public_status": "Official government or recognized sector skill council",
+    "access_method": "public static download",
+    "fields_available": "Integration procurement requirements; not API contract",
+    "date_coverage": "2024 indexed RFP",
+    "geography_granularity": "National",
+    "update_frequency": "Procurement edition",
+    "license_usage_constraints": "Public download; dataset-specific open licence unverified. Attribute publisher; do not assume unrestricted redistribution.",
+    "quality_reliability": "Not acquired; do not substitute catalogue metadata for data records.",
+    "project_modules": [
+      "access"
+    ],
+    "acquisition_status": "failed; see download log",
+    "scraping_required": false
+  },
+  {
+    "id": "plfs_download_guide",
+    "url": "https://www.mospi.gov.in/sites/default/files/data_disemination/Guide_to_download_microdata.pdf",
+    "download_url": "https://www.mospi.gov.in/sites/default/files/data_disemination/Guide_to_download_microdata.pdf",
+    "filename": "baseline/plfs_microdata_download_guide.pdf",
+    "format": "pdf",
+    "tier": 1,
+    "official_public_status": "Official government or recognized sector skill council",
+    "access_method": "public static download",
+    "fields_available": "Account and microdata download instructions",
+    "date_coverage": "Guide edition unconfirmed",
+    "geography_granularity": "National",
+    "update_frequency": "Irregular",
+    "license_usage_constraints": "Public download; dataset-specific open licence unverified. Attribute publisher; do not assume unrestricted redistribution.",
+    "quality_reliability": "Official source; historical vintage retained. See data dictionary for unit and coverage limits.",
+    "project_modules": [
+      "access"
+    ],
+    "acquisition_status": "downloaded",
+    "scraping_required": false
+  },
+  {
+    "id": "aishe_2021_22",
+    "url": "https://aishe.gov.in/document/aishe-final-report-2021-22/",
+    "download_url": "https://cdnbbsr.s3waas.gov.in/s392049debbe566ca5782a3045cf300a3c/uploads/2024/02/20240719952688509.pdf",
+    "filename": "supply/aishe_2021_22.pdf",
+    "format": "pdf",
+    "tier": 1,
+    "official_public_status": "Official government or recognized sector skill council",
+    "access_method": "public static download",
+    "fields_available": "Enrolment, out-turn, institutions, discipline, level, gender, social category; table dependent",
+    "date_coverage": "Academic 2021-22",
+    "geography_granularity": "State / national report tables",
+    "update_frequency": "Annual with lag",
+    "license_usage_constraints": "Public download; dataset-specific open licence unverified. Attribute publisher; do not assume unrestricted redistribution.",
+    "quality_reliability": "Official source; historical vintage retained. See data dictionary for unit and coverage limits.",
+    "project_modules": [
+      "supply"
+    ],
+    "acquisition_status": "downloaded",
+    "scraping_required": false
+  },
+  {
+    "id": "plfs_2023_24_report",
+    "url": "https://microdata.gov.in/nada/index.php/catalog/213",
+    "download_url": "https://mospi.gov.in/sites/default/files/publication_reports/AnnualReport_PLFS2023-24L2.pdf",
+    "filename": "baseline/plfs_2023_24_annual_report.pdf",
+    "format": "pdf",
+    "tier": 1,
+    "official_public_status": "Official government or recognized sector skill council",
+    "access_method": "public static download",
+    "fields_available": "LFPR, WPR, UR, age, sex, rural/urban, education, employment status; table dependent",
+    "date_coverage": "July 2023-June 2024",
+    "geography_granularity": "State / national",
+    "update_frequency": "Annual; separate quarterly series",
+    "license_usage_constraints": "Public download; dataset-specific open licence unverified. Attribute publisher; do not assume unrestricted redistribution.",
+    "quality_reliability": "Official source; historical vintage retained. See data dictionary for unit and coverage limits.",
+    "project_modules": [
+      "baseline",
+      "supply"
+    ],
+    "acquisition_status": "downloaded",
+    "scraping_required": false
+  },
+  {
+    "id": "plfs_2023_24_metadata",
+    "url": "https://microdata.gov.in/nada/index.php/catalog/213",
+    "download_url": "https://microdata.gov.in/nada/index.php/metadata/export/213/json",
+    "filename": "baseline/plfs_2023_24_metadata.json",
+    "format": "json",
+    "tier": 1,
+    "official_public_status": "Official government or recognized sector skill council",
+    "access_method": "public static download",
+    "fields_available": "Study identifiers, coverage, producer, file descriptions and access metadata",
+    "date_coverage": "July 2023-June 2024",
+    "geography_granularity": "Study metadata",
+    "update_frequency": "Study release",
+    "license_usage_constraints": "Public download; dataset-specific open licence unverified. Attribute publisher; do not assume unrestricted redistribution.",
+    "quality_reliability": "Official source; historical vintage retained. See data dictionary for unit and coverage limits.",
+    "project_modules": [
+      "baseline"
+    ],
+    "acquisition_status": "downloaded",
+    "scraping_required": false
+  },
+  {
+    "id": "census_mh_town_amenities",
+    "url": "https://censusindia.gov.in/nada/index.php/catalog/821",
+    "download_url": "https://censusindia.gov.in/nada/index.php/catalog/821/download/2932/DH_2011_DCHB_Town_Release_2700.xlsx",
+    "filename": "geography/census_mh_town_amenities_2011.xlsx",
+    "format": "xlsx",
+    "tier": 1,
+    "official_public_status": "Official government or recognized sector skill council",
+    "access_method": "public static download",
+    "fields_available": "State/district/subdistrict/town codes and names; households, sex population, amenities; 429 town columns",
+    "date_coverage": "2011 Census; amenity reference years vary",
+    "geography_granularity": "Town",
+    "update_frequency": "Census edition",
+    "license_usage_constraints": "Public download; dataset-specific open licence unverified. Attribute publisher; do not assume unrestricted redistribution.",
+    "quality_reliability": "Official source; historical vintage retained. See data dictionary for unit and coverage limits.",
+    "project_modules": [
+      "geography"
+    ],
+    "acquisition_status": "downloaded",
+    "scraping_required": false
+  },
+  {
+    "id": "census_pune_inset_tables",
+    "url": "https://censusindia.gov.in/nada/index.php/catalog/821",
+    "download_url": "https://censusindia.gov.in/nada/index.php/catalog/821/download/2931/DH_2011_2725-Pune.zip",
+    "filename": "geography/census_pune_inset_tables_2011.zip",
+    "format": "zip",
+    "tier": 1,
+    "official_public_status": "Official government or recognized sector skill council",
+    "access_method": "public static download",
+    "fields_available": "District handbook inset tables; inspect archive headers",
+    "date_coverage": "2011 Census",
+    "geography_granularity": "Pune district / subdistrict",
+    "update_frequency": "Census edition",
+    "license_usage_constraints": "Public download; dataset-specific open licence unverified. Attribute publisher; do not assume unrestricted redistribution.",
+    "quality_reliability": "Official source; historical vintage retained. See data dictionary for unit and coverage limits.",
+    "project_modules": [
+      "baseline",
+      "geography"
+    ],
+    "acquisition_status": "downloaded",
+    "scraping_required": false
+  },
+  {
+    "id": "electronics_qp",
+    "url": "https://essc-india.org/qualification-packs.php",
+    "download_url": "https://essc-india.org/images/29_Revised%20Qualifications/EMMT%20Shop%20Floor/ELE_Q2501_v4.0.pdf",
+    "filename": "skills/electronics_ELE_Q2501_v4.pdf",
+    "format": "pdf",
+    "tier": 1,
+    "official_public_status": "Official government or recognized sector skill council",
+    "access_method": "public static download",
+    "fields_available": "ELE/Q2501 v4.0; Electronics Machine Maintenance Technician - Shop Floor; NSQF 4; NOS criteria",
+    "date_coverage": "Version 4.0; confirm validity",
+    "geography_granularity": "National role standard",
+    "update_frequency": "Versioned revisions",
+    "license_usage_constraints": "Public download; dataset-specific open licence unverified. Attribute publisher; do not assume unrestricted redistribution.",
+    "quality_reliability": "Official source; historical vintage retained. See data dictionary for unit and coverage limits.",
+    "project_modules": [
+      "skills",
+      "training"
+    ],
+    "acquisition_status": "downloaded",
+    "scraping_required": false
+  },
+  {
+    "id": "ncs_ogd_state_vacancies_2023",
+    "url": "https://tn.data.gov.in/resource/state-wise-vacancies-mobilised-till-30-september-2023",
+    "download_url": "https://www.data.gov.in/files/ogdpv2dms/s3fs-public/State_Wise_Vacancies_Mobilised_till_30_September_2023.csv",
+    "filename": "ncs/ncs_state_vacancies_asof_2023_09_30.csv",
+    "format": "csv",
+    "tier": 1,
+    "official_public_status": "Official government or recognized sector skill council",
+    "access_method": "public static download",
+    "fields_available": "States, Mobilised Vacancies, Data Upto",
+    "date_coverage": "Up to 30 September 2023",
+    "geography_granularity": "State",
+    "update_frequency": "Catalogue monthly; resource historical",
+    "license_usage_constraints": "NDSAP catalogue; verify resource-level GODL-India applicability and attribution.",
+    "quality_reliability": "Not acquired; do not substitute catalogue metadata for data records.",
+    "project_modules": [
+      "demand"
+    ],
+    "acquisition_status": "failed; see download log",
+    "scraping_required": false
+  },
+  {
+    "id": "kaggle_india_tech_2026",
+    "url": "https://www.kaggle.com/datasets/shree0910/india-tech-job-market-2026-23k-records",
+    "download_url": "https://www.kaggle.com/api/v1/datasets/download/shree0910/india-tech-job-market-2026-23k-records",
+    "filename": "demand/kaggle_india_tech_2026.zip",
+    "format": "zip",
+    "tier": 3,
+    "official_public_status": "Public third-party uploader",
+    "access_method": "public static download",
+    "fields_available": "32 job fields: exact schema in data/manifests/kaggle_quality.json",
+    "date_coverage": "Title 2026; all scraped_at 2025-06-10; updated June 2026",
+    "geography_granularity": "Job location; sometimes multi-city",
+    "update_frequency": "Uploader snapshot",
+    "license_usage_constraints": "Uploader CC BY-SA 4.0; original job-board rights unverified. Local-only posting extract.",
+    "quality_reliability": "Inconsistent dates, duplicate URLs, truncated descriptions; prototype only.",
+    "project_modules": [
+      "demand",
+      "parser testing"
+    ],
+    "acquisition_status": "downloaded",
+    "scraping_required": false
+  },
+  {
+    "id": "plfs_2023_24_layout",
+    "url": "https://microdata.gov.in/nada/index.php/catalog/213/related-materials",
+    "download_url": "https://microdata.gov.in/nada/index.php/catalog/213/download/2463",
+    "filename": "baseline/plfs_2023_24_layout.xlsx",
+    "format": "xlsx",
+    "tier": 1,
+    "official_public_status": "Official government or recognized sector skill council",
+    "access_method": "public static download",
+    "fields_available": "Household/person file field names, positions, codes; sheets differ",
+    "date_coverage": "July 2023-June 2024",
+    "geography_granularity": "Survey record schema",
+    "update_frequency": "Study release",
+    "license_usage_constraints": "Public download; dataset-specific open licence unverified. Attribute publisher; do not assume unrestricted redistribution.",
+    "quality_reliability": "Official source; historical vintage retained. See data dictionary for unit and coverage limits.",
+    "project_modules": [
+      "baseline",
+      "supply"
+    ],
+    "acquisition_status": "downloaded",
+    "scraping_required": false
+  },
+  {
+    "id": "nqr_python_sql",
+    "url": "https://nqr.gov.in/qualifications/10101",
+    "download_url": "https://nqr.gov.in/qualification/file/QF_Data%20Analysis%20with%20Python%20and%20SQL.pdf",
+    "filename": "skills/nqr_data_analysis_python_sql.pdf",
+    "format": "pdf",
+    "tier": 1,
+    "official_public_status": "Official government or recognized sector skill council",
+    "access_method": "public static download",
+    "fields_available": "Data Analysis with Python and SQL; NIE/SSC/N1110; NSQF 5; outcomes, hours, entry criteria",
+    "date_coverage": "Approved 30 November 2023; register validity to 30 November 2026",
+    "geography_granularity": "National qualification",
+    "update_frequency": "Versioned approvals",
+    "license_usage_constraints": "Public download; dataset-specific open licence unverified. Attribute publisher; do not assume unrestricted redistribution.",
+    "quality_reliability": "Official source; historical vintage retained. See data dictionary for unit and coverage limits.",
+    "project_modules": [
+      "skills",
+      "training"
+    ],
+    "acquisition_status": "downloaded",
+    "scraping_required": false
+  },
+  {
+    "id": "ncs_dashboard",
+    "tier": 1,
+    "url": "https://ncs.gov.in/NCSReportDashboard",
+    "official_public_status": "Government official service/directory",
+    "access_method": "Offline extraction of acquired public page/bundle",
+    "fields_available": "metric, state, financial_year, value, publisher_updated_at",
+    "date_coverage": "2015-16 through partial 2026-2027; updated 15 July 2026",
+    "geography_granularity": "State / national",
+    "update_frequency": "Cadence unconfirmed",
+    "license_usage_constraints": "Publisher terms apply; confirm reuse conditions. No bypass of login, denied permission or CAPTCHA; no personal candidate data.",
+    "quality_reliability": "1788 records; totals reconcile; no Pune detail; stock/flow definitions unresolved",
+    "project_modules": [
+      "demand",
+      "supply",
+      "baseline"
+    ],
+    "acquisition_status": "extracted",
+    "scraping_required": false
+  },
+  {
+    "id": "ncs_live_vacancies",
+    "tier": 1,
+    "url": "https://api.ncs.gov.in/api/v1/job-posts/search?page=0&size=20",
+    "official_public_status": "Government official service/directory",
+    "access_method": "POST website-internal search; approved partner export/feed needed",
+    "fields_available": "Observed filters: keyword, cities, states, jobTitles, skills, functionalAreas, functionalRoles, industries, educationTypes, salary/experience bounds, sortBy. Response fields not verified.",
+    "date_coverage": "Live service intended; no postings acquired",
+    "geography_granularity": "City/state filters observed",
+    "update_frequency": "Feed cadence unknown",
+    "license_usage_constraints": "Publisher terms apply; confirm reuse conditions. No bypass of login, denied permission or CAPTCHA; no personal candidate data.",
+    "quality_reliability": "Plain JSON HTTP 400 Invalid or unencrypted request payload; browser permission later declined; no workaround",
+    "project_modules": [
+      "demand"
+    ],
+    "acquisition_status": "blocked: access permission or approved export/credentials required",
+    "scraping_required": "Authorized website/feed only"
+  },
+  {
+    "id": "ncs_metadata",
+    "tier": 1,
+    "url": "https://ncs.gov.in/",
+    "official_public_status": "Government official service/directory",
+    "access_method": "Public linked XLSX on NCS document storage; refresh expiring link via homepage",
+    "fields_available": "section, field, value",
+    "date_coverage": "Acquired October 2026; coverage described in workbook",
+    "geography_granularity": "Metadata describes state/demographic disaggregation",
+    "update_frequency": "Workbook cadence unspecified",
+    "license_usage_constraints": "Publisher terms apply; confirm reuse conditions. No bypass of login, denied permission or CAPTCHA; no personal candidate data.",
+    "quality_reliability": "54 nonempty rows; not vacancy records",
+    "project_modules": [
+      "provenance"
+    ],
+    "acquisition_status": "downloaded/extracted",
+    "scraping_required": false
+  },
+  {
+    "id": "plfs_person_microdata",
+    "tier": 1,
+    "url": "https://microdata.gov.in/nada/index.php/catalog/213/get-microdata",
+    "official_public_status": "Government official service/directory",
+    "access_method": "Account login and study terms; manual download",
+    "fields_available": "File-dependent household/person IDs, age, sex, education, industry/occupation/activity, survey weights, geographic codes; inspect acquired layout",
+    "date_coverage": "July 2023-June 2024; newer studies separate",
+    "geography_granularity": "Survey persons; district codes do not establish representative district estimates",
+    "update_frequency": "Study release",
+    "license_usage_constraints": "Publisher terms apply; confirm reuse conditions. No bypass of login, denied permission or CAPTCHA; no personal candidate data.",
+    "quality_reliability": "Weighted anonymized sample; person files not acquired",
+    "project_modules": [
+      "baseline",
+      "supply"
+    ],
+    "acquisition_status": "login required",
+    "scraping_required": false
+  },
+  {
+    "id": "lgd_current_geography",
+    "tier": 2,
+    "url": "https://lgdirectory.gov.in/",
+    "official_public_status": "Government official service/directory",
+    "access_method": "Official report/export; report-specific CAPTCHA/login may apply",
+    "fields_available": "Expected administrative codes/names/status; exact export not inspected",
+    "date_coverage": "Current directory candidate; not acquired",
+    "geography_granularity": "Administrative units",
+    "update_frequency": "Administrative changes",
+    "license_usage_constraints": "Publisher terms apply; confirm reuse conditions. No bypass of login, denied permission or CAPTCHA; no personal candidate data.",
+    "quality_reliability": "Discovery candidate, not verified export endpoint; keep separate from Census codes",
+    "project_modules": [
+      "geography"
+    ],
+    "acquisition_status": "not downloaded",
+    "scraping_required": false
+  }
+]

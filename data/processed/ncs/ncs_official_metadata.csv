@@ -1,0 +1,58 @@
+section,field,value
+1,Contact,
+1.1,Contact Organisation*,"Directorate General of Employment, Ministry of Labour and Employment"
+1.2,Compiling agency*,Directorate General of Employment
+1.3,Custodian agency*,Directorate General of Employment
+1.4,Contact Details*,Dr. Aquib Javed
+,,Director (Employment)
+,,Phone No: 011- 23313086
+,,Email : aquib.javed76@nic.in
+2,Data Description and Presentation,
+2.1,Data description*,"The Ministry is implementing the National Career Service (NCS) Project for transformation of the National Employment Service to provide a variety of career related services including jobs from private and government sectors, information on online & offline job fairs, job search & matching, career counselling, vocational guidance, information on skill development courses, skill/training programmes etc. through a digital platform i.e. NCS Portal  (www.ncs.gov.in).
+
+NCS Portal brings all the jobseekers and employers on a single platform for job matching in a dynamic, efficient and responsive manner. The portal also facilitates organization of job fairs where both employers and job seekers can interact. These services are available free of cost.
+The NCS Portal harnesses a well-structured dataset that encompasses Job seekers, Employers and Vacancies."
+2.2,System of Classification*,NCS data is available on the following levels of
+,,disaggregation
+,,1. State
+,,2. Gender
+,,3. Age group
+,,4. Level of Education
+,,"5. Sector-wise (Services, Manufacturing etc.)"
+2.3,"International/ National Standards Classification/Codes, if followed*",NA
+2.4,Sector coverage*,NCS Scheme covers all states and Union Territories of India.
+2.5,Concepts and definitions*,NA
+2.6,Unit of compilation,NA
+2.7,Population coverage,All India
+2.8,Reference Period*,NA
+2.9,Duration and period of enumeration*,NA
+2.1,Sample size/Dataset Size*,NA
+2.11,Data Confidentiality,Data is stored in database with appropriate security measures as per MeiTY guidelines.
+3,Institutional Mandate,
+3.1,Legal acts and other agreements*,
+3.2,Data sharing/Data Dissemination,The NCS statistics are available on NCS portal. It can be accessed through www.ncs.gov.in
+3.3,Release calendar*,"Daily, monthly etc."
+3.4,Frequency of dissemination*,Live Availability of vacancies on NCS portal.
+3.5,Data access*,It can be accessed through www.ncs.gov.in by accessing “Reports and Documents” option under “Resources section”.
+4,Quality Management,
+4.1,Documentation on methodology*,NA
+4.2,Quality documentation,NA
+4.3,Quality assurance,NA
+5,Accuracy and Reliability,
+5.1,Sampling error,NA
+5.2,Measures of reliability,NA
+6,Timeliness,
+6.1,Timeliness*,Statistics are available on the NCS portal.
+7,Coherence and Comparability,
+7.1,Comparability – over time*,Comparable
+7.2,Coherence,NA
+8,Data Processing,
+8.1,Source data type*,Primary and secondary data is the main source of NCS data. Live registration on NCS Portal is Primary data and data from integration with other portals is secondary data.
+8.2,Frequency of data collection*,"Live Collection, Daily, Weekly and Monthly  (through Integration)"
+8.3,Mode and method of data collection,"Online platform, Career Centre, Common Service Centres, through various Integrations."
+8.4,Data validation*,Data validation process as per NCS workflow is incorporated in the system.
+8.5,Data compilation,Data is regularly compiled and available to MoLE and other stakeholder as required.
+8.6,Data identifier(s)*,"Mobile Number & Mail ID of job Seekers. PAN, GSTIN, Phone number and mail ID of Employers."
+9,Metadata Update,
+9.1,Metadata last posted,
+9.2,Metadata last update,

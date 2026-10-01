@@ -1,0 +1,17 @@
+{
+  "session_date": "2026-10-01",
+  "india_ncs_host": "https://api.ncs.gov.in",
+  "warning": "Website routes are not a verified public developer/partner API contract.",
+  "endpoints": [
+    {"method":"GET","path":"/api/location/state","result":"Direct anonymous HTTP 200 JSON observed"},
+    {"method":"GET","path":"/employer-service/api/v1/hiring/top-companies?year=2026&limit=4","result":"Direct anonymous HTTP 200 JSON observed"},
+    {"method":"GET","path":"/employer-service/api/functional-areas-master/fetch-all-functional-area","result":"HTTP 200 response data embedded in acquired public search-page state; direct request not verified"},
+    {"method":"GET","path":"/api/v1/job-posts/filter-options","result":"Encoded response embedded in acquired search-page state; parsed filter records not obtained"},
+    {"method":"POST","path":"/api/v1/job-posts/search?page=0&size=20","result":"Plain JSON returned HTTP 400: Invalid or unencrypted request payload; zero postings acquired"}
+  ],
+  "browser_access": "Subsequent browser permission declined; no further website/live vacancy collection or workaround performed",
+  "credentials": "No partner credentials supplied or tested; no embedded keys or encryption workaround used",
+  "data_gov_resource_uuid": "6de4f0bd-8514-4fa3-a86f-e240a2d26eeb",
+  "data_gov_csv_result": "HTTP 403; not acquired",
+  "data_gov_api_result": "Host connection failed; not acquired"
+}

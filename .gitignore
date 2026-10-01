@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.env.*
+*.pem
+*.key
+data/raw/
+data/private/
+data/processed/demand/
+work/
+dist/
+*.zip

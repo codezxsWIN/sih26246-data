@@ -1,0 +1,128 @@
+[
+  {
+    "id": "nco_2015",
+    "url": "https://www.dge.gov.in/nco-2015",
+    "download_url": "https://dge.gov.in/sites/default/files/2024-05/National_Classification_of_Occupations_Vol_I-2015.pdf",
+    "filename": "skills/nco_2015_vol_1.pdf",
+    "format": "pdf"
+  },
+  {
+    "id": "pmkvy_mh_centres_2021",
+    "url": "https://msde.gov.in/static/uploads/2024/05/PMKVY-district-wise-TCs-in-Maharashtra.pdf",
+    "download_url": "https://msde.gov.in/static/uploads/2024/05/PMKVY-district-wise-TCs-in-Maharashtra.pdf",
+    "filename": "training/pmkvy_maharashtra_centres_asof_2021_11_21.pdf",
+    "format": "pdf"
+  },
+  {
+    "id": "pmkvy_district_training_2021_22",
+    "url": "https://www.msde.gov.in/static/uploads/2024/05/Annexure-2.pdf",
+    "download_url": "https://www.msde.gov.in/static/uploads/2024/05/Annexure-2.pdf",
+    "filename": "training/pmkvy_district_trained_2021_22.pdf",
+    "format": "pdf"
+  },
+  {
+    "id": "census_pune_2011",
+    "url": "https://censusindia.gov.in/nada/index.php/catalog/821",
+    "download_url": "https://censusindia.gov.in/nada/index.php/catalog/821/download/2930/DH_2011_2725_PART_B_DCHB_PUNE.pdf",
+    "filename": "geography/census_pune_2011_part_b.pdf",
+    "format": "pdf"
+  },
+  {
+    "id": "mh_economic_survey_2024_25",
+    "url": "https://finance.maharashtra.gov.in/en/publication/economic-survey-of-maharashtra-2023-24/",
+    "download_url": "https://cdnbbsr.s3waas.gov.in/s323af4b45f1e166141a790d1a3126e77a/uploads/2025/07/20250710874839541.pdf",
+    "filename": "baseline/maharashtra_economic_survey_2024_25.pdf",
+    "format": "pdf"
+  },
+  {
+    "id": "automotive_qp",
+    "url": "https://www.asdc.org.in/images/job_roles/ASC_Q3604_v4.0.pdf_.pdf",
+    "download_url": "https://www.asdc.org.in/images/job_roles/ASC_Q3604_v4.0.pdf_.pdf",
+    "filename": "skills/automotive_ASC_Q3604_v4.pdf",
+    "format": "pdf"
+  },
+  {
+    "id": "ncs_integration_evidence",
+    "url": "https://labour.gov.in/sites/default/files/final_rfp_27.08.2024.pdf",
+    "download_url": "https://labour.gov.in/sites/default/files/final_rfp_27.08.2024.pdf",
+    "filename": "ncs/ncs_api_integration_evidence_2024.pdf",
+    "format": "pdf"
+  },
+  {
+    "id": "plfs_download_guide",
+    "url": "https://www.mospi.gov.in/sites/default/files/data_disemination/Guide_to_download_microdata.pdf",
+    "download_url": "https://www.mospi.gov.in/sites/default/files/data_disemination/Guide_to_download_microdata.pdf",
+    "filename": "baseline/plfs_microdata_download_guide.pdf",
+    "format": "pdf"
+  },
+  {
+    "id": "aishe_2021_22",
+    "url": "https://aishe.gov.in/document/aishe-final-report-2021-22/",
+    "download_url": "https://cdnbbsr.s3waas.gov.in/s392049debbe566ca5782a3045cf300a3c/uploads/2024/02/20240719952688509.pdf",
+    "filename": "supply/aishe_2021_22.pdf",
+    "format": "pdf"
+  },
+  {
+    "id": "plfs_2023_24_report",
+    "url": "https://microdata.gov.in/nada/index.php/catalog/213",
+    "download_url": "https://mospi.gov.in/sites/default/files/publication_reports/AnnualReport_PLFS2023-24L2.pdf",
+    "filename": "baseline/plfs_2023_24_annual_report.pdf",
+    "format": "pdf"
+  },
+  {
+    "id": "plfs_2023_24_metadata",
+    "url": "https://microdata.gov.in/nada/index.php/catalog/213",
+    "download_url": "https://microdata.gov.in/nada/index.php/metadata/export/213/json",
+    "filename": "baseline/plfs_2023_24_metadata.json",
+    "format": "json"
+  },
+  {
+    "id": "census_mh_town_amenities",
+    "url": "https://censusindia.gov.in/nada/index.php/catalog/821",
+    "download_url": "https://censusindia.gov.in/nada/index.php/catalog/821/download/2932/DH_2011_DCHB_Town_Release_2700.xlsx",
+    "filename": "geography/census_mh_town_amenities_2011.xlsx",
+    "format": "xlsx"
+  },
+  {
+    "id": "census_pune_inset_tables",
+    "url": "https://censusindia.gov.in/nada/index.php/catalog/821",
+    "download_url": "https://censusindia.gov.in/nada/index.php/catalog/821/download/2931/DH_2011_2725-Pune.zip",
+    "filename": "geography/census_pune_inset_tables_2011.zip",
+    "format": "zip"
+  },
+  {
+    "id": "electronics_qp",
+    "url": "https://essc-india.org/qualification-packs.php",
+    "download_url": "https://essc-india.org/images/29_Revised%20Qualifications/EMMT%20Shop%20Floor/ELE_Q2501_v4.0.pdf",
+    "filename": "skills/electronics_ELE_Q2501_v4.pdf",
+    "format": "pdf"
+  },
+  {
+    "id": "ncs_ogd_state_vacancies_2023",
+    "url": "https://tn.data.gov.in/resource/state-wise-vacancies-mobilised-till-30-september-2023",
+    "download_url": "https://www.data.gov.in/files/ogdpv2dms/s3fs-public/State_Wise_Vacancies_Mobilised_till_30_September_2023.csv",
+    "filename": "ncs/ncs_state_vacancies_asof_2023_09_30.csv",
+    "format": "csv"
+  },
+  {
+    "id": "kaggle_india_tech_2026",
+    "url": "https://www.kaggle.com/datasets/shree0910/india-tech-job-market-2026-23k-records",
+    "download_url": "https://www.kaggle.com/api/v1/datasets/download/shree0910/india-tech-job-market-2026-23k-records",
+    "filename": "demand/kaggle_india_tech_2026.zip",
+    "format": "zip"
+  },
+  {
+    "id": "plfs_2023_24_layout",
+    "url": "https://microdata.gov.in/nada/index.php/catalog/213/related-materials",
+    "download_url": "https://microdata.gov.in/nada/index.php/catalog/213/download/2463",
+    "filename": "baseline/plfs_2023_24_layout.xlsx",
+    "format": "xlsx"
+  },
+  {
+    "id": "nqr_python_sql",
+    "url": "https://nqr.gov.in/qualifications/10101",
+    "download_url": "https://nqr.gov.in/qualification/file/QF_Data%20Analysis%20with%20Python%20and%20SQL.pdf",
+    "filename": "skills/nqr_data_analysis_python_sql.pdf",
+    "format": "pdf"
+  }
+]

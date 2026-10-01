@@ -1,0 +1,226 @@
+[
+  {
+    "source_id": "ncs_metadata",
+    "retrieved_at": "2026-10-01T16:21:28.729012+00:00",
+    "status": "downloaded",
+    "filename": "data/raw/ncs/ncs_metadata_2026_09.xlsx",
+    "bytes": 13773,
+    "sha256": "d788bba4b164a79996a38def6a228ccb2dde8419b85451e612ec06ef09b840bb",
+    "source_page": "https://ncs.gov.in/",
+    "download_host": "ncsdocsstorage.blob.core.windows.net",
+    "notes": "Publicly linked static export; signed download query omitted from manifest."
+  },
+  {
+    "source_id": "nco_2015",
+    "retrieved_at": "2026-10-01T16:21:51.599785+00:00",
+    "status": "failed",
+    "error": "404 Client Error: Not Found for url: https://dge.gov.in/dge/sites/default/files/2022-07/National_Classification_of_Occupations_Vol_I-2015.pdf"
+  },
+  {
+    "source_id": "pmkvy_mh_centres_2021",
+    "retrieved_at": "2026-10-01T16:21:54.039525+00:00",
+    "status": "downloaded",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "bytes": 128880,
+    "sha256": "579f640c2fe276a2aae3bb99c42cdc69109c73667bc8d9fe48701bf10607d40d",
+    "filename": "data/raw/training/pmkvy_maharashtra_centres_asof_2021_11_21.pdf",
+    "source_page": "https://msde.gov.in/static/uploads/2024/05/PMKVY-district-wise-TCs-in-Maharashtra.pdf",
+    "download_host": "www.msde.gov.in"
+  },
+  {
+    "source_id": "pmkvy_district_training_2021_22",
+    "retrieved_at": "2026-10-01T16:21:57.530984+00:00",
+    "status": "downloaded",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "bytes": 289560,
+    "sha256": "41fdd5692a6dec76e6be988a051e5b0122053a0e52224faaf1b3378e2b19d57f",
+    "filename": "data/raw/training/pmkvy_district_trained_2021_22.pdf",
+    "source_page": "https://www.msde.gov.in/static/uploads/2024/05/Annexure-2.pdf",
+    "download_host": "www.msde.gov.in"
+  },
+  {
+    "source_id": "census_pune_2011",
+    "retrieved_at": "2026-10-01T16:22:00.138566+00:00",
+    "status": "downloaded",
+    "http_status": 200,
+    "content_type": "application/octet-stream",
+    "bytes": 6719606,
+    "sha256": "00a87d37fceb87e9291ea965787b55663f3f5c8c05c2d1d0dac0d650561dc9c4",
+    "filename": "data/raw/geography/census_pune_2011_part_b.pdf",
+    "source_page": "https://censusindia.gov.in/nada/index.php/catalog/821",
+    "download_host": "censusindia.gov.in"
+  },
+  {
+    "source_id": "mh_economic_survey_2024_25",
+    "retrieved_at": "2026-10-01T16:22:04.534146+00:00",
+    "status": "downloaded",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "bytes": 9291033,
+    "sha256": "c8a106b5fd2e1ad9e301b0105e2dc68f9a33ffe33430c3872896d9bf53472484",
+    "filename": "data/raw/baseline/maharashtra_economic_survey_2024_25.pdf",
+    "source_page": "https://finance.maharashtra.gov.in/en/publication/economic-survey-of-maharashtra-2023-24/",
+    "download_host": "cdnbbsr.s3waas.gov.in"
+  },
+  {
+    "source_id": "automotive_qp",
+    "retrieved_at": "2026-10-01T16:22:06.877909+00:00",
+    "status": "downloaded",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "bytes": 437509,
+    "sha256": "aac6187a3394742f0f68e45aec545d1701628b67504146d828b28681da317802",
+    "filename": "data/raw/skills/automotive_ASC_Q3604_v4.pdf",
+    "source_page": "https://www.asdc.org.in/images/job_roles/ASC_Q3604_v4.0.pdf_.pdf",
+    "download_host": "www.asdc.org.in"
+  },
+  {
+    "source_id": "ncs_integration_evidence",
+    "retrieved_at": "2026-10-01T16:22:10.124066+00:00",
+    "status": "failed",
+    "error": "404 Client Error: Not Found for url: https://www.labour.gov.in/sites/default/files/final_rfp_27.08.2024.pdf"
+  },
+  {
+    "source_id": "plfs_download_guide",
+    "retrieved_at": "2026-10-01T16:22:13.070150+00:00",
+    "status": "downloaded",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "bytes": 1575108,
+    "sha256": "6c313185635067eaa9ecd9fa6d7cbfd63006eca08add6ead9ebb7e6f4c9474be",
+    "filename": "data/raw/baseline/plfs_microdata_download_guide.pdf",
+    "source_page": "https://www.mospi.gov.in/sites/default/files/data_disemination/Guide_to_download_microdata.pdf",
+    "download_host": "www.mospi.gov.in"
+  },
+  {
+    "source_id": "nco_2015",
+    "retrieved_at": "2026-10-01T16:24:02.808163+00:00",
+    "status": "failed",
+    "error": "HTTPSConnectionPool(host='www.dge.gov.in', port=443): Max retries exceeded with url: /sites/default/files/2024-05/National_Classification_of_Occupations_Vol_I-2015.pdf (Caused by SSLError(SSLCertVerificationError(\"The certificate's CN name does not match the passed value.\")))"
+  },
+  {
+    "source_id": "aishe_2021_22",
+    "retrieved_at": "2026-10-01T16:24:04.663514+00:00",
+    "status": "downloaded",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "bytes": 9766276,
+    "sha256": "c4400273cb2d574c793390a900528c825b036667cb0977bbdb8c40f0276d5f15",
+    "filename": "data/raw/supply/aishe_2021_22.pdf",
+    "source_page": "https://aishe.gov.in/document/aishe-final-report-2021-22/",
+    "download_host": "cdnbbsr.s3waas.gov.in"
+  },
+  {
+    "source_id": "plfs_2023_24_report",
+    "retrieved_at": "2026-10-01T16:24:06.551289+00:00",
+    "status": "downloaded",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "bytes": 26917638,
+    "sha256": "ab4ead2cee181a13c7ab40f164d2dceb46419cfb58f30f8baa58e35f79d33d39",
+    "filename": "data/raw/baseline/plfs_2023_24_annual_report.pdf",
+    "source_page": "https://microdata.gov.in/nada/index.php/catalog/213",
+    "download_host": "mospi.gov.in"
+  },
+  {
+    "source_id": "plfs_2023_24_metadata",
+    "retrieved_at": "2026-10-01T16:24:27.852988+00:00",
+    "status": "downloaded",
+    "http_status": 200,
+    "content_type": "application/json; charset=UTF-8",
+    "bytes": 7396,
+    "sha256": "ac0900c250ae014f56ea2dde60a12d4de91da1bd744861d508680d2fec9ac72f",
+    "filename": "data/raw/baseline/plfs_2023_24_metadata.json",
+    "source_page": "https://microdata.gov.in/nada/index.php/catalog/213",
+    "download_host": "microdata.gov.in"
+  },
+  {
+    "source_id": "census_mh_town_amenities",
+    "retrieved_at": "2026-10-01T16:24:30.404132+00:00",
+    "status": "downloaded",
+    "http_status": 200,
+    "content_type": "application/octet-stream",
+    "bytes": 1788573,
+    "sha256": "472859caf5591289966f71395e86f43c35970dc0fc6d4a76ebed18292533e718",
+    "filename": "data/raw/geography/census_mh_town_amenities_2011.xlsx",
+    "source_page": "https://censusindia.gov.in/nada/index.php/catalog/821",
+    "download_host": "censusindia.gov.in"
+  },
+  {
+    "source_id": "census_pune_inset_tables",
+    "retrieved_at": "2026-10-01T16:24:33.584086+00:00",
+    "status": "downloaded",
+    "http_status": 200,
+    "content_type": "application/octet-stream",
+    "bytes": 1391165,
+    "sha256": "96c0b9d9e71be9d21798eba93c7b67e298e465aacf4998e05b6ee05be4b48241",
+    "filename": "data/raw/geography/census_pune_inset_tables_2011.zip",
+    "source_page": "https://censusindia.gov.in/nada/index.php/catalog/821",
+    "download_host": "censusindia.gov.in"
+  },
+  {
+    "source_id": "electronics_qp",
+    "retrieved_at": "2026-10-01T16:24:36.697842+00:00",
+    "status": "downloaded",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "bytes": 382572,
+    "sha256": "b48b151cd1078fee35ddab5c6d2058e12a6e32963fe32c2019f48bc443df4f9a",
+    "filename": "data/raw/skills/electronics_ELE_Q2501_v4.pdf",
+    "source_page": "https://essc-india.org/qualification-packs.php",
+    "download_host": "essc-india.org"
+  },
+  {
+    "source_id": "nco",
+    "status": "downloaded",
+    "retrieved_at": "2026-10-01T16:25:30.667359+00:00",
+    "filename": "data/raw/skills/nco_2015_vol_1.pdf",
+    "bytes": 7115143,
+    "sha256": "4543dede4ac9a8e6d7c5ea82914382c00e39755c778472e69f3186da4546d839",
+    "source_page": "https://dge.gov.in/sites/default/files/2024-05/National_Classification_of_Occupations_Vol_I-2015.pdf"
+  },
+  {
+    "source_id": "ncs_ogd_state_vacancies_2023",
+    "retrieved_at": "2026-10-01T16:26:37.166233+00:00",
+    "status": "failed",
+    "error": "403 Client Error: Forbidden for url: https://www.data.gov.in/files/ogdpv2dms/s3fs-public/State_Wise_Vacancies_Mobilised_till_30_September_2023.csv"
+  },
+  {
+    "source_id": "kaggle_india_tech_2026",
+    "retrieved_at": "2026-10-01T16:26:39.320703+00:00",
+    "status": "downloaded",
+    "http_status": 200,
+    "content_type": "application/zip",
+    "bytes": 2830251,
+    "sha256": "bb8879f0c2146c7e246041be0c9df223917301efc54e12bf9568ce375408c26c",
+    "filename": "data/raw/demand/kaggle_india_tech_2026.zip",
+    "source_page": "https://www.kaggle.com/datasets/shree0910/india-tech-job-market-2026-23k-records",
+    "download_host": "storage.googleapis.com"
+  },
+  {
+    "source_id": "plfs_2023_24_layout",
+    "retrieved_at": "2026-10-01T16:26:44.806545+00:00",
+    "status": "downloaded",
+    "http_status": 200,
+    "content_type": "application/octet-stream",
+    "bytes": 56677,
+    "sha256": "3de65c3dcaaadfd90b78579b8eaa65557e32dc7074f178dcc1e11195e8cf3836",
+    "filename": "data/raw/baseline/plfs_2023_24_layout.xlsx",
+    "source_page": "https://microdata.gov.in/nada/index.php/catalog/213/related-materials",
+    "download_host": "microdata.gov.in"
+  },
+  {
+    "source_id": "nqr_python_sql",
+    "retrieved_at": "2026-10-01T16:33:50.375997+00:00",
+    "status": "downloaded",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "bytes": 837140,
+    "sha256": "dec9076a0aa5c37efe754840322ec2be2ef8094ffc33935b13db371b4b78c167",
+    "filename": "data/raw/skills/nqr_data_analysis_python_sql.pdf",
+    "source_page": "https://nqr.gov.in/qualifications/10101",
+    "download_host": "nqr.gov.in"
+  }
+]

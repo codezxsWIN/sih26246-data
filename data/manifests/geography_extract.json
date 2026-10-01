@@ -1,0 +1,20 @@
+{
+  "maharashtra_towns": 535,
+  "pune_district_towns": 35,
+  "source_sheet": "Town_2700",
+  "vintage": "2011 Census",
+  "original_columns_selected": [
+    "State Code",
+    "State Name",
+    "District Code",
+    "District Name",
+    "Sub District Code",
+    "Sub District Name",
+    "Town Code",
+    "Town Name",
+    "Total   Households ",
+    "Total Population of Town",
+    "Total Male Population of Town",
+    "Total Female Population of Town"
+  ]
+}

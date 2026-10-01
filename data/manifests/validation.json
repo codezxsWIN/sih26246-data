@@ -1,0 +1,11 @@
+{
+  "raw_files_hash_verified": 17,
+  "raw_files_missing": [],
+  "csv_counts": {
+    "ncs/ncs_state_year_metrics.csv": 1788,
+    "ncs/ncs_maharashtra_year_metrics.csv": 48,
+    "training/pmkvy_maharashtra_district_training_2021_22.csv": 36
+  },
+  "ncs_numerical_flags": 0,
+  "status": "complete_local_pack_verified"
+}
