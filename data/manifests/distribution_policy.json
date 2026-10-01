@@ -1,0 +1,7 @@
+{
+  "excluded_raw_files": [
+    "data/raw/training/dvet_pune_region_govt_2022.pdf",
+    "data/raw/training/dvet_pune_region_pvt_2022.pdf"
+  ],
+  "reason": "Public historical PDFs contain staff personal contact details not needed for this project. Keep local originals only; do not package or commit."
+}

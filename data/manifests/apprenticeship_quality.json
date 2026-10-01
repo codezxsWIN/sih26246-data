@@ -1,0 +1,10 @@
+{
+  "state_ut_rows": 36,
+  "national_total_rows": 1,
+  "national_totals": {
+    "naps_engaged": 1184431,
+    "nats_engaged": 523024
+  },
+  "state_sums_reconcile": true,
+  "period": "Calendar 2025"
+}

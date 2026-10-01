@@ -1,0 +1,34 @@
+{
+  "name": "udise-2025-26-district-level-reports",
+  "title": "UDISE+ 2025-26 - District level Reports",
+  "license_id": "other-pd",
+  "license_title": "Other (Public Domain)",
+  "original_source": "microdata.udiseplus.gov.in",
+  "notes": "Unified District Information System For Education Plus (UDISE+) data for Urban Districts from 2025-26",
+  "selected_resources": [
+    {
+      "name": "UDISE+ 2025-26 Schema",
+      "url": "https://data.opencity.in/dataset/13f2e4f2-6efd-4675-a3cd-f6b13341ed7c/resource/c799029f-b923-4958-bd0a-d4b21c0e5a99/download/dsp_schema_v1.pdf",
+      "description": "Schema file for the column names",
+      "source": null,
+      "license_id": null,
+      "last_modified": "2026-08-17T06:33:11.411266"
+    },
+    {
+      "name": "Pune Enrolment Data Part 1",
+      "url": "https://data.opencity.in/dataset/13f2e4f2-6efd-4675-a3cd-f6b13341ed7c/resource/b6bae672-ccde-43f4-aee4-7c8e73e63a3a/download/2725_enr1.csv",
+      "description": "",
+      "source": "nan",
+      "license_id": "Public Domain",
+      "last_modified": "2026-08-17T06:30:22.876522"
+    },
+    {
+      "name": "Pune Enrolment Data Part 2",
+      "url": "https://data.opencity.in/dataset/13f2e4f2-6efd-4675-a3cd-f6b13341ed7c/resource/d1e6f929-2b33-4ece-bbe9-cafb917c6901/download/2725_enr2.csv",
+      "description": "",
+      "source": "nan",
+      "license_id": "Public Domain",
+      "last_modified": "2026-08-17T06:30:27.219812"
+    }
+  ]
+}

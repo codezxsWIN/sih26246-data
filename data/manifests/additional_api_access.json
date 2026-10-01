@@ -1,0 +1,14 @@
+{
+  "dvet_base": "https://inventory.dvet.gov.in",
+  "verified_anonymous_GETs": {
+    "/Home/GetDistrictByRegion?regionId=6": "200JSON; five districts plus select placeholder",
+    "/Home/GetTalukaByDistrict?districtId=521": "200JSON;13 talukas plus placeholder",
+    "/Home/GetInstituteByLocation?regionId=6&districtId=521": "200JSON;61 institutes plus placeholder",
+    "/Home/GetTradeByInstitute?instituteId=<ID>": "200JSON for all61 Pune institutes;405 non-placeholder links"
+  },
+  "public_search_POST": "/Home/LoadAdmissionTradeInstituteSearchList returned200 JSON with0 rows for tested sample; no capacity feed claimed",
+  "OpenCity_CKAN": "https://data.opencity.in/api/3/action/package_search?q=Pune&rows=10 returned200 JSON; catalogue metadata inspected, selected aggregate CSVs downloaded",
+  "PLFS_person_microdata_2025": "Catalogue host connection failed; no person microdata acquired",
+  "TLS": "Maharashtra DES hostname verification failed; not disabled",
+  "excluded": "No NCS permission workaround, teacher records, candidate records or staff contact extracts"
+}

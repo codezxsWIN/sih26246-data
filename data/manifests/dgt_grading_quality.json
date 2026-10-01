@@ -1,0 +1,10 @@
+{
+  "national_rows": 14743,
+  "maharashtra_code_27_rows": 1046,
+  "NG_final_grade_rows": 126,
+  "parameter_sum_mismatch_iti_codes": [],
+  "row_serials_contiguous": true,
+  "duplicate_iti_codes": 0,
+  "scope": "AY 2026-27 publisher grading scores, not capacity or placements",
+  "geography_method": "Maharashtra subset uses state code 27 embedded in NCVT/MIS-style ITI IDs; names/districts absent in current grade file"
+}

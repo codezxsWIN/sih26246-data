@@ -478,5 +478,292 @@
     ],
     "acquisition_status": "not downloaded",
     "scraping_required": false
+  },
+  {
+    "id": "dgt_iti_grading_2026_27",
+    "url": "https://www.dgt.gov.in/en/node/4464",
+    "download_url": "https://www.dgt.gov.in/sites/default/files/2026-06/Final-Circular-Publication-of-Scores-ITI-%202026-27.pdf",
+    "filename": "training/dgt_iti_grading_2026_27.pdf",
+    "format": "pdf",
+    "tier": 1,
+    "official_public_status": "Official government release",
+    "access_method": "public static download",
+    "fields_available": "ITI code, serial, eight parameter scores, final_grade (numeric or NG)",
+    "date_coverage": "Academic 2026-27",
+    "geography_granularity": "National ITIs; Maharashtra selected by embedded code 27",
+    "license_usage_constraints": "Attribute government publisher; dataset-specific open licence not confirmed",
+    "update_frequency": "Annual grading release",
+    "quality_reliability": "Official grading, not vacancy demand, intake, pass rates or placements; CFI and spaced code variants preserved",
+    "project_modules": [
+      "training",
+      "quality"
+    ],
+    "acquisition_status": "downloaded",
+    "scraping_required": false
+  },
+  {
+    "id": "plfs_2025_report",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2246009&lang=1",
+    "download_url": "https://www.mospi.gov.in/uploads/publications_reports/publications_reports1780040415321_0624fb13-fb47-40bc-b470-7c7e9635c3ef_PLFS_2025_F_REV_29052026.pdf",
+    "filename": "baseline/plfs_calendar_2025_annual_report.pdf",
+    "format": "pdf",
+    "tier": 1,
+    "official_public_status": "Official government release",
+    "access_method": "public static download",
+    "fields_available": "LFPR, WPR, UR by status/age/sex/rural-urban/state and occupation/industry tables; table-specific",
+    "date_coverage": "January-December 2025",
+    "geography_granularity": "State / national",
+    "license_usage_constraints": "Attribute government publisher; dataset-specific open licence not confirmed",
+    "update_frequency": "Annual; separate monthly/quarterly releases",
+    "quality_reliability": "New calendar-year/sample design; do not splice with July-June 2023-24 series without methodological review",
+    "project_modules": [
+      "baseline",
+      "supply"
+    ],
+    "acquisition_status": "downloaded",
+    "scraping_required": false
+  },
+  {
+    "id": "plfs_2025_method_changes",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2246009&lang=1",
+    "download_url": "https://www.mospi.gov.in/sites/default/files/publication_reports/PLFS_Changes-in-2025_rev.pdf",
+    "filename": "baseline/plfs_methodology_changes_2025.pdf",
+    "format": "pdf",
+    "tier": 1,
+    "official_public_status": "Official government release",
+    "access_method": "public static download",
+    "fields_available": "Sampling, coverage and collection changes effective January 2025",
+    "date_coverage": "Effective January 2025",
+    "geography_granularity": "National methods",
+    "license_usage_constraints": "Attribute government publisher; dataset-specific open licence not confirmed",
+    "update_frequency": "Methodology revision",
+    "quality_reliability": "Required comparability context, not data observations",
+    "project_modules": [
+      "provenance",
+      "baseline"
+    ],
+    "acquisition_status": "downloaded",
+    "scraping_required": false
+  },
+  {
+    "id": "dvet_pune_region_govt_2022",
+    "url": "https://inventory.dvet.gov.in/Home/SearchInstituteAndTrade",
+    "download_url": "https://inventory.dvet.gov.in/assets/Attachments/PDF/2022/ListOfITI/GOVERNMENT/Govt_Pune.pdf",
+    "filename": "training/dvet_pune_region_govt_2022.pdf",
+    "format": "pdf",
+    "tier": 1,
+    "official_public_status": "Official government release",
+    "access_method": "public static download",
+    "fields_available": "Institution/DVET/MIS codes, location, trade/units, provisional intake; staff contact fields excluded from extracts",
+    "date_coverage": "Contents dated 19 May 2023; provisional August 2023 admissions despite 2022 URL",
+    "geography_granularity": "Pune region: five districts, not Pune district only",
+    "license_usage_constraints": "Attribute government publisher; dataset-specific open licence not confirmed",
+    "update_frequency": "Historical annexure",
+    "quality_reliability": "Public source includes staff contact data; keep original local-only, excluded from ZIP and Git",
+    "project_modules": [
+      "training",
+      "supply"
+    ],
+    "acquisition_status": "downloaded",
+    "scraping_required": false
+  },
+  {
+    "id": "dvet_pune_region_pvt_2022",
+    "url": "https://inventory.dvet.gov.in/Home/SearchInstituteAndTrade",
+    "download_url": "https://inventory.dvet.gov.in/assets/Attachments/PDF/2022/ListOfITI/PRIVATE/Pvt_Pune.pdf",
+    "filename": "training/dvet_pune_region_pvt_2022.pdf",
+    "format": "pdf",
+    "tier": 1,
+    "official_public_status": "Official government release",
+    "access_method": "public static download",
+    "fields_available": "Institution/DVET/MIS codes, location, trade/units, provisional intake; staff contact fields excluded from extracts",
+    "date_coverage": "Contents dated 19 May 2023; provisional August 2023 admissions despite 2022 URL",
+    "geography_granularity": "Pune region: five districts",
+    "license_usage_constraints": "Attribute government publisher; dataset-specific open licence not confirmed",
+    "update_frequency": "Historical annexure",
+    "quality_reliability": "Public source includes staff contact data; keep original local-only, excluded from ZIP and Git",
+    "project_modules": [
+      "training",
+      "supply"
+    ],
+    "acquisition_status": "downloaded",
+    "scraping_required": false
+  },
+  {
+    "id": "nic_2008",
+    "url": "https://mospi.gov.in/nic-2008-codefinder",
+    "download_url": "https://www.mospi.gov.in/sites/default/files/main_menu/national_industrial_classification/nic_2008_17apr09.pdf",
+    "filename": "skills/nic_2008.pdf",
+    "format": "pdf",
+    "tier": 1,
+    "official_public_status": "Official government release",
+    "access_method": "public static download",
+    "fields_available": "NIC industry sections, divisions, groups, classes, subclasses, explanatory notes and concordance",
+    "date_coverage": "NIC 2008 edition",
+    "geography_granularity": "National industry taxonomy",
+    "license_usage_constraints": "Attribute government publisher; dataset-specific open licence not confirmed",
+    "update_frequency": "Versioned classification",
+    "quality_reliability": "Use edition required by acquired PLFS/ASI files; this is not a claim that 2008 is the newest classification",
+    "project_modules": [
+      "industry taxonomy"
+    ],
+    "acquisition_status": "downloaded",
+    "scraping_required": false
+  },
+  {
+    "id": "udise_2025_26_schema",
+    "url": "https://data.opencity.in/dataset/udise-2025-26-district-level-reports",
+    "download_url": "https://data.opencity.in/dataset/13f2e4f2-6efd-4675-a3cd-f6b13341ed7c/resource/c799029f-b923-4958-bd0a-d4b21c0e5a99/download/dsp_schema_v1.pdf",
+    "filename": "supply/udise_2025_26_schema.pdf",
+    "format": "pdf",
+    "tier": 2,
+    "official_public_status": "Public third-party mirror of official UDISE+ data",
+    "access_method": "public static download",
+    "fields_available": "Field/code meanings for UDISE+ aggregate profile/enrolment/facilities datasets",
+    "date_coverage": "Mirror catalogue academic 2025-26",
+    "geography_granularity": "National schema",
+    "license_usage_constraints": "Mirror catalogue lists Other (Public Domain); primary reuse terms not independently confirmed; attribute UDISE+ and OpenCity",
+    "update_frequency": "Academic annual release",
+    "quality_reliability": "OpenCity mirror, not primary release independently acquired",
+    "project_modules": [
+      "supply",
+      "provenance"
+    ],
+    "acquisition_status": "downloaded",
+    "scraping_required": false
+  },
+  {
+    "id": "udise_pune_2025_26_enrolment_1",
+    "url": "https://data.opencity.in/dataset/udise-2025-26-district-level-reports",
+    "download_url": "https://data.opencity.in/dataset/13f2e4f2-6efd-4675-a3cd-f6b13341ed7c/resource/b6bae672-ccde-43f4-aee4-7c8e73e63a3a/download/2725_enr1.csv",
+    "filename": "supply/udise_pune_2025_26_enrolment_1.csv",
+    "format": "csv",
+    "tier": 2,
+    "official_public_status": "Public third-party mirror of official UDISE+ data",
+    "access_method": "public static download",
+    "fields_available": "pseudocode,item_group,item_id,cpp_b/g/t,c1_b/g/t through c12_b/g/t; 42 columns",
+    "date_coverage": "Academic 2025-26 per mirror catalogue",
+    "geography_granularity": "Pune district school pseudocode/item-group records",
+    "license_usage_constraints": "Mirror catalogue lists Other (Public Domain); primary reuse terms not independently confirmed; attribute UDISE+ and OpenCity",
+    "update_frequency": "Academic annual release; mirror cadence unspecified",
+    "quality_reliability": "School aggregates, not named pupils or current employable people; first-column duplicates expected across item groups; schema required",
+    "project_modules": [
+      "future supply pipeline"
+    ],
+    "acquisition_status": "downloaded",
+    "scraping_required": false
+  },
+  {
+    "id": "udise_pune_2025_26_enrolment_2",
+    "url": "https://data.opencity.in/dataset/udise-2025-26-district-level-reports",
+    "download_url": "https://data.opencity.in/dataset/13f2e4f2-6efd-4675-a3cd-f6b13341ed7c/resource/d1e6f929-2b33-4ece-bbe9-cafb917c6901/download/2725_enr2.csv",
+    "filename": "supply/udise_pune_2025_26_enrolment_2.csv",
+    "format": "csv",
+    "tier": 2,
+    "official_public_status": "Public third-party mirror of official UDISE+ data",
+    "access_method": "public static download",
+    "fields_available": "pseudocode,item_group,item_id,cpp_b/g/t,c1_b/g/t through c12_b/g/t; 42 columns",
+    "date_coverage": "Academic 2025-26 per mirror catalogue",
+    "geography_granularity": "Pune district school pseudocode/item-group records",
+    "license_usage_constraints": "Mirror catalogue lists Other (Public Domain); primary reuse terms not independently confirmed; attribute UDISE+ and OpenCity",
+    "update_frequency": "Academic annual release; mirror cadence unspecified",
+    "quality_reliability": "Do not add parts 1 and 2 as independent student populations; inspect item groups/schema",
+    "project_modules": [
+      "future supply pipeline"
+    ],
+    "acquisition_status": "downloaded",
+    "scraping_required": false
+  },
+  {
+    "id": "dvet_reference_api",
+    "tier": 1,
+    "url": "https://inventory.dvet.gov.in/Home/SearchInstituteAndTrade",
+    "official_public_status": "Government official public service/publication",
+    "access_method": "Public website reference GETs, no auth supplied",
+    "fields_available": "HTML option institute IDs/names, trade IDs/names; JSON DataValueField/DataTextField for region/district/taluka/institute/trade lists",
+    "date_coverage": "Service snapshot 1 October 2026; effective academic year unspecified",
+    "geography_granularity": "Maharashtra institutes; Pune district institute-trade links",
+    "license_usage_constraints": "Public access does not imply unrestricted redistribution; attribute source. No personal data or access-control bypass.",
+    "update_frequency": "Reference/administrative changes",
+    "quality_reliability": "952 institute refs,95 trades,61 Pune institutes,13 talukas,405 links; all61 calls successful. Intake POST sample returned0, not an inferred capacity count.",
+    "project_modules": [
+      "training",
+      "skills"
+    ],
+    "acquisition_status": "acquired",
+    "scraping_required": "Public HTML/reference extraction"
+  },
+  {
+    "id": "pib_naps_nats",
+    "tier": 1,
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2243987&lang=1",
+    "official_public_status": "Government official public service/publication",
+    "access_method": "Public HTML table extraction",
+    "fields_available": "State/UT, Apprentices Engaged under NAPS, Apprentices Engaged under NATS",
+    "date_coverage": "Calendar 2025; published23March2026",
+    "geography_granularity": "State / national",
+    "license_usage_constraints": "Public access does not imply unrestricted redistribution; attribute source. No personal data or access-control bypass.",
+    "update_frequency": "Annual parliamentary snapshot",
+    "quality_reliability": "Official administrative engagement counts; no district/role detail; not current skilled-worker stock",
+    "project_modules": [
+      "training",
+      "baseline"
+    ],
+    "acquisition_status": "acquired",
+    "scraping_required": "Public HTML/reference extraction"
+  },
+  {
+    "id": "mahaswayam_public_portal",
+    "tier": 1,
+    "url": "https://rojgar.mahaswayam.gov.in/",
+    "official_public_status": "Government official public service/publication",
+    "access_method": "Public homepage inspected; no verified feed contract",
+    "fields_available": "Homepage lists employment/job-fair flows; live response schema not acquired",
+    "date_coverage": "Homepage accessed October2026",
+    "geography_granularity": "Maharashtra state portal",
+    "license_usage_constraints": "Public access does not imply unrestricted redistribution; attribute source. No personal data or access-control bypass.",
+    "update_frequency": "Unverified",
+    "quality_reliability": "Portal accessible. No live non-NCS vacancy records acquired; no login/CAPTCHA bypass or integrated NCS workaround attempted.",
+    "project_modules": [
+      "demand candidate"
+    ],
+    "acquisition_status": "not acquired: discovery/access limitation",
+    "scraping_required": "Not yet assessed"
+  },
+  {
+    "id": "skill_india_digital",
+    "tier": 1,
+    "url": "https://www.skillindiadigital.gov.in/",
+    "official_public_status": "Government official public service/publication",
+    "access_method": "Public homepage inspected; bulk data access unverified",
+    "fields_available": "Course/training services expected; exact downloadable fields and API not verified",
+    "date_coverage": "Homepage accessed October2026",
+    "geography_granularity": "National",
+    "license_usage_constraints": "Public access does not imply unrestricted redistribution; attribute source. No personal data or access-control bypass.",
+    "update_frequency": "Unverified",
+    "quality_reliability": "No candidate profiles or enrolment microdata acquired; request scheme export through authorized channels",
+    "project_modules": [
+      "training candidate"
+    ],
+    "acquisition_status": "not acquired: discovery/access limitation",
+    "scraping_required": "Not yet assessed"
+  },
+  {
+    "id": "pune_district_review_2025",
+    "tier": 1,
+    "url": "https://www.mahades.maharashtra.gov.in/district.do?districtname=PUNE",
+    "official_public_status": "Government official public service/publication",
+    "access_method": "Manual official download once TLS issue resolved",
+    "fields_available": "District socio-economic review listed; expected industry/employment/education tables not inspected",
+    "date_coverage": "2025 edition listed in official search result; table vintages unverified",
+    "geography_granularity": "Pune district / likely taluka",
+    "license_usage_constraints": "Public access does not imply unrestricted redistribution; attribute source. No personal data or access-control bypass.",
+    "update_frequency": "Unverified",
+    "quality_reliability": "Official host certificate hostname mismatch and web fetch timeout; no TLS bypass; report not downloaded",
+    "project_modules": [
+      "baseline candidate"
+    ],
+    "acquisition_status": "not acquired: discovery/access limitation",
+    "scraping_required": "Not yet assessed"
   }
 ]

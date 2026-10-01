@@ -124,5 +124,68 @@
     "download_url": "https://nqr.gov.in/qualification/file/QF_Data%20Analysis%20with%20Python%20and%20SQL.pdf",
     "filename": "skills/nqr_data_analysis_python_sql.pdf",
     "format": "pdf"
+  },
+  {
+    "id": "dgt_iti_grading_2026_27",
+    "url": "https://www.dgt.gov.in/en/node/4464",
+    "download_url": "https://www.dgt.gov.in/sites/default/files/2026-06/Final-Circular-Publication-of-Scores-ITI-%202026-27.pdf",
+    "filename": "training/dgt_iti_grading_2026_27.pdf",
+    "format": "pdf"
+  },
+  {
+    "id": "plfs_2025_report",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2246009&lang=1",
+    "download_url": "https://www.mospi.gov.in/uploads/publications_reports/publications_reports1780040415321_0624fb13-fb47-40bc-b470-7c7e9635c3ef_PLFS_2025_F_REV_29052026.pdf",
+    "filename": "baseline/plfs_calendar_2025_annual_report.pdf",
+    "format": "pdf"
+  },
+  {
+    "id": "plfs_2025_method_changes",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2246009&lang=1",
+    "download_url": "https://www.mospi.gov.in/sites/default/files/publication_reports/PLFS_Changes-in-2025_rev.pdf",
+    "filename": "baseline/plfs_methodology_changes_2025.pdf",
+    "format": "pdf"
+  },
+  {
+    "id": "dvet_pune_region_govt_2022",
+    "url": "https://inventory.dvet.gov.in/Home/SearchInstituteAndTrade",
+    "download_url": "https://inventory.dvet.gov.in/assets/Attachments/PDF/2022/ListOfITI/GOVERNMENT/Govt_Pune.pdf",
+    "filename": "training/dvet_pune_region_govt_2022.pdf",
+    "format": "pdf"
+  },
+  {
+    "id": "dvet_pune_region_pvt_2022",
+    "url": "https://inventory.dvet.gov.in/Home/SearchInstituteAndTrade",
+    "download_url": "https://inventory.dvet.gov.in/assets/Attachments/PDF/2022/ListOfITI/PRIVATE/Pvt_Pune.pdf",
+    "filename": "training/dvet_pune_region_pvt_2022.pdf",
+    "format": "pdf"
+  },
+  {
+    "id": "nic_2008",
+    "url": "https://mospi.gov.in/nic-2008-codefinder",
+    "download_url": "https://www.mospi.gov.in/sites/default/files/main_menu/national_industrial_classification/nic_2008_17apr09.pdf",
+    "filename": "skills/nic_2008.pdf",
+    "format": "pdf"
+  },
+  {
+    "id": "udise_2025_26_schema",
+    "url": "https://data.opencity.in/dataset/udise-2025-26-district-level-reports",
+    "download_url": "https://data.opencity.in/dataset/13f2e4f2-6efd-4675-a3cd-f6b13341ed7c/resource/c799029f-b923-4958-bd0a-d4b21c0e5a99/download/dsp_schema_v1.pdf",
+    "filename": "supply/udise_2025_26_schema.pdf",
+    "format": "pdf"
+  },
+  {
+    "id": "udise_pune_2025_26_enrolment_1",
+    "url": "https://data.opencity.in/dataset/udise-2025-26-district-level-reports",
+    "download_url": "https://data.opencity.in/dataset/13f2e4f2-6efd-4675-a3cd-f6b13341ed7c/resource/b6bae672-ccde-43f4-aee4-7c8e73e63a3a/download/2725_enr1.csv",
+    "filename": "supply/udise_pune_2025_26_enrolment_1.csv",
+    "format": "csv"
+  },
+  {
+    "id": "udise_pune_2025_26_enrolment_2",
+    "url": "https://data.opencity.in/dataset/udise-2025-26-district-level-reports",
+    "download_url": "https://data.opencity.in/dataset/13f2e4f2-6efd-4675-a3cd-f6b13341ed7c/resource/d1e6f929-2b33-4ece-bbe9-cafb917c6901/download/2725_enr2.csv",
+    "filename": "supply/udise_pune_2025_26_enrolment_2.csv",
+    "format": "csv"
   }
 ]

@@ -9,6 +9,7 @@ Actual downloaded data, usable CSV extracts, tested acquisition scripts, and an 
 3. [Acquisition order and starter pack](docs/ACQUISITION.md)
 4. [What the data can support](docs/DATA_DICTIONARY.md)
 5. [Official access request draft](docs/NCS_ACCESS_REQUEST.md)
+6. [Acquired sources beyond NCS](docs/ADDITIONAL_SOURCES.md) - DVET references, ITI grading, apprenticeship, PLFS2025 and UDISE+ mirror
 
 ## Data already collected
 
@@ -25,6 +26,11 @@ Actual downloaded data, usable CSV extracts, tested acquisition scripts, and an 
 | Extracted town geography | 535 Maharashtra town rows, including 35 in Pune district | Census codes and historical population; not current LGD geography |
 | Maharashtra Economic Survey 2024-25 | Official report downloaded | Industry and state baseline |
 | NCO-2015 and sector qualifications | Official PDFs downloaded | Occupation codes, automotive and electronics competencies |
+| DVET institute/trade references | 952 Maharashtra institutes,95 trades;61 Pune institutes and405 links | Effective academic year unverified |
+| DGT ITI grading 2026-27 | 14743 national rows;1046 Maharashtra-code rows | NG retained, not zero |
+| NAPS/NATS engagement 2025 | 36 state/UT rows plus national total | Maharashtra:303763 NAPS;114127 NATS |
+| PLFS calendar2025 | Report and methodology changes downloaded | More recent baseline; comparability caution |
+| Pune UDISE+2025-26 mirror | Two aggregate enrolment files and schema | Not primary release independently verified |
 
 The NCS extraction checks the displayed HTML table against the saved website bundle. Reported totals reconcile with year values and national totals. Some metrics have an additional unspecified-state row. Zero quality flags in this numerical check do not establish economic completeness or validity of every employer posting.
 
@@ -45,7 +51,7 @@ python -m venv .venv
 
 All downloads validate their format before saving. TLS validation uses the operating system trust store. Download attempts, including failures, are retained in `data/manifests/download_log.json` with file size and SHA-256.
 
-The local data-pack ZIP supplied with this repository includes raw files. Git excludes raw files, downloaded website bundles, personal-data directories, credentials, and the virtual environment. The GitHub repository contains code, factual aggregate extracts, inventories and audit results. The Kaggle Pune posting extract is local-only pending the team's decision on upstream reuse rights.
+The expanded local data-pack ZIP includes selected raw files. Two historical DVET PDFs contain staff contact details and are excluded from distribution. Git excludes raw files, website bundles, personal-data directories, credentials, and the virtual environment. GitHub contains code, factual aggregate extracts, inventories and audits. Kaggle posting extracts stay local-only pending the team's decision on upstream reuse rights.
 
 After unpacking the raw-data archive into this folder:
 

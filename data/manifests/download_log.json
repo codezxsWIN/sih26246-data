@@ -222,5 +222,132 @@
     "filename": "data/raw/skills/nqr_data_analysis_python_sql.pdf",
     "source_page": "https://nqr.gov.in/qualifications/10101",
     "download_host": "nqr.gov.in"
+  },
+  {
+    "source_id": "dgt_iti_grading_2026_27",
+    "retrieved_at": "2026-10-01T17:09:14.913224+00:00",
+    "status": "downloaded",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "bytes": 1281793,
+    "sha256": "4896b73ccc78c9151aab84b66ddad464e5a6f926b90ee473e2f76a642763d721",
+    "filename": "data/raw/training/dgt_iti_grading_2026_27.pdf",
+    "source_page": "https://www.dgt.gov.in/en/node/4464",
+    "download_host": "www.dgt.gov.in"
+  },
+  {
+    "source_id": "plfs_2025_report",
+    "retrieved_at": "2026-10-01T17:09:14.913224+00:00",
+    "status": "downloaded",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "bytes": 5914743,
+    "sha256": "134bf2de5e4b1142d3bae4899c90ec5be3bf5ec03a2ff4b3f7b0bba34eee0da7",
+    "filename": "data/raw/baseline/plfs_calendar_2025_annual_report.pdf",
+    "source_page": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2246009&lang=1",
+    "download_host": "www.mospi.gov.in"
+  },
+  {
+    "source_id": "plfs_2025_method_changes",
+    "retrieved_at": "2026-10-01T17:09:14.913224+00:00",
+    "status": "downloaded",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "bytes": 4295792,
+    "sha256": "e97b715e6e0e2746879d22c0d192a7c25d9a65b52a284a095d5ce5311d29e97d",
+    "filename": "data/raw/baseline/plfs_methodology_changes_2025.pdf",
+    "source_page": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2246009&lang=1",
+    "download_host": "www.mospi.gov.in"
+  },
+  {
+    "source_id": "dvet_pune_region_govt_2022",
+    "retrieved_at": "2026-10-01T17:09:16.472559+00:00",
+    "status": "downloaded",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "bytes": 3110427,
+    "sha256": "33b4d94374a29e06caca46fcc662d1d83e3e6da6a24930936904e09210d6fbcf",
+    "filename": "data/raw/training/dvet_pune_region_govt_2022.pdf",
+    "source_page": "https://inventory.dvet.gov.in/Home/SearchInstituteAndTrade",
+    "download_host": "inventory.dvet.gov.in"
+  },
+  {
+    "source_id": "dvet_pune_region_pvt_2022",
+    "retrieved_at": "2026-10-01T17:09:17.188780+00:00",
+    "status": "downloaded",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "bytes": 3600110,
+    "sha256": "57cceed7deb9391edb8826c5c8e830f49b8a6a6800665d064ceb1df7d903b771",
+    "filename": "data/raw/training/dvet_pune_region_pvt_2022.pdf",
+    "source_page": "https://inventory.dvet.gov.in/Home/SearchInstituteAndTrade",
+    "download_host": "inventory.dvet.gov.in"
+  },
+  {
+    "source_id": "nic_2008",
+    "retrieved_at": "2026-10-01T17:12:15.094768+00:00",
+    "status": "downloaded",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "bytes": 1371857,
+    "sha256": "bedd891d8ab05305e1fde4cf125fbbc2c42e58395070622a67d6329c56bd6d37",
+    "filename": "data/raw/skills/nic_2008.pdf",
+    "source_page": "https://mospi.gov.in/nic-2008-codefinder",
+    "download_host": "www.mospi.gov.in"
+  },
+  {
+    "source_id": "udise_2025_26_schema",
+    "retrieved_at": "2026-10-01T17:15:04.282084+00:00",
+    "status": "downloaded",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "bytes": 478720,
+    "sha256": "e1617efb1b1d71b889d462e2090905b51bdc7417b2dc5edab040d66bfc913dfb",
+    "filename": "data/raw/supply/udise_2025_26_schema.pdf",
+    "source_page": "https://data.opencity.in/dataset/udise-2025-26-district-level-reports",
+    "download_host": "data.opencity.in"
+  },
+  {
+    "source_id": "udise_pune_2025_26_enrolment_1",
+    "retrieved_at": "2026-10-01T17:15:05.339929+00:00",
+    "status": "downloaded",
+    "http_status": 200,
+    "content_type": "text/csv",
+    "bytes": 4903328,
+    "sha256": "4d06cb87482ce979c29c14134716a29b777cc629dda2d78ae245cb1bda4dde02",
+    "filename": "data/raw/supply/udise_pune_2025_26_enrolment_1.csv",
+    "source_page": "https://data.opencity.in/dataset/udise-2025-26-district-level-reports",
+    "download_host": "data.opencity.in"
+  },
+  {
+    "source_id": "udise_pune_2025_26_enrolment_2",
+    "retrieved_at": "2026-10-01T17:15:06.429732+00:00",
+    "status": "downloaded",
+    "http_status": 200,
+    "content_type": "text/csv",
+    "bytes": 5234767,
+    "sha256": "66c57e0ab89714e13f7d4e3be0e3dfa08c5557e5141d11c05f05992c84f3bb92",
+    "filename": "data/raw/supply/udise_pune_2025_26_enrolment_2.csv",
+    "source_page": "https://data.opencity.in/dataset/udise-2025-26-district-level-reports",
+    "download_host": "data.opencity.in"
+  },
+  {
+    "source_id": "dvet_reference_api",
+    "retrieved_at": "2026-10-01T17:14:01.149900+00:00",
+    "status": "downloaded",
+    "filename": "data/raw/training/dvet_reference_snapshot.json",
+    "bytes": 339927,
+    "sha256": "52bfafd55d5a5b69987737702ddf6e367c35979f7c9b5736cb911a3f1b2a1fda",
+    "source_page": "https://inventory.dvet.gov.in/Home/SearchInstituteAndTrade",
+    "notes": "Whitelisted organizational/trade fields only; no staff/candidate contact data"
+  },
+  {
+    "source_id": "pib_naps_nats",
+    "retrieved_at": "2026-10-01T17:19:54.552453+00:00",
+    "status": "downloaded",
+    "filename": "data/raw/training/pib_naps_nats_2026_03_23.html",
+    "bytes": 260474,
+    "sha256": "585f12ca3b70a41c6b97387a348833993b283965783e57f7ef3800bb7334cbbd",
+    "source_page": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2243987&lang=1"
   }
 ]

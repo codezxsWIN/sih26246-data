@@ -1,0 +1,12 @@
+{
+  "retrieved_at": "2026-10-01T17:14:01.149900+00:00",
+  "maharashtra_institutes": 952,
+  "trade_dictionary": 95,
+  "pune_institutes": 61,
+  "pune_talukas": 13,
+  "pune_institute_trade_links": 405,
+  "completed_institutes": 61,
+  "errors": [],
+  "vintage": "Reference-service snapshot; effective academic year unverified",
+  "capacity": "Search POST sample returned zero rows; no capacity observations inferred"
+}

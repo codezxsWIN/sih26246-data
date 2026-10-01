@@ -1,10 +1,18 @@
 {
-  "raw_files_hash_verified": 17,
+  "raw_files_hash_verified": 28,
   "raw_files_missing": [],
+  "intentionally_withheld_raw_files": [],
   "csv_counts": {
     "ncs/ncs_state_year_metrics.csv": 1788,
     "ncs/ncs_maharashtra_year_metrics.csv": 48,
-    "training/pmkvy_maharashtra_district_training_2021_22.csv": 36
+    "training/pmkvy_maharashtra_district_training_2021_22.csv": 36,
+    "training/dgt_iti_grading_2026_27.csv": 14743,
+    "training/dgt_maharashtra_iti_grading_2026_27.csv": 1046,
+    "training/dvet_maharashtra_institutes.csv": 952,
+    "training/dvet_trade_dictionary.csv": 95,
+    "training/dvet_pune_institutes.csv": 61,
+    "training/dvet_pune_institute_trade_links.csv": 405,
+    "training/naps_nats_state_engagement_2025.csv": 37
   },
   "ncs_numerical_flags": 0,
   "status": "complete_local_pack_verified"
