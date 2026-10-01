@@ -2,6 +2,18 @@
 import argparse,hashlib,json,zipfile
 from .acquire import ROOT
 
+def additional_public_raw_files(root):
+    manifest=root/'data/processed/public_labour/public-labour-20261001-v2/acquisition_evidence.json'
+    if not manifest.exists():return set()
+    files=set()
+    for record in json.loads(manifest.read_text())['requests']:
+        name=record['filename']
+        target=(root/name).resolve()
+        if not target.is_relative_to((root/'data/raw/public_labour/public-labour-20261001-v2').resolve()) or target.suffix!='.json':raise ValueError('Unexpected public-data file')
+        if hashlib.sha256(target.read_bytes()).hexdigest()!=record['sha256']:raise ValueError('Public API evidence checksum mismatch')
+        files.add(name)
+    return files
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--filename',default='sih26246-model-input-pack-20261001-v1.zip')
@@ -14,6 +26,7 @@ def main():
     excluded=set(json.loads((ROOT/'data/manifests/distribution_policy.json').read_text())['excluded_raw_files'])
     raw={r['filename'] for r in logs if r['status']=='downloaded' and r['filename'] not in excluded}
     raw.update({'data/raw/ncs/evidence/dashboard_table.html','data/raw/ncs/evidence/dashboard_tables.js'})
+    raw.update(additional_public_raw_files(ROOT))
     files=[]
     for path in ROOT.rglob('*'):
         if not path.is_file():continue
