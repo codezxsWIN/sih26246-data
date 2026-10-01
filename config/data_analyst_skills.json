@@ -1,0 +1,16 @@
+{
+  "version": "curated-aliases-v1",
+  "status": "Bootstrap dictionary for extraction; human review required, not a learned model or official occupation crosswalk",
+  "reference_sources": ["https://nqr.gov.in/qualifications/10101", "https://www.dge.gov.in/nco-2015"],
+  "skills": {
+    "python": ["Python"], "sql": ["SQL", "Structured Query Language"],
+    "power_bi": ["Power BI", "PowerBI"], "excel": ["Excel", "Microsoft Excel"],
+    "tableau": ["Tableau"], "pandas": ["pandas"], "numpy": ["NumPy"],
+    "statistics": ["statistics", "statistical analysis"],
+    "data_visualization": ["data visualization", "data visualisation"],
+    "data_cleaning": ["data cleaning", "data cleansing"],
+    "dax": ["DAX"], "power_query": ["Power Query"],
+    "etl": ["ETL", "extract transform load"], "git": ["Git"],
+    "r": ["R programming", "R language"]
+  }
+}
