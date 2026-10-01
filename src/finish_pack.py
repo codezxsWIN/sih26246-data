@@ -47,6 +47,7 @@ def main():
     logs=json.loads((ROOT/'data/manifests/download_log.json').read_text());success={r['filename'] for r in logs if r['status']=='downloaded'}
     register=[]
     for item in json.loads((ROOT/'config/downloads.json').read_text()):
+        if item['id'] not in DETAILS:continue
         fields,period,geo,frequency,modules=DETAILS[item['id']]
         status='downloaded' if 'data/raw/'+item['filename'] in success else 'failed; see download log'
         tier=3 if item['id'].startswith('kaggle') else 2 if item['id']=='ncs_integration_evidence' else 1
@@ -65,7 +66,11 @@ def main():
       ('lgd_current_geography',2,'https://lgdirectory.gov.in/','Official report/export; report-specific CAPTCHA/login may apply','Expected administrative codes/names/status; exact export not inspected','Current directory candidate; not acquired','Administrative units','Administrative changes','Discovery candidate, not verified export endpoint; keep separate from Census codes','geography','not downloaded')]
     for id,tier,url,access,fields,period,geo,freq,quality,modules,status in additional:
         register.append({'id':id,'tier':tier,'url':url,'official_public_status':'Government official service/directory','access_method':access,'fields_available':fields,'date_coverage':period,'geography_granularity':geo,'update_frequency':freq,'license_usage_constraints':'Publisher terms apply; confirm reuse conditions. No bypass of login, denied permission or CAPTCHA; no personal candidate data.','quality_reliability':quality,'project_modules':modules.split(','),'acquisition_status':status,'scraping_required':'Authorized website/feed only' if id=='ncs_live_vacancies' else False})
-    write_json(ROOT/'config/sources.json',register)
+    existing_path=ROOT/'config/sources.json'
+    existing=json.loads(existing_path.read_text()) if existing_path.exists() else []
+    ids={r['id'] for r in register}
+    register.extend(r for r in existing if r['id'] not in ids)
+    write_json(existing_path,register)
     print('Registered',len(register),'sources; towns',len(rows),'Pune towns',len(pune))
 
 if __name__=='__main__':main()

@@ -3,9 +3,10 @@ import hashlib,json,zipfile
 from .acquire import ROOT
 
 def main():
-    destination=ROOT.parent/'sih26246-data-pack.zip'
+    destination=ROOT.parent/'sih26246-expanded-data-pack.zip'
     logs=json.loads((ROOT/'data/manifests/download_log.json').read_text())
-    raw={r['filename'] for r in logs if r['status']=='downloaded'}
+    excluded=set(json.loads((ROOT/'data/manifests/distribution_policy.json').read_text())['excluded_raw_files'])
+    raw={r['filename'] for r in logs if r['status']=='downloaded' and r['filename'] not in excluded}
     raw.update({'data/raw/ncs/evidence/dashboard_table.html','data/raw/ncs/evidence/dashboard_tables.js'})
     files=[]
     for path in ROOT.rglob('*'):
