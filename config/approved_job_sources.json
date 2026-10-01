@@ -1,0 +1,5 @@
+{
+  "schema_version": "1.0",
+  "approved_sources": [],
+  "review_requirements": "Each source requires source_id, reviewer, reviewed_at, evidence_reference, and permission_scope=job_data_analysis. Do not treat a CSV's own usage_permission field as access approval. No sources are currently approved for this import path."
+}

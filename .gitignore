@@ -8,6 +8,7 @@ __pycache__/
 data/raw/
 data/private/
 data/processed/demand/
+data/model_input/local_prototype/
 work/
 dist/
 *.zip
