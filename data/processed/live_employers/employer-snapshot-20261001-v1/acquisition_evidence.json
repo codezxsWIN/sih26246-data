@@ -1,0 +1,39 @@
+{
+  "observed_at": "2026-10-01T18:03:23.228027+00:00",
+  "public_employer_postings": 1,
+  "ncs_live_postings": 0,
+  "forecast_ready": false,
+  "full_descriptions_or_personal_data_saved": false,
+  "requests": [
+    {
+      "source": "capco",
+      "url": "https://boards-api.greenhouse.io/v1/boards/capco/jobs",
+      "http_status": 200,
+      "jobs_scanned": 701,
+      "response_sha256": "8cadf6baee2e13aa9dac4c12fcb5ab3c82f0e4c70a8c75991ce3378021e2c171",
+      "matched_pune_data_analyst_titles": 0
+    },
+    {
+      "source": "modulrfinance",
+      "url": "https://boards-api.greenhouse.io/v1/boards/modulrfinance/jobs",
+      "http_status": 200,
+      "jobs_scanned": 24,
+      "response_sha256": "2f4f2a503a151b3c7ff54f1f81a2a5b6642fcf0cc3649f11565a76200694ba45",
+      "matched_pune_data_analyst_titles": 0
+    },
+    {
+      "source": "parallelwireless",
+      "url": "https://api.lever.co/v0/postings/parallelwireless?mode=json",
+      "http_status": 200,
+      "jobs_scanned": 48,
+      "response_sha256": "432e0beb9efa13180e1fea40df331e291b9a03b092ffa6cf586c68be8094d6b6",
+      "matched_pune_data_analyst_titles": 1
+    }
+  ],
+  "limitations": [
+    "Presence is not hiring confirmation or vacancy count",
+    "No historical snapshots yet; not suitable for backtesting",
+    "Employer reuse rights require review",
+    "Creation timestamp is not guaranteed first publication date"
+  ]
+}
