@@ -132,7 +132,7 @@ def build(output_dir, root=ROOT):
     sources = {name: {'repository_path': path, 'sha256': sha256(root / path)} for name, path in SOURCE_PATHS.items()}
     output.mkdir(parents=True, exist_ok=True)
     manifest = {
-        'schema_version': 1,
+        'schema_version': 2,
         'built_at': datetime.now(timezone.utc).isoformat(),
         'evidence_observed_date': '2026-10-01',
         'source_files': sources,
@@ -185,7 +185,7 @@ def build(output_dir, root=ROOT):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--output-dir', type=Path, default=ROOT / 'DATABASES')
+    parser.add_argument('--output-dir', type=Path, default=ROOT / 'DATABASES/v2')
     args = parser.parse_args()
     result = build(args.output_dir)
     print(json.dumps(result['databases'], indent=2))

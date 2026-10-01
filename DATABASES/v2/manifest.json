@@ -1,0 +1,69 @@
+{
+  "schema_version": 2,
+  "built_at": "2026-10-01T18:34:51.519225+00:00",
+  "evidence_observed_date": "2026-10-01",
+  "source_files": {
+    "postings": {
+      "repository_path": "data/processed/live_employers/employer-snapshot-20261001-v1/public_employer_posting_observations.csv",
+      "sha256": "73c5280dfd09aed765f6bf9c9191dbe4746b621cb7e27127ced5a2c70bbc1346"
+    },
+    "skills": {
+      "repository_path": "data/processed/live_employers/employer-snapshot-20261001-v1/skill_mentions.csv",
+      "sha256": "de39310d081a77a056621dd9e83cd4a80b4553c9258d5ab1e6932144f283a7d7"
+    },
+    "ncs": {
+      "repository_path": "data/processed/ncs/ncs_maharashtra_year_metrics.csv",
+      "sha256": "a189973b2c41db095bb9081fd30bda280f936a20566f5f6aad18eda59a890d6d"
+    },
+    "rates": {
+      "repository_path": "data/processed/public_labour/public-labour-20261001-v2/plfs_workforce_rates.csv",
+      "sha256": "68616e61a6eecf411c840fe4b8a37665f8e04043e87201c52067982c39edb68e"
+    },
+    "baselines": {
+      "repository_path": "data/processed/public_labour/public-labour-20261001-v2/workforce_baseline_estimates.csv",
+      "sha256": "1f501f5b2feb0e7d5befe8f78c05ca49016034fd96a7300640324848ed2ab000"
+    }
+  },
+  "databases": {
+    "recruiter.sqlite": {
+      "sha256": "cda4c578f6e913190bedb46a7ff5bdd37a86cf7f23312cba5283c9cf4e287077",
+      "row_counts": {
+        "source_files": 3,
+        "employers": 1,
+        "recruiter_accounts": 0,
+        "job_postings": 1,
+        "job_skills": 5,
+        "aggregate_demand": 24
+      },
+      "csv_folder": "recruiter_data"
+    },
+    "job_seekers.sqlite": {
+      "sha256": "11d4340793c73902ed5ca1de6709f2da0ae18da514a7785655e155a6719323c8",
+      "row_counts": {
+        "source_files": 3,
+        "candidate_profiles": 0,
+        "candidate_skills": 0,
+        "aggregate_jobseekers": 24,
+        "labour_rates": 180,
+        "workforce_baselines": 60
+      },
+      "csv_folder": "job_seekers_data"
+    }
+  },
+  "readiness": {
+    "public_evidence_packaged": true,
+    "individual_jobseekers_available": false,
+    "individual_recruiter_accounts_available": false,
+    "live_ncs_postings_available": false,
+    "available_pune_data_analysts_estimated": false,
+    "reliable_gap_or_forecast_ready": false
+  },
+  "limitations": [
+    "One employer-published posting is not representative market demand; vacancy headcount unknown.",
+    "No individual candidate profiles or recruiter accounts acquired.",
+    "NCS state/year counts are aggregates; metric definitions and partial FY need care.",
+    "PLFS baselines are all-role rates; do not mix vintages, reference statuses or frequencies.",
+    "Public access does not itself establish redistribution or model-training permission.",
+    "No authorized candidate importer or matching/forecast engine is implemented here."
+  ]
+}

@@ -1,4 +1,9 @@
-# Database contract — schema v1
+# Database contract — current v2 snapshot
+
+This contract applies to `DATABASES/v2/`. Earlier root-level SQLite files are
+preserved unchanged and have a different v1 schema; do not mix their tables with
+the v2 schema or examples. The supported current builder is
+`src/build_team_databases.py`.
 
 Two SQLite snapshots package the already acquired, public-safe evidence. No new
 personal profiles, recruiter contacts or live NCS vacancies are implied.

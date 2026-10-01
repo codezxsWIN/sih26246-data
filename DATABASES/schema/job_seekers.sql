@@ -1,5 +1,5 @@
 PRAGMA foreign_keys=ON;
-PRAGMA user_version=1;
+PRAGMA user_version=2;
 
 CREATE TABLE source_files (
     source_file_id TEXT PRIMARY KEY,

@@ -2,11 +2,22 @@
 
 Actual downloaded data, usable CSV extracts, tested acquisition scripts, and an evidence register for a Maharashtra/Pune labour-market prototype. NCS is the primary official demand source. Acquisition session: **1 October 2026**.
 
+## Team: find the databases here
+
+**[OPEN DATABASES — recruiter + job seekers](DATABASES/README.md)**
+
+- [Recruiter database](DATABASES/v2/recruiter.sqlite): 1 employer, 1 Pune analyst posting, 5 skill mentions and 24 NCS demand/employer aggregate observations. Individual recruiter accounts are not acquired.
+- [Job-seeker database](DATABASES/v2/job_seekers.sqlite): 24 NCS job-seeker aggregate observations, 180 PLFS rate observations and 60 derived workforce baselines. **Individual candidate profiles: 0.** Aggregates are not individual people or available Data Analysts.
+- Browse without installing anything: [recruiter CSV tables](DATABASES/v2/recruiter_data/) / [job-seeker CSV tables](DATABASES/v2/job_seekers_data/).
+- [Table contracts and limitations](DATABASES/CONTRACT.md), [SQL schemas](DATABASES/schema/) and [counts/provenance/readiness](DATABASES/v2/manifest.json).
+
+These are real, queryable SQLite files, not just folder placeholders. They package existing evidence; they do **not** establish sufficient demand/supply coverage for reliable gap calculations or 6–12 month forecasts. Nothing in the earlier data packs was deleted.
+
 ## Start here
 
 **Team database entry point:** [DATABASES/](DATABASES/) — open
-[recruiter.sqlite](DATABASES/recruiter.sqlite) for employer/posting evidence and
-[job_seekers.sqlite](DATABASES/job_seekers.sqlite) for NCS/PLFS workforce
+[recruiter.sqlite](DATABASES/v2/recruiter.sqlite) for employer/posting evidence and
+[job_seekers.sqlite](DATABASES/v2/job_seekers.sqlite) for NCS/PLFS workforce
 evidence. CSV previews and the honest readiness limits are documented there.
 
 **Latest public-access progress:** [Live employer observations, PLFS API workforce baselines and historical context](docs/PUBLIC_ACCESS_PROGRESS.md). Added 180 official rate observations, 60 derived all-role baselines and one current employer-published Pune analyst posting. This does not close the live NCS or Pune skill-supply gaps; those limitations remain explicit.

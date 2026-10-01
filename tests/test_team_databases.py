@@ -27,7 +27,7 @@ class TeamDatabaseTests(unittest.TestCase):
             connection = self.connect(name)
             self.assertEqual(connection.execute('PRAGMA integrity_check').fetchone()[0], 'ok')
             self.assertEqual(connection.execute('PRAGMA foreign_key_check').fetchall(), [])
-            self.assertEqual(connection.execute('PRAGMA user_version').fetchone()[0], 1)
+            self.assertEqual(connection.execute('PRAGMA user_version').fetchone()[0], 2)
 
     def test_recruiter_evidence_is_real_but_not_representative_market_demand(self):
         connection = self.connect('recruiter.sqlite')

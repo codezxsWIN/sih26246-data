@@ -7,6 +7,9 @@ __pycache__/
 *.key
 data/raw/
 data/private/
+DATABASES/private/
+*.sqlite-wal
+*.sqlite-shm
 data/processed/demand/
 data/model_input/local_prototype/
 work/
