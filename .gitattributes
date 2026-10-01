@@ -1,3 +1,3 @@
 # Preserve delivered CSV bytes so the published snapshot hashes are reproducible.
-DATA_100PLUS/**/*.csv -text
-CLEAN_DATA/**/*.csv -text
+DATA_100PLUS/**/*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+CLEAN_DATA/**/*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
