@@ -1,5 +1,9 @@
 # SIH26246 - Labour Market Data Repository
 
+**TEAM: [START WITH THE FILTERED WORKING DATA](CLEAN_DATA/README.md)** — suspected test/demo courses, placeholder dates, expired qualifications, missing numerical records and double-counting totals are separated from working tables. Read the quality limits before modelling. Original records are preserved.
+
+**NEW: [OPEN THE LARGE RECORD TABLES — 24,398 rows](DATA_100PLUS/README.md)**. Nine readable CSV tables plus a combined SQLite database: Skill India courses, NQR qualifications, AISHE, PMKVY, PLFS, NCS history, training providers and a labelled Kaggle demo. Collected/extracted 2 October 2026. The earlier databases below remain unchanged.
+
 Actual downloaded data, usable CSV extracts, tested acquisition scripts, and an evidence register for a Maharashtra/Pune labour-market prototype. NCS is the primary official demand source. Acquisition session: **1 October 2026**.
 
 ## Team: find the databases here

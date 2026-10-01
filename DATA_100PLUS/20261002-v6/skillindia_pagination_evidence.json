@@ -1,0 +1,131 @@
+{
+  "downloaded_unique_rows": 1916,
+  "advertised_counts": [
+    1916,
+    1921
+  ],
+  "consistent_point_in_time_snapshot": false,
+  "pages": [
+    {
+      "file": "skillindia_courses_page_01.json",
+      "publisher_count": 1921,
+      "rows": 100,
+      "sha256": "add9a7cc34e2f41513b68dc7d15f1b2edcc6621211863aae00a104199076c11e"
+    },
+    {
+      "file": "skillindia_courses_page_02.json",
+      "publisher_count": 1921,
+      "rows": 100,
+      "sha256": "9a72c5370d9b4311030ad9fbf25d88421515053826d64c568ed9d3b4598b7c01"
+    },
+    {
+      "file": "skillindia_courses_page_03.json",
+      "publisher_count": 1921,
+      "rows": 100,
+      "sha256": "8ecf93a4900241ed2d64de90cce6b6eb156aaf98b71c7e66badfff520a20aeca"
+    },
+    {
+      "file": "skillindia_courses_page_04.json",
+      "publisher_count": 1921,
+      "rows": 100,
+      "sha256": "0383a1e5b172c15b42150eef344a5bbe5eacae5b82d16f370784a3e8dd27c33b"
+    },
+    {
+      "file": "skillindia_courses_page_05.json",
+      "publisher_count": 1921,
+      "rows": 100,
+      "sha256": "41828a6e3b8a9d32c075ca3a4a395d8aba46a07e7853d6d1b8d0efe300c62d0a"
+    },
+    {
+      "file": "skillindia_courses_page_06.json",
+      "publisher_count": 1921,
+      "rows": 100,
+      "sha256": "4bd4b84faa6b1e886986ecc5c5203c80eadb311a2083fb035f61af5f3ce88179"
+    },
+    {
+      "file": "skillindia_courses_page_07.json",
+      "publisher_count": 1921,
+      "rows": 100,
+      "sha256": "8c7b5171d608b552701ab0476e19daec0306cde86a0d571142ca6c9249105255"
+    },
+    {
+      "file": "skillindia_courses_page_08.json",
+      "publisher_count": 1921,
+      "rows": 100,
+      "sha256": "1b68824b627a8cabd5623bebf140035f70f8fdd561394083d99204155007ef6d"
+    },
+    {
+      "file": "skillindia_courses_page_09.json",
+      "publisher_count": 1921,
+      "rows": 100,
+      "sha256": "24ee006860d13bc9d750b1e38713efef005d38d7d14b3769f155a057c64bab34"
+    },
+    {
+      "file": "skillindia_courses_page_10.json",
+      "publisher_count": 1921,
+      "rows": 100,
+      "sha256": "b1054e6fdb27693657c6fc8b767c7cd7af7a0ffb931d43738924de5511d1cdf8"
+    },
+    {
+      "file": "skillindia_courses_page_11.json",
+      "publisher_count": 1921,
+      "rows": 100,
+      "sha256": "06d5ccb3e5de15d50e2a710ac05d6b074062de756ae3c3f3c622cdd12920727b"
+    },
+    {
+      "file": "skillindia_courses_page_12.json",
+      "publisher_count": 1921,
+      "rows": 100,
+      "sha256": "f3ef813473512b39bf7fc68f965294b009bd15fcee94a5cd1fcdae9cab1e339d"
+    },
+    {
+      "file": "skillindia_courses_page_13.json",
+      "publisher_count": 1921,
+      "rows": 100,
+      "sha256": "a5868366bb8140d0a7aef69de5f83a954562d352fefd93d4446280eeef90b028"
+    },
+    {
+      "file": "skillindia_courses_page_14.json",
+      "publisher_count": 1921,
+      "rows": 100,
+      "sha256": "3442d8dbcfc2c9ae50c2f19c90d9d9c42178ee189dc5840fa84fa680efd644a7"
+    },
+    {
+      "file": "skillindia_courses_page_15.json",
+      "publisher_count": 1921,
+      "rows": 100,
+      "sha256": "8c05d01aa622b53769ededd59f1aadeca7731fe6acde9c74569376b9f1fa24db"
+    },
+    {
+      "file": "skillindia_courses_page_16.json",
+      "publisher_count": 1921,
+      "rows": 100,
+      "sha256": "02921b3c39541a7670c01c8ab800fd3bbc58672b6a02773f43f3c31a60267f90"
+    },
+    {
+      "file": "skillindia_courses_page_17.json",
+      "publisher_count": 1921,
+      "rows": 100,
+      "sha256": "9cad231441afe19bb3eb6938a5665f4c9a29a790087b5d198632a061c1478fb7"
+    },
+    {
+      "file": "skillindia_courses_page_18.json",
+      "publisher_count": 1921,
+      "rows": 100,
+      "sha256": "be1d2a4e20c39dfb917c1e2c76fdbb66844bae59968e3ff6c038131b6d430aa4"
+    },
+    {
+      "file": "skillindia_courses_page_19.json",
+      "publisher_count": 1921,
+      "rows": 100,
+      "sha256": "07ed3ea4125470baa715cd3c20750ffe36a9ccbdceabe1feba8a03a0082e9438"
+    },
+    {
+      "file": "skillindia_courses_page_20.json",
+      "publisher_count": 1916,
+      "rows": 16,
+      "sha256": "3f5d891cc9a4c414fa4f892820492be00ca6db96403eca92baf619b40fe2ac81"
+    }
+  ],
+  "note": "Publisher count changed from 1921 to 1916 during pagination. No records were fabricated or padded."
+}

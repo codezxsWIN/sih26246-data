@@ -1,0 +1,3 @@
+# Preserve delivered CSV bytes so the published snapshot hashes are reproducible.
+DATA_100PLUS/**/*.csv -text
+CLEAN_DATA/**/*.csv -text

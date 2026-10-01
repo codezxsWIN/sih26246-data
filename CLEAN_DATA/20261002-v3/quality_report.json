@@ -1,0 +1,80 @@
+{
+  "rules_version": 1,
+  "status_as_of": "2026-10-02T00:00:00+00:00",
+  "tables": {
+    "course_catalogue_candidates": {
+      "input": 1916,
+      "retained": 664,
+      "quarantined": 1252,
+      "reason_counts_nonexclusive": {
+        "suspected_test_demo_requires_review": 265,
+        "provider_label_outside_conservative_allowlist": 1008,
+        "start_date_semantics_unverified": 337,
+        "future_or_timezone_unspecified_start": 339,
+        "placeholder_or_navigation_title": 159
+      },
+      "source_table": "skillindia_courses"
+    },
+    "valid_qualifications": {
+      "input": 2814,
+      "retained": 1862,
+      "quarantined": 952,
+      "reason_counts_nonexclusive": {
+        "expired_as_of_snapshot": 949,
+        "essential_qualification_metadata_missing": 4
+      },
+      "source_table": "nqr_qualifications"
+    },
+    "education_passout_observations": {
+      "input": 666,
+      "retained": 507,
+      "quarantined": 159,
+      "reason_counts_nonexclusive": {
+        "passout_total_missing": 69,
+        "aggregate_total_excluded_to_prevent_double_counting": 90
+      },
+      "source_table": "aishe_state_level_passouts"
+    },
+    "district_training_observations": {
+      "input": 725,
+      "retained": 710,
+      "quarantined": 15,
+      "reason_counts_nonexclusive": {
+        "publisher_dash_or_missing_training_count": 15
+      },
+      "source_table": "pmkvy_district_training"
+    },
+    "fully_specified_workforce_rates": {
+      "input": 180,
+      "retained": 33,
+      "quarantined": 147,
+      "reason_counts_nonexclusive": {
+        "survey_reference_or_year_type_unspecified": 147
+      },
+      "source_table": "plfs_workforce_rates"
+    },
+    "mvp_sector_qualifications": {
+      "rows": 508,
+      "subset_of": "valid_qualifications",
+      "sectors": [
+        "IT-ITeS",
+        "Automotive",
+        "Electronics & HW"
+      ]
+    }
+  },
+  "provider_label_allowlist": [
+    "agricultureskillcouncilofindia",
+    "beautywellnesssectorskillcouncil",
+    "microsoft",
+    "nationalassociationofsoftwareandservicecompanies",
+    "nielit",
+    "nsdc",
+    "nsdc_india",
+    "symbiosisopeneducationsociety",
+    "tourismandhospitalityskillcouncil"
+  ],
+  "kaggle_demo_in_current_labour_engine": false,
+  "reliable_gap_forecast_ready": false,
+  "note": "Quarantine is exclusion pending review, not proof that each excluded record is garbage. No padding or zero imputation. The MVP sector table is a subset, not additional unique records."
+}
