@@ -4,7 +4,7 @@
 const routes = {
   "/auth": { label: "Login", icon: "🔒", hideInSidebar: true, render: () => app.auth.render() },
   "/seeker": { label: "Job Seeker Portal", icon: "🧑‍💻", roles: ["seeker"], render: () => app.seeker.render() },
-  "/employer": { label: "Employer Dashboard", icon: "🏢", roles: ["employer"], render: () => { document.getElementById('main-content').innerHTML = "<h2>Employer Portal (Coming Soon)</h2>"; } },
+  "/employer": { label: "Employer Dashboard", icon: "🏢", roles: ["employer"], render: () => app.employer.render() },
   "/dashboard": { label: "National Overview", icon: "📊", roles: ["policymaker"], render: () => window.DashboardPage.render() },
   "/demand": { label: "Demand Analysis", icon: "📈", roles: ["policymaker"], render: () => window.DemandPage.render() },
   "/supply": { label: "Supply Estimation", icon: "👥", roles: ["policymaker"], render: () => window.SupplyPage.render() },
@@ -19,20 +19,36 @@ function navigate(hash) {
   window.location.hash = hash;
 }
 
+function getDefaultRouteForRole(role) {
+  if (role === 'seeker') return "/seeker";
+  if (role === 'employer') return "/employer";
+  return "/dashboard";
+}
+
 function getRoute() {
   const hash = window.location.hash.replace("#", "");
   
   if (!app.state.role) return "/auth";
   if (!hash || hash === "/auth") {
-      if (app.state.role === 'seeker') return "/seeker";
-      if (app.state.role === 'employer') return "/employer";
-      if (app.state.role === 'policymaker') return "/dashboard";
+    return getDefaultRouteForRole(app.state.role);
+  }
+  
+  const r = routes[hash];
+  if (r && r.roles && !r.roles.includes(app.state.role)) {
+    return getDefaultRouteForRole(app.state.role);
   }
   return hash;
 }
 
 function handleRoute() {
   const route = getRoute();
+  
+  // If hash doesn't match authorized route, update hash
+  if (window.location.hash.replace("#", "") !== route) {
+    navigate(route);
+    return;
+  }
+
   const r = routes[route];
 
   // Update sidebar active state
@@ -41,14 +57,9 @@ function handleRoute() {
   });
 
   if (r && r.render) {
-    // Check role authorization
-    if (r.roles && app.state.role && !r.roles.includes(app.state.role)) {
-        navigate(getRoute()); // redirect to default for role
-        return;
-    }
     r.render();
   } else {
-    navigate(getRoute()); // reset to default if not found
+    navigate(getDefaultRouteForRole(app.state.role));
   }
 }
 

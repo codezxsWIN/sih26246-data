@@ -5,6 +5,7 @@
 const app = {
     auth: new window.AuthModule(),
     seeker: new window.SeekerDashboardModule(),
+    employer: new window.EmployerDashboardModule(),
     state: {
         role: localStorage.getItem('lmi_role') || null,
         setRole(r) { this.role = r; buildSidebar(); }

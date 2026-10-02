@@ -6,7 +6,7 @@ from engine.ingest import BaseDataLoader, ExternalDataLoader
 from engine.analytics import DemandEngine, SupplyEngine, GapEngine
 from engine.ml import DemandForecaster
 from engine.policy import PolicyRulesEngine
-from engine.api.routes import demand, supply, gap, forecast, policy, copilot, auth, seeker
+from engine.api.routes import demand, supply, gap, forecast, policy, copilot, auth, seeker, employer
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -32,6 +32,7 @@ app.include_router(policy.router)
 app.include_router(copilot.router)
 app.include_router(auth.router)
 app.include_router(seeker.router)
+app.include_router(employer.router)
 
 @app.on_event("startup")
 def startup_event():

@@ -42,7 +42,8 @@ class AuthModule {
             
             // Redirect based on role
             app.state.setRole(data.role);
-            app.router.navigate('/dashboard'); // Will be intercepted by role-based routing
+            const targetRoute = data.role === 'seeker' ? '/seeker' : (data.role === 'employer' ? '/employer' : '/dashboard');
+            app.router.navigate(targetRoute);
         } catch (error) {
             console.error("Login failed:", error);
             alert("Login failed. Check console.");
