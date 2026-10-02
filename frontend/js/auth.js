@@ -31,11 +31,17 @@ class AuthModule {
 
     async login(role) {
         try {
-            const data = await window.api.post('/api/auth/login', {
-                email: role + "@example.com",
-                password: "password",
-                role: role
+            const res = await fetch('http://localhost:8000/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email: role + "@example.com",
+                    password: "password",
+                    role: role
+                })
             });
+            if (!res.ok) throw new Error("Login failed with status " + res.status);
+            const data = await res.json();
             
             localStorage.setItem('lmi_token', data.token);
             localStorage.setItem('lmi_role', data.role);

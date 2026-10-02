@@ -66,13 +66,11 @@ function handleRoute() {
 function initRouter() {
   window.addEventListener("hashchange", handleRoute);
   
-  if (!app.state.role) {
-      navigate('/auth');
-  } else if (!window.location.hash || window.location.hash === "#/auth") {
-      navigate(getRoute());
-  } else {
-      handleRoute();
+  const target = getRoute();
+  if (window.location.hash.replace("#", "") !== target) {
+    window.location.hash = target;
   }
+  handleRoute();
 }
 
 window.Router = { routes, navigate, getRoute, handleRoute, initRouter };

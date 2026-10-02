@@ -74,22 +74,22 @@ class SeekerDashboardModule {
         document.getElementById('seeker-results').style.display = 'block';
         
         const skillsList = document.getElementById('extracted-skills-list');
-        skillsList.innerHTML = data.extracted_skills.map(s => \`<li><span class="tag">\${s}</span></li>\`).join('');
+        skillsList.innerHTML = (data.extracted_skills || []).map(s => `<li><span class="tag">${s}</span></li>`).join('');
         
         const missingList = document.getElementById('missing-skills-list');
-        missingList.innerHTML = data.missing_skills_for_upskilling.map(s => \`<li><span class="tag tag-warning">\${s}</span></li>\`).join('');
+        missingList.innerHTML = (data.missing_skills_for_upskilling || []).map(s => `<li><span class="tag tag-warning">${s}</span></li>`).join('');
         
         const rolesList = document.getElementById('matched-roles-list');
-        rolesList.innerHTML = data.job_matches.map(job => \`
+        rolesList.innerHTML = (data.job_matches || []).map(job => `
             <div class="card-glass role-card">
-                <h4>\${job.occupation}</h4>
+                <h4>${job.occupation}</h4>
                 <div class="role-meta">
-                    <span class="badge badge-\${job.shortage_level.includes('Critical') ? 'critical' : 'warning'}">\${job.shortage_level}</span>
-                    <span class="badge badge-success">Match: \${job.match_score}%</span>
+                    <span class="badge ${job.shortage_level && job.shortage_level.includes('Critical') ? 'badge--critical' : 'badge--moderate'}">${job.shortage_level}</span>
+                    <span class="badge badge--balanced">Match: ${job.match_score}%</span>
                 </div>
-                <p>Demand Score: \${job.demand_score.toFixed(1)} / Gap: \${job.gap_volume.toLocaleString()}</p>
+                <p>Demand Score: ${Number(job.demand_score || 0).toFixed(1)} / Gap: ${Number(job.gap_volume || 0).toLocaleString()}</p>
             </div>
-        \`).join('');
+        `).join('');
     }
 }
 

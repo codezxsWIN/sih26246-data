@@ -14,15 +14,17 @@ const app = {
 };
 window.app = app;
 
-document.addEventListener("DOMContentLoaded", function () {
+function initApp() {
   buildSidebar();
   HealthMonitor.startHealthMonitor();
   Router.initRouter();
-  
-  if (!app.state.role) {
-      Router.navigate('/auth');
-  }
-});
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initApp);
+} else {
+  initApp();
+}
 
 function buildSidebar() {
   const nav = Utils.$("#sidebar-nav");
