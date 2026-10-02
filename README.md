@@ -1,262 +1,593 @@
-#!/bin/bash
-
-set -e
-
-PROJECT_NAME="labour-market-intelligence"
-
-mkdir -p "$PROJECT_NAME"/{data/{raw,interim,processed,master,exports},backend/{api,schemas,services,repositories},ml/{embeddings,skill_extraction,taxonomy,demand,supply,forecasting,shortage,explainability},pipeline/{ingestion,cleaning,normalization,aggregation,master_table},taxonomy,frontend,configs,models,tests,docs}
-
-cd "$PROJECT_NAME"
-
-cat > README.md <<'EOF'
 # AI-Powered Labour Market Intelligence & Skill Demand-Supply Forecasting Engine
 
-## Project Overview
+> A government-facing intelligence platform for analysing labour-market demand, estimating workforce supply, forecasting future skill shortages, and generating evidence-based skilling recommendations.
 
-A government and policymaker-focused Labour Market Intelligence (LMI) platform that analyses labour-market demand, estimates labour supply, identifies skill gaps, forecasts future demand and shortage risk, and recommends targeted skilling interventions.
+## System Workflow
 
-The system answers:
+```mermaid
+flowchart TD
+    %% ==========================================
+    %% 1. RAW DATA SOURCES & INGESTION
+    %% ==========================================
+    subgraph S1["1. Multi-Source Ingestion & Taxonomies"]
+        direction TB
+        RawJobs["Raw Job Postings & Portals<br/>(NCS, Naukri, LinkedIn)"]
+        GovtData["Official Labour Surveys<br/>(PLFS, AISHE, PMKVY, DVET, UDISE)"]
+        Taxonomies["National & Global Taxonomies<br/>(NCO-2015, ESCO, NQR, O*NET)"]
+    end
 
-- What jobs and skills are currently in demand?
-- How strong is demand for each occupation and skill?
-- How much labour supply is estimated to be available?
-- Which skills have shortages or oversupply?
-- Which skills are likely to become more important over the next 3, 6 and 12 months?
-- Which state, district, sector, occupation or skill has the highest shortage?
-- What training/skilling interventions should be prioritized?
-- Why does the system predict a particular shortage?
-- Can policymakers query the system using natural language?
+    %% ==========================================
+    %% 2. NLP & SEMANTIC TAXONOMY ALIGNMENT
+    %% ==========================================
+    subgraph S2["2. NLP & Skill Extraction Layer"]
+        direction TB
+        M2["[Model 2] Transformer NER / Skill Extractor<br/>Extracts skills, certifications & qualifications"]
+        M1["[Model 1] Sentence-BERT / all-MiniLM<br/>Semantic dense embeddings & skill-to-NCO mapping"]
+        VectorDB[("FAISS / Vector Index<br/>(Skill & Taxonomy Embeddings)")]
 
-This is NOT a traditional job portal.
-This is NOT a resume screening system.
-This is NOT a candidate matching system.
+        RawJobs --> M2
+        M2 --> M1
+        Taxonomies --> M1
+        M1 --> VectorDB
+    end
 
-Core flow:
+    %% ==========================================
+    %% 3. REPOSITORY & CANONICAL FEATURE STORE
+    %% ==========================================
+    subgraph S3["3. Unified Master Data Warehouse"]
+        direction TB
+        MasterStore[("Canonical Master Data Store<br/>(Demand, Supply, Vacancies, Wages, Geographies)")]
 
-DATA SOURCES
-→ DATA ENGINEERING
-→ JOB & SKILL INTELLIGENCE
-→ DEMAND INTELLIGENCE
-→ SUPPLY ESTIMATION
-→ DEMAND-SUPPLY GAP
-→ FORECASTING
-→ SHORTAGE RISK
-→ SHAP EXPLAINABILITY
-→ POLICY RECOMMENDATION
-→ AI POLICY COPILOT
-→ GOVERNMENT DASHBOARD
+        GovtData --> MasterStore
+        M1 --> MasterStore
+    end
 
----
+    %% ==========================================
+    %% 4. TIME-SERIES & REGRESSION FORECASTING
+    %% ==========================================
+    subgraph S4["4. Demand-Supply Forecasting Engine"]
+        direction TB
+        M3["[Model 3] ARIMA<br/>Statistical baseline trend forecaster"]
+        M4["[Model 4] Exponential Smoothing (ETS)<br/>Trend & seasonality benchmark"]
+        M5["[Model 5] XGBoost Regressor<br/>Primary multi-variate forecaster (3/6/12 months)"]
+        M6["[Model 6] LightGBM<br/>High-speed comparative benchmark & ensemble"]
+        EnsembleForecast{"Forecast Arbiter / Ensemble<br/>(Validation Metric Best-Fit)"}
 
-# Final 11-Component Intelligence Stack
+        MasterStore --> M3
+        MasterStore --> M4
+        MasterStore --> M5
+        MasterStore --> M6
 
-## 1. Sentence-BERT (SBERT)
-Type: Transformer embedding model
+        M3 --> EnsembleForecast
+        M4 --> EnsembleForecast
+        M5 --> EnsembleForecast
+        M6 --> EnsembleForecast
+    end
 
-Purpose:
-- Semantic representation of job descriptions
-- Semantic representation of skills
-- Occupation similarity
-- Skill/taxonomy matching
+    %% ==========================================
+    %% 5. SHORTAGE CLASSIFICATION & CALIBRATION
+    %% ==========================================
+    subgraph S5["5. Shortage Risk Classification & Calibration"]
+        direction TB
+        GapCalc["Demand-Supply Gap Calculator<br/>(Net Shortage Ratio & Pressure Scores)"]
+        M7["[Model 7] XGBoost Classifier<br/>Shortage Severity: Low, Med, High, Critical"]
 
-Local implementation:
-- Lightweight MiniLM-class embedding model
-- Default local embedding service: Ollama + all-MiniLM
-- Cosine similarity for semantic matching
+        M8["[Model 8] Isotonic Regression<br/>Non-parametric probability calibration"]
+        M9["[Model 9] Platt Scaling<br/>Logistic sigmoid probability calibration"]
+        CalibratedRisk{"Calibrated Risk Confidence<br/>(Brier Score Optimizer)"}
 
----
+        MasterStore --> GapCalc
+        EnsembleForecast --> GapCalc
+        GapCalc --> M7
+        M7 --> M8
+        M7 --> M9
+        M8 --> CalibratedRisk
+        M9 --> CalibratedRisk
+    end
 
-## 2. Transformer NER / Skill Extractor
-Type: NLP model
+    %% ==========================================
+    %% 6. EXPLAINABLE AI
+    %% ==========================================
+    subgraph S6["6. Explainability Layer"]
+        direction TB
+        M10["[Model 10] SHAP TreeExplainer<br/>Computes feature attributions & risk drivers"]
+        CalibratedRisk --> M10
+        M7 -.-> M10
+    end
 
-Purpose:
-- Extract skills
-- Extract occupations
-- Extract qualifications
-- Extract relevant entities from job descriptions
+    %% ==========================================
+    %% 7. POLICY GENERATION & CONVERSATIONAL AI
+    %% ==========================================
+    subgraph S7["7. Policy Engine & Generative Copilot"]
+        direction TB
+        RulesEngine["Policy Rules Engine<br/>(Curriculum, ITI Seat Allocation, Subsidies)"]
+        RAG["Context Grounding & Prompt Builder<br/>(DB Facts + SHAP Attribution + Retrieved Interventions)"]
+        M11["[Model 11] Qwen2.5 1.5B Instruct (Ollama)<br/>RAG-grounded Policy Intelligence Copilot"]
 
-Resource-efficient strategy:
+        CalibratedRisk --> RulesEngine
+        M10 --> RAG
+        RulesEngine --> RAG
+        VectorDB -.-> RAG
+        RAG --> M11
+    end
 
-Skill dictionary
-→ Regex / phrase matching
-→ NER only where required
-→ Embedding similarity for ambiguous cases
+    %% ==========================================
+    %% 8. SERVING & INTERFACE
+    %% ==========================================
+    subgraph S8["8. Presentation & Delivery"]
+        direction TB
+        APIServer["FastAPI Enterprise Gateway<br/>(REST API + Streaming LLM Endpoints)"]
+        GovUI["National Labour Market Intelligence Portal<br/>(Interactive Heatmaps, Gap Forecasts, Policy Reports)"]
+        Policymaker(("Policymaker / Government Official"))
 
-Do not run a heavy transformer over every record unnecessarily.
+        EnsembleForecast --> APIServer
+        CalibratedRisk --> APIServer
+        M10 --> APIServer
+        M11 --> APIServer
 
----
+        APIServer --> GovUI
+        GovUI --> Policymaker
+    end
 
-## 3. ARIMA
-Type: Statistical time-series model
+    %% ==========================================
+    %% VISUAL STYLING
+    %% ==========================================
 
-Purpose:
-- Historical demand forecasting baseline
-- Historical supply forecasting baseline
-- Skill-demand trend baseline
+    classDef source fill:#e8f1ff,stroke:#2563eb,stroke-width:2px,color:#111827;
+    classDef nlp fill:#fff1e6,stroke:#ea580c,stroke-width:2px,color:#111827;
+    classDef store fill:#eef2ff,stroke:#4f46e5,stroke-width:2px,color:#111827;
+    classDef forecast fill:#f3e8ff,stroke:#7c3aed,stroke-width:2px,color:#111827;
+    classDef risk fill:#fff7ed,stroke:#ea580c,stroke-width:2px,color:#111827;
+    classDef xai fill:#ecfdf5,stroke:#059669,stroke-width:2px,color:#111827;
+    classDef policy fill:#ecfeff,stroke:#0891b2,stroke-width:2px,color:#111827;
+    classDef api fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#111827;
+    classDef decision fill:#fefce8,stroke:#ca8a04,stroke-width:2px,color:#111827;
+    classDef user fill:#111827,stroke:#111827,stroke-width:2px,color:#ffffff;
 
-Use chronological train/validation/test splitting.
+    class RawJobs,GovtData,Taxonomies source;
+    class M1,M2 nlp;
+    class VectorDB,MasterStore store;
+    class M3,M4,M5,M6 forecast;
+    class GapCalc,M7,M8,M9 risk;
+    class M10 xai;
+    class RulesEngine,RAG,M11 policy;
+    class APIServer,GovUI api;
+    class EnsembleForecast,CalibratedRisk decision;
+    class Policymaker user;
+```
 
-Never randomly shuffle time-series data.
+## Overview
 
----
+The system is designed to answer:
 
-## 4. Exponential Smoothing
-Type: Statistical forecasting model
+* What jobs and skills are currently in demand?
+* How strong is demand for each occupation and skill?
+* How much labour supply is estimated to be available?
+* Which skills have shortages or oversupply?
+* Which skills are likely to become more important over the next 3, 6, and 12 months?
+* Which state, district, sector, occupation, or skill has the highest shortage?
+* What training and skilling interventions should be prioritized?
+* Why does the system predict a particular shortage?
+* Can policymakers query the system using natural language?
 
-Purpose:
-- Lightweight forecasting baseline
-- Trend/seasonality modelling
-- Benchmark against ARIMA and ML forecasting
+This is **not** a traditional job portal.
 
-Compare:
+This is **not** a resume screening system.
 
-ARIMA
-vs
-Exponential Smoothing
-vs
-XGBoost
-vs
-LightGBM
+This is **not** a candidate matching system.
 
----
+## Core Architecture
 
-## 5. XGBoost Regressor
-Type: Gradient-boosted ML model
+```text
+Labour Market Data
+        ↓
+Data Ingestion
+        ↓
+Data Cleaning & Quality Assurance
+        ↓
+Job & Skill Intelligence
+        ↓
+Demand Intelligence
+        ↓
+Supply Estimation
+        ↓
+Demand-Supply Gap
+        ↓
+Forecasting
+        ↓
+Shortage Risk
+        ↓
+SHAP Explainability
+        ↓
+Policy Recommendation
+        ↓
+AI Policy Copilot
+        ↓
+Government Dashboard
+```
 
-Purpose:
-Primary tabular forecasting model.
+## Final 11-Component Intelligence Stack
+
+| #  | Model / Method                    | Purpose                                           |
+| -- | --------------------------------- | ------------------------------------------------- |
+| 1  | Sentence-BERT / all-MiniLM        | Semantic embeddings and skill/occupation matching |
+| 2  | Transformer NER / Skill Extractor | Skill and entity extraction                       |
+| 3  | ARIMA                             | Statistical forecasting baseline                  |
+| 4  | Exponential Smoothing             | Trend/seasonality baseline                        |
+| 5  | XGBoost Regressor                 | Primary multivariate forecasting                  |
+| 6  | LightGBM                          | Comparative forecasting benchmark                 |
+| 7  | XGBoost Classifier                | Shortage-risk classification                      |
+| 8  | Isotonic Regression               | Probability calibration                           |
+| 9  | Platt Scaling                     | Probability calibration alternative               |
+| 10 | SHAP TreeExplainer                | Model explainability                              |
+| 11 | Qwen2.5 1.5B Instruct             | Local AI Policy Copilot                           |
+
+### Supporting technologies
+
+* Cosine Similarity
+* Skill Dictionary
+* NCO-2015 Mapping
+* Skill Taxonomy
+* Weighted Demand Score
+* FAISS
+* RAG
+* Rule-Based Policy Engine
+* Optimization / Constraints
+* SQLite
+* FastAPI
+* HTML
+* CSS
+* Vanilla JavaScript
+
+## Demand Score Engine
+
+The current-demand score is an interpretable weighted index rather than a black-box ML model.
+
+| Signal             | Weight |
+| ------------------ | -----: |
+| Job Posting Volume |    30% |
+| Vacancy Volume     |    25% |
+| Skill Frequency    |    20% |
+| Demand Growth      |    15% |
+| Employer Breadth   |    10% |
+
+```text
+Demand Score =
+0.30 × Job Posting Volume
++ 0.25 × Vacancy Volume
++ 0.20 × Skill Frequency
++ 0.15 × Demand Growth
++ 0.10 × Employer Breadth
+```
+
+All components are normalized before aggregation.
+
+If vacancy data is unavailable:
+
+* Do not fabricate vacancy counts.
+* Do not assume one posting equals one vacancy.
+* Make vacancy weighting configurable.
+* Clearly show unavailable signals.
+
+## Labour-Market Hierarchy
+
+```text
+India
+  ↓
+State
+  ↓
+District
+  ↓
+Sector
+  ↓
+Occupation
+  ↓
+Skill
+```
+
+Each analytical level can expose:
+
+* Demand
+* Supply
+* Gap
+* Shortage Ratio
+* Demand Score
+* Demand Trend
+* Supply Trend
+* 3-Month Forecast
+* 6-Month Forecast
+* 12-Month Forecast
+* Shortage Risk
+* Confidence
+* Training Capacity
+* Policy Recommendation
+
+## Data Sources
+
+### Demand Data
+
+Preferred fields:
+
+```text
+job_id
+job_title
+job_description
+skills
+occupation
+sector
+company
+state
+district
+city
+posting_date
+vacancy_count
+salary
+experience
+source
+```
+
+### Supply Data
+
+Preferred fields:
+
+```text
+state
+district
+occupation
+industry
+education
+employment_status
+labour_force
+workers
+unemployment
+technical_education
+```
+
+### Training Data
+
+Preferred fields:
+
+```text
+state
+district
+course
+skill
+occupation
+training_provider
+training_capacity
+enrolled
+completed
+certified
+date
+```
+
+### Taxonomy Data
+
+```text
+raw occupation
+      ↓
+standardized occupation
+      ↓
+NCO code
+```
+
+```text
+raw skill
+      ↓
+canonical skill
+      ↓
+skill category
+```
+
+### Economic / Sector Data
 
 Potential features:
-- Lagged demand
-- Lagged supply
-- Vacancy counts
-- Demand growth
-- Supply growth
-- Vacancy growth
-- Skill frequency
-- Employer breadth
-- Sector growth
-- Training capacity
-- Training completions
-- Current gap
-- Previous shortage ratio
-- State
-- District
-- Sector
-- Occupation
-- Skill
-- Month
-- Quarter
 
-Outputs:
-- Future demand
-- Future supply
-- Future gap
+```text
+sector
+state
+date
+employment
+industry growth
+output
+investment
+economic indicators
+```
 
-Initial local configuration:
-- tree_method=hist
-- limited depth
-- limited estimators
-- early stopping
-- n_jobs=2
+## Current Naukri Dataset Usage
 
----
+Naukri-derived datasets may contain:
 
-## 6. LightGBM
-Type: Gradient-boosted ML model
+* Job Title
+* Company
+* Experience
+* Package / Salary
+* Location
+* Skills
+* Posting information
+* URL
 
-Purpose:
-- Alternative forecasting model
-- Benchmark against XGBoost
-- Optional ensemble candidate
+These datasets primarily support **Demand Intelligence**.
 
-Compare:
-- Forecast accuracy
-- Training time
-- Memory usage
+They must **not** be treated as direct labour-supply datasets.
 
-Do not continuously run XGBoost and LightGBM simultaneously on the 8 GB machine unless required.
+They must **not** automatically be interpreted as a complete representation of the Indian labour market.
 
----
+Preserve:
 
-## 7. XGBoost Classifier
-Type: Gradient-boosted classification model
+* `source_dataset`
+* `source_record_id`
+* `ingestion_date`
 
-Purpose:
-Predict shortage risk.
+for data provenance.
 
-Inputs:
-- Demand growth
-- Supply growth
-- Current gap
-- Vacancy growth
-- Training capacity
-- Sector growth
-- Historical trends
-- Forecast gap
-- Shortage ratio
+## Core Data Pipeline
 
-Outputs:
+```text
+Raw Data
+   ↓
+Schema Detection
+   ↓
+Cleaning
+   ↓
+Duplicate Detection
+   ↓
+Location Normalization
+   ↓
+Skill Extraction
+   ↓
+Skill Normalization
+   ↓
+Occupation Mapping
+   ↓
+NCO-2015 Mapping
+   ↓
+Demand Aggregation
+   ↓
+Master Labour-Market Data
+```
 
-LOW
-MEDIUM
-HIGH
-CRITICAL
+## Skill Normalization
 
----
+Examples:
 
-## 8. Isotonic Regression
-Type: Probability calibration
+```text
+ML
+Machine Learning
+Machine-Learning
+        ↓
+Machine Learning
+```
 
-Purpose:
-Calibrate shortage-risk probabilities from the XGBoost classifier.
+```text
+ReactJS
+React.js
+React JS
+        ↓
+React
+```
+
+Each mapping should store:
+
+* raw skill
+* canonical skill
+* similarity score
+* mapping method
+* confidence
+* taxonomy ID
+
+## Occupation Normalization
+
+Examples:
+
+```text
+Data Scientist
+Data Science Specialist
+Machine Learning Specialist
+ML Engineer
+AI Engineer
+```
+
+must **not** automatically be treated as one identical occupation.
+
+Use taxonomy-based classification and preserve meaningful distinctions.
+
+Use NCO-2015 wherever applicable.
+
+## Demand-Supply Gap
+
+```text
+Gap = Demand - Estimated Supply
+```
+
+```text
+Shortage Ratio =
+(Demand - Estimated Supply) / Demand
+```
+
+Possible categories:
+
+* Balanced
+* Moderate
+* High
+* Critical
+
+Thresholds must be configurable.
+
+Do not present arbitrary thresholds as universal economic definitions.
+
+## Forecasting Architecture
+
+```text
+Historical Labour-Market Data
+           ↓
+    Feature Engineering
+           ↓
+     Chronological Split
+           ↓
+     ┌─────┼─────┬─────┐
+     ↓     ↓     ↓     ↓
+   ARIMA  ETS  XGBoost LightGBM
+     └─────┼─────┴─────┘
+           ↓
+       Validation
+           ↓
+ Selected Model / Ensemble
+           ↓
+    3 / 6 / 12 Month Forecast
+```
+
+Evaluation metrics:
+
+* MAE
+* RMSE
+* MAPE where appropriate
+
+Do not use random train/test splitting for time-series forecasting.
+
+## Shortage Risk Architecture
+
+```text
+Current Gap
+     +
+Demand Growth
+     +
+Supply Growth
+     +
+Vacancy Growth
+     +
+Training Capacity
+     +
+Sector Growth
+     +
+Historical Trends
+     ↓
+XGBoost Classifier
+     ↓
+Raw Risk Probability
+     ↓
+Isotonic Regression / Platt Scaling
+     ↓
+LOW / MEDIUM / HIGH / CRITICAL
+     ↓
+SHAP
+     ↓
+Explanation
+```
+
+## Explainability
+
+Every major ML result should include:
+
+* Prediction
+* Probability
+* Top Features
+* Feature Contributions
+* Human-Readable Explanation
 
 Example:
 
-Raw model:
-0.81
-
-Calibrated probability:
-validated probability estimate
-
-Evaluate calibration using suitable validation metrics.
-
----
-
-## 9. Platt Scaling / Logistic Calibration
-Type: Probability calibration
-
-Purpose:
-Alternative probability calibration method.
-
-Compare:
-
-Uncalibrated XGBoost
-vs
-Isotonic Regression
-vs
-Platt Scaling
-
-Use the calibration method that performs best on validation data.
-
----
-
-## 10. SHAP TreeExplainer
-Type: Explainability method
-
-Purpose:
-Explain why an ML model predicts a specific shortage risk or forecast.
-
-Example explanatory variables:
-- Demand Growth
-- Vacancy Growth
-- Historical Gap
-- Training Capacity
-- Supply Growth
-- Sector Growth
-
-Example:
-
+```text
 Shortage Risk = HIGH
 
 Top contributing factors:
@@ -265,400 +596,31 @@ Top contributing factors:
 3. Historical Gap
 4. Low Training Capacity
 5. Supply Growth
+```
 
-SHAP is an explainability method, not an independent predictive model.
-
----
-
-## 11. Qwen2.5 1.5B Instruct
-Type: Local Large Language Model
-
-Runtime:
-Ollama
-
-Purpose:
-- AI Policy Copilot
-- Natural-language question understanding
-- Natural-language explanation
-- Verified result summarization
-
-The LLM MUST NOT:
-- Calculate demand
-- Calculate supply
-- Forecast demand
-- Calculate shortage
-- Invent statistics
-- Invent labour-market numbers
-- Replace ML models
-
-Architecture:
-
-User Question
-→ Query Understanding
-→ Structured Database Query
-→ Verified Results
-→ RAG Context
-→ Qwen2.5 1.5B
-→ Natural-Language Explanation
-
----
-
-# Supporting Algorithms and Systems
-
-These are important but are not counted as additional ML models:
-
-- Cosine Similarity
-- Skill Dictionary Matching
-- Regex Matching
-- NCO-2015 Mapping
-- Skill Taxonomy Mapping
-- Weighted Demand Score
-- FAISS Vector Search
-- RAG
-- Rule-Based Policy Engine
-- Optimization / Constraints
-- SQLite
-- FastAPI
-
----
-
-# Demand Score Engine
-
-The Demand Score is an interpretable weighted index, NOT an ML model.
-
-Initial weights:
-
-| Signal | Weight |
-|---|---:|
-| Job Posting Volume | 30% |
-| Vacancy Volume | 25% |
-| Skill Frequency | 20% |
-| Demand Growth | 15% |
-| Employer Breadth | 10% |
-
-Formula:
-
-Demand Score =
-0.30 × Posting Volume
-+
-0.25 × Vacancy Volume
-+
-0.20 × Skill Frequency
-+
-0.15 × Demand Growth
-+
-0.10 × Employer Breadth
-
-All signals must be normalized before combination.
-
-If vacancy_count is unavailable:
-- DO NOT fabricate vacancy counts.
-- DO NOT assume 1 posting = 1 vacancy.
-- Make vacancy weighting configurable.
-- Clearly display unavailable signals.
-
----
-
-# Labour-Market Architecture
-
-The platform operates at:
-
-India
-→ State
-→ District
-→ Sector
-→ Occupation
-→ Skill
-
-For each entity expose:
-
-- Demand
-- Supply
-- Gap
-- Shortage Ratio
-- Demand Score
-- Demand Trend
-- Supply Trend
-- 3-Month Forecast
-- 6-Month Forecast
-- 12-Month Forecast
-- Shortage Risk
-- Confidence
-- Training Capacity
-- Recommendation
-
----
-
-# Data Sources
-
-## Demand Data
-
-Preferred fields:
-
-- job_id
-- job_title
-- job_description
-- skills
-- occupation
-- sector
-- company
-- state
-- district
-- city
-- posting_date
-- vacancy_count
-- salary
-- experience
-- source
-
-## Supply Data
-
-Preferred fields:
-
-- state
-- district
-- occupation
-- industry
-- education
-- employment_status
-- labour_force
-- workers
-- unemployment
-- technical_education
-
-## Training Data
-
-Preferred fields:
-
-- state
-- district
-- course
-- skill
-- occupation
-- training_provider
-- training_capacity
-- enrolled
-- completed
-- certified
-- date
-
-## Taxonomy Data
-
-Mappings:
-
-raw occupation
-→ standardized occupation
-→ NCO code
-
-raw skill
-→ canonical skill
-→ skill category
-
-## Economic/Sector Data
-
-Potential features:
-
-- sector
-- state
-- date
-- employment
-- industry growth
-- output
-- investment
-- economic indicators
-
----
-
-# Current Naukri Dataset Usage
-
-Naukri-derived datasets may contain:
-
-- Job Title
-- Company
-- Experience
-- Package/Salary
-- Location
-- Skills
-- Posting information
-- URL
-
-These datasets primarily support DEMAND INTELLIGENCE.
-
-They must NOT be treated as direct labour-supply datasets.
-
-They must NOT automatically be interpreted as a complete representation of the Indian labour market.
-
-Preserve:
-
-- source_dataset
-- source_record_id
-- ingestion_date
-
-for data provenance.
-
----
-
-# Core Data Pipeline
-
-RAW DATA
-→ Schema Detection
-→ Cleaning
-→ Duplicate Detection
-→ Location Normalization
-→ Text Cleaning
-→ Skill Extraction
-→ Skill Normalization
-→ Occupation Mapping
-→ NCO-2015 Mapping
-→ Demand Aggregation
-→ Master Labour-Market Table
-
----
-
-# Skill Normalization
-
-Examples:
-
-ML
-Machine Learning
-Machine-Learning
-
-→ Machine Learning
-
-ReactJS
-React.js
-React JS
-
-→ React
-
-Every mapping should store:
-
-- raw_skill
-- canonical_skill
-- similarity_score
-- mapping_method
-- confidence
-- taxonomy_id
-
----
-
-# Occupation Normalization
-
-Examples:
-
-Data Scientist
-Data Science Specialist
-Machine Learning Specialist
-ML Engineer
-AI Engineer
-
-must NOT automatically be treated as one identical occupation.
-
-Use taxonomy-based classification and preserve meaningful distinctions.
-
-Use NCO-2015 wherever applicable.
-
----
-
-# Demand-Supply Gap
-
-Gap:
-
-Demand - Estimated Supply
-
-Shortage Ratio:
-
-(Demand - Estimated Supply) / Demand
-
-Possible categories:
-
-- Balanced
-- Moderate
-- High
-- Critical
-
-Thresholds must be configurable.
-
-Do not present arbitrary thresholds as universal economic definitions.
-
----
-
-# Forecasting Architecture
-
-Historical Labour-Market Data
-→ Feature Engineering
-→ Chronological Split
-→ ARIMA
-→ Exponential Smoothing
-→ XGBoost
-→ LightGBM
-→ Validation
-→ Selected Model
-→ 3/6/12 Month Forecast
-
-Metrics:
-- MAE
-- RMSE
-- MAPE where appropriate
-
-Do not use random train/test splitting for time-series forecasting.
-
----
-
-# Shortage Risk Architecture
-
-Current Gap
-+
-Demand Growth
-+
-Supply Growth
-+
-Vacancy Growth
-+
-Training Capacity
-+
-Sector Growth
-+
-Historical Trends
-↓
-XGBoost Classifier
-↓
-Raw Risk Probability
-↓
-Isotonic Regression / Platt Scaling
-↓
-LOW / MEDIUM / HIGH / CRITICAL
-↓
-SHAP
-↓
-Explanation
-
----
-
-# Policy Recommendation Engine
+## Policy Recommendation Engine
 
 Inputs:
-- Current Demand
-- Estimated Supply
-- Current Gap
-- Forecast Demand
-- Forecast Supply
-- Forecast Gap
-- Shortage Risk
-- Training Capacity
-- Training Completion
-- Sector Growth
-- Location
 
-Output:
+* Current Demand
+* Estimated Supply
+* Current Gap
+* Forecast Demand
+* Forecast Supply
+* Forecast Gap
+* Shortage Risk
+* Training Capacity
+* Training Completion
+* Sector Growth
+* Location
 
-WHERE
-WHICH SKILL
-HOW MUCH
-WHEN
+The engine answers:
+
+**WHERE + WHICH SKILL + HOW MUCH + WHEN**
 
 Example:
 
+```text
 Location:
 Pune, Maharashtra
 
@@ -682,431 +644,297 @@ Capacity insufficient
 
 Recommendation:
 Evaluate expansion of relevant training capacity.
+```
 
-The policy engine must use verified analytical outputs.
-
----
-
-# AI Policy Copilot
-
-Example query:
-
-"Which skills will have the highest shortage in Maharashtra IT sector in the next 6 months?"
-
-Architecture:
-
-Policymaker Question
-→ Query Understanding
-→ Structured Filter
-→ Database Query
-→ Verified Results
-→ RAG
-→ Qwen2.5 1.5B
-→ Natural-Language Explanation
-
-Important:
-
-The LLM does NOT generate the numerical predictions.
-
-It only explains verified outputs from the ML/statistical pipeline.
-
-If the database does not contain sufficient evidence, the system must say that data is insufficient.
-
----
-
-# Government Dashboard
-
-## National Overview
-
-Show:
-- Total Demand
-- Estimated Supply
-- Total Gaps
-- High-Risk Occupations
-- High-Risk Skills
-- Emerging Skills
-- Training Capacity Indicators
-
-## Regional Intelligence
-
-India
-→ State
-→ District
-→ Sector
-
-Show:
-- Demand Map
-- Supply Map
-- Shortage Heatmap
-- Sector Trends
-- High-Risk Occupations
-
-## Occupation Intelligence
-
-Show:
-- Occupation Demand
-- Occupation Supply
-- Occupation Gap
-- Associated Skills
-- Forecast
-- Risk
-- SHAP Explanation
-
-## Skill Intelligence
-
-Show:
-- Demand Score
-- Skill Frequency
-- Demand Growth
-- Estimated Supply
-- Shortage Ratio
-- Forecast
-- Risk Category
-- Training Capacity
-
-## Forecast Explorer
-
-Show:
-- Historical Trend
-- 3-Month Forecast
-- 6-Month Forecast
-- 12-Month Forecast
-- Confidence / Uncertainty
-
-## Policy Recommendations
-
-Show:
-- Location
-- Occupation
-- Skill
-- Shortage Level
-- Projected Gap
-- Training Capacity
-- Recommendation
+The policy engine uses verified analytical outputs and deterministic rules.
 
 ## AI Policy Copilot
 
-Natural-language policy query interface.
+Example query:
 
----
+> Which skills will have the highest shortage in Maharashtra IT sector in the next 6 months?
 
-# FastAPI Backend
+Architecture:
 
-Initial endpoints:
+```text
+Policymaker Question
+        ↓
+Query Understanding
+        ↓
+Structured Database Query
+        ↓
+Verified Results
+        ↓
+RAG Context
+        ↓
+Qwen2.5 1.5B
+        ↓
+Natural-Language Explanation
+```
 
-GET /health
-GET /api/datasets
-GET /api/datasets/{id}/profile
-GET /api/locations
-GET /api/occupations
-GET /api/skills
-GET /api/demand
-GET /api/supply
-GET /api/gaps
-GET /api/forecasts
-GET /api/shortage-risk
-GET /api/explanations/{id}
-POST /api/policy/query
+The LLM:
 
-Use:
-- Pydantic schemas
-- validation
-- structured error handling
-- logging
-- request IDs
-- API metrics
+* does not calculate demand
+* does not calculate supply
+* does not generate forecasts
+* does not generate shortage probabilities
+* does not invent statistics
 
----
+It only explains verified outputs from the ML/statistical pipeline.
 
-# Local AI Stack
+## Government Dashboard
 
-Ollama:
-- qwen2.5:1.5b
-- all-minilm
+### National Overview
 
-Environment variables:
+* Total Demand
+* Estimated Supply
+* Total Gaps
+* High-Risk Occupations
+* High-Risk Skills
+* Emerging Skills
+* Training Capacity Indicators
 
+### Regional Intelligence
+
+```text
+India
+  ↓
+State
+  ↓
+District
+  ↓
+Sector
+```
+
+Shows:
+
+* Demand
+* Supply
+* Shortage Heatmap
+* Sector Trends
+* High-Risk Occupations
+* Forecasts
+* Recommendations
+
+### Occupation Intelligence
+
+* Occupation Demand
+* Occupation Supply
+* Occupation Gap
+* Associated Skills
+* Forecast
+* Risk
+* SHAP Explanation
+
+### Skill Intelligence
+
+* Demand Score
+* Skill Frequency
+* Demand Growth
+* Estimated Supply
+* Shortage Ratio
+* Forecast
+* Risk Category
+* Training Capacity
+
+### Forecast Explorer
+
+* Historical Trend
+* 3-Month Forecast
+* 6-Month Forecast
+* 12-Month Forecast
+* Confidence / Uncertainty
+
+### Policy Recommendations
+
+* Location
+* Occupation
+* Skill
+* Shortage Level
+* Projected Gap
+* Training Capacity
+* Recommendation
+
+### AI Policy Copilot
+
+Natural-language policy query interface over verified labour-market results.
+
+## Local Architecture
+
+```text
+Browser
+   ↓
+Government Dashboard
+   ↓
+FastAPI
+   ↓
+SQLite / Analytics Engine
+   ├── Demand Engine
+   ├── Supply Estimator
+   ├── Gap Engine
+   ├── Forecasting
+   ├── Shortage Risk
+   ├── SHAP
+   ├── Policy Engine
+   └── RAG / Copilot
+          ↓
+       Ollama
+          ↓
+   Qwen2.5 1.5B
+```
+
+## Local AI Stack
+
+```text
+Ollama
+├── qwen2.5:1.5b
+└── all-minilm
+```
+
+Environment:
+
+```text
 OLLAMA_BASE_URL=http://localhost:11434
 LLM_MODEL=qwen2.5:1.5b
 EMBEDDING_MODEL=all-minilm
+```
 
----
+The core analytical engine must continue to work if Ollama is unavailable.
 
-# 8 GB RAM Strategy
+## 8 GB RAM Strategy
 
-The prototype must run on an 8 GB RAM MacBook.
+The prototype is designed for:
 
-Rules:
+* 8 GB RAM
+* CPU-first execution
+* No dedicated GPU requirement
+* Lazy model loading
+* Small embedding batches
+* LLM concurrency of 1
+* XGBoost `n_jobs=2`
+* No large local LLM
+* No local fine-tuning
+* No LSTM/GRU in the initial prototype
 
-- CPU-first
-- GPU optional
-- One LLM loaded at a time
-- LLM concurrency = 1 initially
-- Small context windows
-- Small output size
-- Lazy model loading
-- Embedding cache enabled
-- Small embedding batches
-- XGBoost n_jobs=2
-- No large LLM
-- No local fine-tuning
-- No LSTM/GRU initially
-- No unnecessary microservices
+## API Layer
 
-Core analytical engine MUST work without the LLM.
+FastAPI exposes the analytical engine through REST endpoints.
 
----
+Core endpoints include:
 
-# Failure / Fallback Behaviour
+```text
+GET  /health
+GET  /api/datasets
+GET  /api/locations
+GET  /api/occupations
+GET  /api/skills
+GET  /api/demand
+GET  /api/supply
+GET  /api/gaps
+GET  /api/forecasts
+GET  /api/shortage-risk
+GET  /api/explanations/{id}
+GET  /api/policy/recommendations
+POST /api/policy/query
+```
 
-If Ollama unavailable:
-Core analytics continue to work.
+API documentation:
 
-If embeddings unavailable:
-Use:
-- Exact skill matching
-- Normalized string matching
-- Taxonomy aliases
+`http://localhost:8000/docs`
 
-If supply data unavailable:
-Display:
-"Supply estimate unavailable / low confidence."
-
-Do not fabricate supply.
-
-If historical data insufficient:
-Display:
-"Insufficient historical data for reliable forecasting."
-
-Do not generate unsupported forecasts.
-
-If taxonomy mapping uncertain:
-Store:
-"Unmapped / Review Required"
-
----
-
-# Explainability
-
-Every major ML result should include:
-
-- Prediction
-- Probability
-- Top features
-- Feature contributions
-- Human-readable explanation
-
-For XGBoost:
-Use SHAP TreeExplainer.
-
-Example:
-
-Shortage Risk = HIGH
-
-Contributing factors:
-1. Demand Growth
-2. Vacancy Growth
-3. Historical Gap
-4. Low Training Capacity
-5. Supply Growth
-
----
-
-# Data Provenance
-
-Every important output should be traceable.
-
-Store:
-
-- source_dataset
-- source_record_id
-- ingestion_date
-- processing_version
-- taxonomy_version
-- model_version
-- prediction_timestamp
-
----
-
-# Model Evaluation
-
-## Skill Mapping
-
-- Precision
-- Recall
-- F1
-- Confidence distribution
-
-## Forecasting
-
-- MAE
-- RMSE
-- MAPE where appropriate
-
-Use chronological validation.
-
-## Classification
-
-- Precision
-- Recall
-- F1
-- ROC-AUC
-- Calibration Error
-- Brier Score where appropriate
-
-Do not report metrics without documented validation methodology.
-
----
-
-# Recommended Directory Structure
-
-data/
-├── raw/
-├── interim/
-├── processed/
-├── master/
-└── exports/
-
-backend/
-├── api/
-├── schemas/
-├── services/
-└── repositories/
-
-ml/
-├── embeddings/
-├── skill_extraction/
-├── taxonomy/
-├── demand/
-├── supply/
-├── forecasting/
-├── shortage/
-└── explainability/
-
-pipeline/
-├── ingestion/
-├── cleaning/
-├── normalization/
-├── aggregation/
-└── master_table/
-
-taxonomy/
-frontend/
-configs/
-models/
-tests/
-docs/
-
----
-
-# Development Phases
-
-1. Repository and dataset audit
-2. Data ingestion
-3. Cleaning and normalization
-4. Skill intelligence
-5. Demand Score
-6. Supply estimation
-7. Demand-Supply Gap
-8. Forecasting
-9. Shortage Risk
-10. Calibration + SHAP
-11. Policy Engine
-12. AI Policy Copilot
-13. FastAPI
-14. Dashboard
-15. Testing and Validation
-
----
-
-# Non-Negotiable Principles
+## Data Integrity Principles
 
 1. No fabricated labour-market numbers.
 2. LLM is never the numerical source of truth.
 3. Demand Score is interpretable.
 4. Forecasting uses time-aware validation.
 5. Supply estimates report uncertainty.
-6. Predictions have data provenance.
-7. Core system works without LLM.
+6. Predictions maintain data provenance.
+7. Core analytics work without the LLM.
 8. Local models remain lightweight.
-9. No resume screening module in the core product.
-10. Platform is designed for government labour-market intelligence rather than job search.
+9. No resume-screening functionality is part of the core engine.
+10. The platform is designed for government labour-market intelligence rather than job search.
 
----
+## Known Limitations
 
-# Final Model Stack
+The prototype must communicate dataset limitations accurately.
 
-1. Sentence-BERT
-2. Transformer NER / Skill Extractor
-3. ARIMA
-4. Exponential Smoothing
-5. XGBoost Regressor
-6. LightGBM
-7. XGBoost Classifier
-8. Isotonic Regression
-9. Platt Scaling
-10. SHAP TreeExplainer
-11. Qwen2.5 1.5B Instruct
+Examples:
 
-Supporting methods:
+* Vacancy counts may not be available at posting level.
+* Some datasets are snapshots rather than true historical time series.
+* Skill-level labour supply may require estimation.
+* Geographic demand may be more reliable at state/city level than district level.
+* Long-horizon forecasts may have lower confidence when historical observations are limited.
+* Training flows are not necessarily equivalent to available skilled-worker stock.
+* The system is a data-informed intelligence platform, not an oracle of future labour-market conditions.
 
-Cosine Similarity
-Skill Dictionary
-NCO-2015 Mapping
-Skill Taxonomy
-Demand Score Weighted Index
-FAISS
-RAG
-Rule-Based Policy Engine
-Optimization / Constraints
+## Project Structure
 
----
+```text
+labour-market-intelligence/
+├── data/
+│   ├── raw/
+│   ├── interim/
+│   ├── processed/
+│   ├── master/
+│   └── exports/
+├── backend/
+├── ml/
+│   ├── embeddings/
+│   ├── skill_extraction/
+│   ├── taxonomy/
+│   ├── demand/
+│   ├── supply/
+│   ├── forecasting/
+│   ├── shortage/
+│   └── explainability/
+├── pipeline/
+├── taxonomy/
+├── frontend/
+├── configs/
+├── models/
+├── tests/
+├── docs/
+└── README.md
+```
 
-# Final Architecture
+## Development Roadmap
 
-LABOUR MARKET DATA
-↓
-DATA INGESTION
-↓
-DATA CLEANING & QA
-↓
-JOB & SKILL INTELLIGENCE
-↓
-DEMAND SCORE
-↓
-SUPPLY ESTIMATION + HISTORICAL DATA
-↓
-DEMAND-SUPPLY GAP
-↓
-ARIMA / EXPONENTIAL SMOOTHING / XGBOOST / LIGHTGBM
-↓
-3 / 6 / 12 MONTH FORECAST
-↓
-XGBOOST CLASSIFIER
-↓
-ISOTONIC / PLATT CALIBRATION
-↓
-SHAP
-↓
-POLICY RECOMMENDATION
-↓
-VERIFIED RESULTS
-↓
-RAG + QWEN2.5 1.5B
-↓
-AI POLICY COPILOT
-↓
-GOVERNMENT DASHBOARD
-EOF
+```text
+1. Data Ingestion
+        ↓
+2. Cleaning & Normalization
+        ↓
+3. Skill Intelligence
+        ↓
+4. Demand Score
+        ↓
+5. Supply Estimation
+        ↓
+6. Demand-Supply Gap
+        ↓
+7. Forecasting
+        ↓
+8. Shortage Risk
+        ↓
+9. Calibration & SHAP
+        ↓
+10. Policy Engine
+        ↓
+11. AI Policy Copilot
+        ↓
+12. FastAPI
+        ↓
+13. Government Dashboard
+        ↓
+14. Integration Testing
+        ↓
+15. Demo Packaging
+```
 
-echo "Project structure created."
-echo "README.md created."
-echo ""
-echo "Next steps:"
-echo "1. cd $PROJECT_NAME"
-echo "2. Install Ollama and pull:"
-echo "   ollama pull qwen2.5:1.5b"
-echo "   ollama pull all-minilm"
-echo "3. git add ."
-echo "4. git commit -m 'Initial Labour Market Intelligence architecture'"
-echo "5. git push"
+## Final Objective
+
+The system transforms fragmented labour-market information into a transparent intelligence platform that helps policymakers identify:
+
+**Where demand exists → where supply is insufficient → which skills are becoming important → where shortages are likely to emerge → what skilling interventions should be considered.**
