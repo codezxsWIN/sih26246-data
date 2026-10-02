@@ -2,10 +2,25 @@
  * app.js - Application Entry Point
  * Initializes the shell, router, and health monitor.
  */
+const app = {
+    auth: new window.AuthModule(),
+    seeker: new window.SeekerDashboardModule(),
+    state: {
+        role: localStorage.getItem('lmi_role') || null,
+        setRole(r) { this.role = r; buildSidebar(); }
+    },
+    router: window.Router // Ensure router is accessible on app
+};
+window.app = app;
+
 document.addEventListener("DOMContentLoaded", function () {
   buildSidebar();
   HealthMonitor.startHealthMonitor();
   Router.initRouter();
+  
+  if (!app.state.role) {
+      Router.navigate('/auth');
+  }
 });
 
 function buildSidebar() {
@@ -13,6 +28,12 @@ function buildSidebar() {
   if (!nav) return;
   nav.innerHTML = "";
   Object.entries(Router.routes).forEach(([path, route]) => {
+    // Role-based visibility
+    if (route.roles && app.state.role && !route.roles.includes(app.state.role)) {
+        return;
+    }
+    if (route.hideInSidebar || (path === '/auth' && app.state.role)) return;
+
     const item = Utils.el("a", {
       className: "sidebar-nav__item",
       href: `#${path}`,
