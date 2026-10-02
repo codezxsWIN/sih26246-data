@@ -1,13 +1,67 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-Powered Labour Market Intelligence Engine</title>
+  <meta name="description" content="Government labour market intelligence dashboard with demand-supply gap analysis, forecasting, and policy recommendations.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Sidebar -->
+    <aside class="app-sidebar">
+      <div class="sidebar-brand">
+        <div class="sidebar-brand__name">Labour Market<br>Intelligence Engine</div>
+        <div class="sidebar-brand__sub">AI-Powered Analytics</div>
+      </div>
+      <nav class="sidebar-nav" id="sidebar-nav">
+        <!-- Populated by app.js -->
+      </nav>
+    </aside>
+
+    <!-- Header -->
+    <header class="app-header">
+      <span class="app-header__title">AI-Powered Labour Market Intelligence Engine</span>
+      <div class="app-header__status">
+        <span class="status-item">
+          <span class="status-dot status-dot--error" id="status-backend-dot"></span>
+          Backend: <span id="status-backend-text">Checking...</span>
+        </span>
+        <span class="status-item">
+          <span class="status-dot status-dot--error" id="status-db-dot"></span>
+          Database: <span id="status-db-text">Checking...</span>
+        </span>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="app-main" id="main-content">
+      <div class="state-message">
+        <div class="state-message__icon"><span class="spinner"></span></div>
+        <div class="state-message__text">Initializing Labour Market Intelligence Engine...</div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Scripts (order matters: dependencies first) -->
+  <script src="js/api.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/router.js"></script>
+  <script src="js/health.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/demand.js"></script>
+  <script src="js/supply.js"></script>
+  <script src="js/gap.js"></script>
+  <script src="js/forecast.js"></script>
+  <script src="js/shortage.js"></script>
+  <script src="js/policy.js"></script>
+  <script src="js/copilot.js"></script>
+  <script src="js/app.js"></script>
+</body>
 </html>
