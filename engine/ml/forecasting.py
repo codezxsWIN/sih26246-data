@@ -3,7 +3,6 @@ import sqlite3
 import numpy as np
 from typing import Dict, Any, List, Optional
 from statsmodels.tsa.arima.model import ARIMA
-from sklearn.ensemble import GradientBoostingRegressor
 from engine.config import settings
 from engine.db.connection import get_db_connection
 from engine.db.repositories import ForecastRepository, DemandRepository
@@ -59,12 +58,10 @@ class DemandForecaster:
                 ml_reg.fit(X_train, y_train)
                 model_name = "ARIMA-XGBoost Hybrid"
             except Exception:
-                ml_reg = GradientBoostingRegressor(random_state=42)
-                ml_reg.fit(X_train, y_train)
+                ml_reg = None
                 model_name = "ARIMA-GradientBoosting Hybrid"
         else:
-            ml_reg = GradientBoostingRegressor(random_state=42)
-            ml_reg.fit(X_train, y_train)
+            ml_reg = None
             model_name = "ARIMA-GradientBoosting Hybrid"
 
         feature_imp = {

@@ -19,6 +19,13 @@ const ROLE_LABELS = { policymaker: "Policymaker portal", seeker: "Job seeker por
 function initApp() {
   const logout = Utils.$("#header-logout");
   if (logout) logout.addEventListener("click", () => app.auth.logout());
+  const portal = Utils.$("#header-portal");
+  if (portal) {
+    portal.addEventListener("click", (event) => {
+      event.preventDefault();
+      app.auth.logout();
+    });
+  }
   buildSidebar();
   HealthMonitor.startHealthMonitor();
   Router.initRouter();
@@ -34,6 +41,8 @@ function updateRoleChrome() {
   const role = app.state.role;
   const roleEl = Utils.$("#brand-role");
   if (roleEl) roleEl.textContent = role ? (ROLE_LABELS[role] || role) : "AI-Powered Analytics";
+  const portal = Utils.$("#header-portal");
+  if (portal) portal.hidden = !role;
   const logout = Utils.$("#header-logout");
   if (logout) logout.hidden = !role;
   document.body.dataset.role = role || "";

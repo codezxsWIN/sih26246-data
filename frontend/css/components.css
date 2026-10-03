@@ -374,6 +374,26 @@
 }
 
 /* ---------- Charts (SVG drawn by js/charts.js) ---------- */
+.trace-card { border:1px solid var(--rule); border-radius:14px; overflow:hidden; box-shadow:0 4px 20px rgba(19,19,19,0.04); }
+.trace-card .card__header { background:var(--card); color:var(--ink); padding:20px 24px; font-family:var(--font-sans); font-size:16px; letter-spacing:-0.02em; text-transform:none; border-bottom:1px solid var(--rule-2); }
+.trace-card .card__body { padding:24px; }
+.trace-header { display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:28px; padding:20px; background:var(--paper-2); border-radius:10px; border:1px solid var(--rule-2); }
+.trace-caption { display:block; font:11px var(--font-mono); color:var(--mute); text-transform:uppercase; }
+.trace-value { display:block; font:600 42px var(--font-sans); font-variant-numeric:tabular-nums; letter-spacing:-2px; color:var(--ink); margin-top:8px; }
+.trace-selection { display:grid; gap:6px; text-align:right; max-width:55%; }
+.trace-selection strong { font-size:15px; }
+.trace-selection span,.trace-hint { font:10px var(--font-mono); color:var(--mute); }
+.trace-hint { margin-top:20px; padding-top:16px; border-top:1px solid var(--rule-2); line-height:1.6; }
+.trace-scroll { scrollbar-color:var(--faint) transparent; scrollbar-width:thin; }
+@media (max-width:600px) { .trace-card .card__body { padding:16px; } .trace-header { flex-direction:column; align-items:flex-start; gap:12px; padding:16px; } .trace-selection { text-align:left; max-width:100%; } }
+.trace-scroll { overflow-x:auto; max-width:100%; }
+.chart-container .trace-chart { overflow:hidden; }
+.chart-container .trace-chart .trace-bar { rx:4px; ry:4px; transition:opacity 180ms ease; }
+.chart-container .trace-chart .trace-line { stroke:var(--ink); stroke-width:1.5; }
+.chart-container .trace-chart .trace-grid { stroke-dasharray:2 5; opacity:0.6; }
+.trace-bar-target { cursor:pointer; outline:none; }
+.trace-bar-target:focus-visible .trace-bar { stroke:var(--ink); stroke-width:2; }
+@media (prefers-reduced-motion:reduce) { .chart-container .trace-chart .trace-bar { transition:none; } }
 .chart-container {
   position: relative;
   width: 100%;

@@ -9,105 +9,6 @@ function svgEl(tag, attrs) {
   return e;
 }
 
-function renderBarChart(container, data, opts = {}) {
-  container.innerHTML = "";
-  if (!data || data.length === 0) { container.appendChild(Utils.emptyState("No chart data")); return; }
-  const W = opts.width || container.clientWidth || 600;
-  const H = opts.height || 260;
-  const margin = { top: 20, right: 20, bottom: 80, left: 50 };
-  const w = W - margin.left - margin.right;
-  const h = H - margin.top - margin.bottom;
-  const labelKey = opts.labelKey || "entity_name";
-  const valueKey = opts.valueKey || "demand_score";
-  const color = opts.color || "var(--color-demand)";
-  const maxVal = opts.maxVal || Math.max(...data.map(d => d[valueKey] || 0)) * 1.1 || 1;
-  const barW = Math.max(12, Math.min(40, w / data.length - 4));
-  const gap = (w - barW * data.length) / (data.length + 1);
-
-  const svg = svgEl("svg", { width: W, height: H, viewBox: `0 0 ${W} ${H}` });
-  const g = svgEl("g", { transform: `translate(${margin.left},${margin.top})` });
-  svg.appendChild(g);
-
-  // Y axis ticks
-  for (let i = 0; i <= 4; i++) {
-    const y = h - (i / 4) * h;
-    const val = (maxVal * i / 4).toFixed(0);
-    const line = svgEl("line", { x1: 0, y1: y, x2: w, y2: y, stroke: "#e2e8f0", "stroke-width": 1 });
-    g.appendChild(line);
-    const text = svgEl("text", { x: -8, y: y + 4, fill: "#94a3b8", "font-size": 11, "text-anchor": "end" });
-    text.textContent = val;
-    g.appendChild(text);
-  }
-
-  // Bars
-  data.forEach((d, i) => {
-    const x = gap + i * (barW + gap);
-    const val = d[valueKey] || 0;
-    const barH = (val / maxVal) * h;
-    const y = h - barH;
-    const rect = svgEl("rect", { x, y, width: barW, height: barH, fill: color, rx: 2 });
-    g.appendChild(rect);
-
-    // Tooltip title
-    const title = svgEl("title");
-    title.textContent = `${d[labelKey]}: ${Utils.fmtScore(val)}`;
-    rect.appendChild(title);
-
-    // Label
-    const label = svgEl("text", {
-      x: x + barW / 2, y: h + 12, fill: "#64748b", "font-size": 10,
-      "text-anchor": "end", transform: `rotate(-40, ${x + barW / 2}, ${h + 12})`
-    });
-    label.textContent = (d[labelKey] || "").slice(0, 18);
-    g.appendChild(label);
-  });
-
-  container.appendChild(svg);
-}
-
-function renderHorizontalBarChart(container, data, opts = {}) {
-  container.innerHTML = "";
-  if (!data || data.length === 0) { container.appendChild(Utils.emptyState("No chart data")); return; }
-  const W = opts.width || container.clientWidth || 600;
-  const barH = 22;
-  const rowH = barH + 8;
-  const margin = { top: 10, right: 60, bottom: 10, left: 160 };
-  const H = margin.top + margin.bottom + data.length * rowH;
-  const w = W - margin.left - margin.right;
-  const labelKey = opts.labelKey || "entity_name";
-  const valueKey = opts.valueKey || "demand_score";
-  const color = opts.color || "var(--color-demand)";
-  const maxVal = opts.maxVal || Math.max(...data.map(d => d[valueKey] || 0)) * 1.1 || 1;
-
-  const svg = svgEl("svg", { width: W, height: H, viewBox: `0 0 ${W} ${H}` });
-  const g = svgEl("g", { transform: `translate(${margin.left},${margin.top})` });
-  svg.appendChild(g);
-
-  data.forEach((d, i) => {
-    const y = i * rowH;
-    const val = d[valueKey] || 0;
-    const barW = (val / maxVal) * w;
-
-    // Label
-    const label = svgEl("text", { x: -8, y: y + barH / 2 + 4, fill: "#334155", "font-size": 12, "text-anchor": "end" });
-    label.textContent = (d[labelKey] || "").slice(0, 22);
-    g.appendChild(label);
-
-    // Bar
-    const rect = svgEl("rect", { x: 0, y, width: Math.max(barW, 2), height: barH, fill: color, rx: 2 });
-    const title = svgEl("title");
-    title.textContent = `${d[labelKey]}: ${Utils.fmtScore(val)}`;
-    rect.appendChild(title);
-    g.appendChild(rect);
-
-    // Value text
-    const valText = svgEl("text", { x: barW + 6, y: y + barH / 2 + 4, fill: "#64748b", "font-size": 11 });
-    valText.textContent = Utils.fmtScore(val);
-    g.appendChild(valText);
-  });
-
-  container.appendChild(svg);
-}
 
 function renderShapBars(container, shapJSON) {
   const data = Utils.tryParseJSON(shapJSON);
@@ -145,4 +46,111 @@ function renderShapBars(container, shapJSON) {
   container.appendChild(svg);
 }
 
+// Adapted from Legion Dev's Evil Charts Hover Trace Bar Chart (MIT).
+// https://evilcharts.com/r/hover-trace-bar-chart.json
+function renderHoverTrace(container, data, opts = {}, horizontal = false) {
+  container.innerHTML = '';
+  if (!data?.length) { container.appendChild(Utils.emptyState('No chart data')); return; }
+  const key = opts.valueKey || 'demand_score';
+  const labelKey = opts.labelKey || 'entity_name';
+  const values = data.map(item => Math.max(0, Number(item[key]) || 0));
+  const peak = values.indexOf(Math.max(...values));
+  const max = Math.max(Number(opts.maxVal) || 0, ...values, 1) * (opts.maxVal ? 1 : 1.12);
+  const isMoney = opts.currency || /salary|wage|budget|cost|price|revenue|amount/.test(key);
+  const format = value => value.toLocaleString('en-IN', isMoney
+    ? { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }
+    : { maximumFractionDigits: key === 'estimated_supply' ? 0 : 1 });
+  const header = Utils.el('div', {className: 'trace-header'});
+  const metric = Utils.el('div');
+  metric.appendChild(Utils.el('span', {className: 'trace-caption'}, isMoney ? 'Amount · INR' : key === 'estimated_supply' ? 'Estimated workforce · people' : key.replace(/_/g, ' ')));
+  const readout = Utils.el('strong', {className: 'trace-value'}, format(values[peak]));
+  metric.appendChild(readout);
+  const selection = Utils.el('div', {className: 'trace-selection'});
+  const name = Utils.el('strong', null);
+  const geography = Utils.el('span');
+  selection.append(name, geography);
+  header.append(metric, selection);
+  container.appendChild(header);
+  const scroller = Utils.el('div', {className: 'trace-scroll'});
+  container.appendChild(scroller);
+  const W = Math.max(container.clientWidth - 40, horizontal ? 560 : data.length * 64, 620);
+  const H = horizontal ? Math.max(400, data.length * 40 + 60) : 390;
+  const left = horizontal ? 220 : 68, right = 28, top = 28, bottom = horizontal ? 24 : 92;
+  const w = W - left - right, h = H - top - bottom;
+  const svg = svgEl('svg', {width: W, height: H, viewBox: `0 0 ${W} ${H}`, class: 'trace-chart', role: 'group', 'aria-label': 'Interactive bar chart. Focus a bar or use arrow keys to compare values.'});
+  container.closest('.card')?.classList.add('trace-card');
+  scroller.appendChild(svg);
+  for (let i = 0; i <= 4; i++) {
+    const amount = max * i / 4;
+    const x = left + w * i / 4, y = top + h - h * i / 4;
+    svg.appendChild(svgEl('line', horizontal ? {x1:x,x2:x,y1:top,y2:top+h,class:'trace-grid'} : {x1:left,x2:left+w,y1:y,y2:y,class:'trace-grid'}));
+    const text = svgEl('text', horizontal ? {x,y:top-12,'text-anchor':'middle'} : {x:left-12,y:y+4,'text-anchor':'end'});
+    text.textContent = format(amount);
+    svg.appendChild(text);
+  }
+  const bars = [], targets = [];
+  data.forEach((item, index) => {
+    const slot = horizontal ? h/data.length : w/data.length;
+    const size = slot * 0.65;
+    const length = values[index]/max * (horizontal ? w : h);
+    const x = horizontal ? left : left + slot*index + (slot-size)/2;
+    const y = horizontal ? top + slot*index + (slot-size)/2 : top+h-length;
+    const group = svgEl('g', {tabindex:0, role:'button', 'aria-label': `${item[labelKey]}, ${item.geography_name || ''}: ${format(values[index])}`, class:'trace-bar-target'});
+    const hit = svgEl('rect', {x: horizontal ? 0 : x-(slot-size)/2, y: horizontal ? top+slot*index : top, width: horizontal ? W : slot, height: horizontal ? slot : h, fill:'transparent'});
+    const bar = svgEl('rect', {x,y,width:horizontal ? length : size,height:horizontal ? size : length,fill:opts.color || 'var(--color-demand)',class:'trace-bar'});
+    const label = svgEl('text', horizontal ? {x:left-14,y:y+size/2+4,'text-anchor':'end'} : {x:x+size/2,y:top+h+20,'text-anchor':'end',transform:`rotate(-35 ${x+size/2} ${top+h+20})`});
+    label.textContent = String(item[labelKey] || '').slice(0, horizontal ? 28 : 20);
+    group.append(hit, bar, label);
+    group.addEventListener('pointerenter', () => select(index));
+    group.addEventListener('focus', () => select(index));
+    group.addEventListener('click', () => select(index));
+    group.addEventListener('keydown', event => {
+      if (['ArrowRight','ArrowDown','ArrowLeft','ArrowUp'].includes(event.key)) {
+        event.preventDefault();
+        const next = Math.max(0, Math.min(data.length-1, index + (['ArrowRight','ArrowDown'].includes(event.key) ? 1 : -1)));
+        targets[next].focus();
+      }
+    });
+    bars.push(bar); targets.push(group); svg.appendChild(group);
+  });
+  const trace = svgEl('g', {'pointer-events':'none'});
+  const line = svgEl('line', {class:'trace-line','stroke-dasharray':'4 5'});
+  const dot = svgEl('circle', {r:4,fill:'var(--ink)'});
+  trace.append(line,dot); svg.appendChild(trace);
+  let current = values[peak], target = current, frame = null;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function paint() {
+    readout.textContent = format(current);
+    if (horizontal) {
+      const x = left + current/max*w;
+      Object.entries({x1:x,x2:x,y1:top,y2:top+h}).forEach(([k,v]) => line.setAttribute(k,v));
+      dot.setAttribute('cx',x); dot.setAttribute('cy',top+h);
+    } else {
+      const y = top+h-current/max*h;
+      Object.entries({x1:left,x2:left+w,y1:y,y2:y}).forEach(([k,v]) => line.setAttribute(k,v));
+      dot.setAttribute('cx',left+w); dot.setAttribute('cy',y);
+    }
+  }
+  function animate() {
+    if (!container.isConnected) { frame = null; return; }
+    current += (target-current)*0.18;
+    if (Math.abs(target-current) < Math.max(0.01,max/10000)) current = target;
+    paint();
+    frame = current !== target ? requestAnimationFrame(animate) : null;
+  }
+  function select(index) {
+    target = values[index];
+    name.textContent = data[index][labelKey] || 'Selected category';
+    geography.textContent = data[index].geography_name || 'Hover or focus a bar to explore';
+    bars.forEach((bar,i) => bar.style.opacity = i === index ? '1' : '0.2');
+    if (reduced) { current = target; paint(); }
+    else if (frame === null) frame = requestAnimationFrame(animate);
+  }
+  svg.addEventListener('pointerleave', () => select(peak));
+  svg.addEventListener('focusout', event => { if (!svg.contains(event.relatedTarget)) select(peak); });
+  container.appendChild(Utils.el('p', {className:'trace-hint'}, 'Hover, tap, or focus a bar to compare · Arrow keys move between bars'));
+  select(peak); paint();
+}
+function renderBarChart(container, data, opts = {}) { renderHoverTrace(container, data, opts); }
+function renderHorizontalBarChart(container, data, opts = {}) { renderHoverTrace(container, data, opts, true); }
 window.Charts = { renderBarChart, renderHorizontalBarChart, renderShapBars };

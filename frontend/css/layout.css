@@ -90,6 +90,7 @@
   background: #ffd166;
   border-color: #ffd166;
 }
+.app-header__portal,
 .app-header__logout {
   padding: 7px 12px;
   border: 1px solid rgba(255, 255, 255, 0.5);
@@ -99,11 +100,14 @@
   letter-spacing: 0.06em;
   text-transform: uppercase;
   cursor: pointer;
+  text-decoration: none;
 }
+.app-header__portal:hover,
 .app-header__logout:hover {
   background: #ffffff;
   color: var(--blue);
 }
+.app-header__portal[hidden],
 .app-header__logout[hidden] {
   display: none;
 }
