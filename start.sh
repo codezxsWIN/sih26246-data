@@ -20,26 +20,27 @@ trap cleanup SIGINT SIGTERM
 
 cd "$(dirname "$0")"
 
-# Check Python
-if ! command -v python3 &>/dev/null; then
-    echo "ERROR: python3 is not installed."
-    exit 1
+# Check Python executable
+PYTHON_CMD="python3"
+if [ -f "./.venv/bin/python" ]; then
+    PYTHON_CMD="./.venv/bin/python"
 fi
 
 # Check uvicorn
-if ! python3 -c "import uvicorn" 2>/dev/null; then
-    echo "ERROR: uvicorn is not installed. Run: pip3 install uvicorn"
+if ! $PYTHON_CMD -c "import uvicorn" 2>/dev/null; then
+    echo "ERROR: uvicorn is not installed in $PYTHON_CMD environment."
     exit 1
 fi
 
 echo -e "${BLUE}Starting FastAPI Backend on port 8000...${NC}"
-python3 -m uvicorn engine.api.main:app --host 127.0.0.1 --port 8000 --reload &
+$PYTHON_CMD -m uvicorn engine.api.main:app --host 127.0.0.1 --port 8000 --reload &
 BACKEND_PID=$!
 sleep 2
 
 echo -e "${BLUE}Starting Frontend static server on port 5173...${NC}"
-python3 -m http.server 5173 --directory frontend &
+$PYTHON_CMD -m http.server 5173 --directory frontend &
 FRONTEND_PID=$!
+
 
 echo ""
 echo -e "${GREEN}=========================================================${NC}"

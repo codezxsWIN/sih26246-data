@@ -7,8 +7,8 @@ class AuthModule {
         this.container.innerHTML = `
             <div class="auth">
                 <div class="auth__intro">
-                    <p class="eyebrow">SIH26246 · AI-Powered Labour Market Intelligence Engine</p>
-                    <h2 class="auth-title">Welcome to LMI Engine.</h2>
+                    <p class="eyebrow">SIH26246 · Skillcast Labour Market Intelligence Engine</p>
+                    <h2 class="auth-title">Welcome to Skillcast.</h2>
                     <p class="auth-subtitle">Select your portal to continue.</p>
                 </div>
 
@@ -45,7 +45,7 @@ class AuthModule {
         `;
     }
 
-    async login(role) {
+    async login(role, redirectRoute = null) {
         try {
             const res = await fetch('http://localhost:8000/api/auth/login', {
                 method: 'POST',
@@ -62,9 +62,13 @@ class AuthModule {
             localStorage.setItem('lmi_token', data.token);
             localStorage.setItem('lmi_role', data.role);
             
-            // Redirect based on role
+            // Redirect based on role or specific redirectRoute
             app.state.setRole(data.role);
-            const targetRoute = data.role === 'seeker' ? '/seeker' : (data.role === 'employer' ? '/employer' : '/dashboard');
+            const defaultRoute = data.role === 'seeker' ? '/seeker' : (data.role === 'employer' ? '/employer' : '/dashboard');
+            let targetRoute = defaultRoute;
+            if (redirectRoute) {
+                targetRoute = '/' + redirectRoute.replace(/^#?\/?/, '');
+            }
             app.router.navigate(targetRoute);
         } catch (error) {
             console.error("Login failed:", error);

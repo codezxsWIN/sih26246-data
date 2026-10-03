@@ -62,9 +62,16 @@ const API = {
       body: JSON.stringify({ query })
     });
   },
+  chatbotQuery(message) {
+    return apiFetch("/api/copilot/chat", {
+      method: "POST",
+      body: JSON.stringify({ message })
+    });
+  },
   runPipeline() {
     return apiFetch("/api/engine/run_pipeline", { method: "POST" });
   }
 };
 
 window.API = API;
+

@@ -1,11 +1,43 @@
 import json
 import sqlite3
 import requests
+import hashlib
+import time
+from collections import OrderedDict
 from typing import Dict, Any, List, Optional
 from engine.config import settings
 from engine.db.connection import get_db_connection
 from engine.db.repositories import GapRepository, ForecastRepository, PolicyRepository
 from engine.rag.text_embeddings import SimpleVectorStore
+
+class LRUCache:
+    """Simple in-memory LRU cache with TTL for chat queries."""
+    def __init__(self, maxsize: int = 256, ttl: int = 1800):
+        self.maxsize = maxsize
+        self.ttl = ttl
+        self._cache = OrderedDict()
+
+    def _key(self, text: str) -> str:
+        return hashlib.sha256(text.strip().lower().encode()).hexdigest()[:16]
+
+    def get(self, query: str) -> Optional[Dict[str, Any]]:
+        k = self._key(query)
+        if k in self._cache:
+            entry = self._cache[k]
+            if time.time() - entry["ts"] < self.ttl:
+                self._cache.move_to_end(k)
+                return entry["value"]
+            else:
+                del self._cache[k]
+        return None
+
+    def put(self, query: str, value: Dict[str, Any]) -> None:
+        k = self._key(query)
+        self._cache[k] = {"value": value, "ts": time.time()}
+        if len(self._cache) > self.maxsize:
+            self._cache.popitem(last=False)
+
+_copilot_cache = LRUCache(maxsize=256, ttl=1800)
 
 class PolicyCopilot:
     def __init__(self, conn: Optional[sqlite3.Connection] = None):
@@ -20,6 +52,18 @@ class PolicyCopilot:
         interventions = self.policy_repo.get_interventions(limit=200)
         docs = [f"{i['trigger_rule_id']} {i['recommended_intervention']} for {i['target_occupation']} in {i['target_state']}" for i in interventions]
         self.vector_store.build_index(docs, interventions)
+
+    def answer_chat_query(self, query_text: str) -> Dict[str, Any]:
+        cached_result = _copilot_cache.get(query_text)
+        if cached_result:
+            result = dict(cached_result)
+            result["cached"] = True
+            return result
+
+        result = self.answer_policy_query(query_text)
+        result["cached"] = False
+        _copilot_cache.put(query_text, result)
+        return result
 
     def answer_policy_query(self, query_text: str) -> Dict[str, Any]:
         # 1. Fetch relevant database metrics
@@ -39,11 +83,21 @@ class PolicyCopilot:
         if interventions:
             context_str += f"- Recommended Intervention: {interventions[0]['recommended_intervention']} (Priority: {interventions[0]['priority_level']}, Est Cost: {interventions[0]['cost_impact_estimate']})\n"
 
-        # 4. Attempt Ollama Qwen2.5 1.5B Generation
+        # 4. Attempt Ollama Qwen2.5 1.5B Generation with strict guardrail prompt
         answer_text = ""
         used_llm = False
         try:
-            prompt = f"System: You are an expert AI Policy Assistant for the Ministry of Skill Development. Answer using ONLY the verified context below.\n\nContext:\n{context_str}\n\nUser Question: {query_text}\nAnswer:"
+            prompt = (
+                f"System: You are the LMI Engine Policy Assistant — a chatbot embedded in the "
+                f"AI-Powered Labour Market Intelligence Engine for the Ministry of Skill Development.\n"
+                f"STRICT RULES:\n"
+                f"1. ONLY answer questions about labour market demand, supply, gap analysis, shortage risks, "
+                f"policies (PMKVY, NAPS, DGT ITI), portal navigation, job seeker advice, or employer hiring.\n"
+                f"2. For questions outside these topics, refuse politely.\n"
+                f"3. Keep answers concise (3-5 sentences).\n\n"
+                f"Verified Database Context:\n{context_str}\n\n"
+                f"User Question: {query_text}\nAnswer:"
+            )
             resp = requests.post(
                 f"{settings.OLLAMA_BASE_URL}/api/generate",
                 json={"model": settings.OLLAMA_LLM_MODEL, "prompt": prompt, "stream": False},
@@ -79,3 +133,4 @@ class PolicyCopilot:
             ],
             "relevant_interventions": relevant_docs
         }
+

@@ -53,7 +53,7 @@ function handleRoute() {
 
   // Drives the page eyebrow (css/layout.css) and the browser tab title
   document.body.dataset.route = route;
-  document.title = r ? `${r.label} · AI-Powered Labour Market Intelligence Engine` : "AI-Powered Labour Market Intelligence Engine";
+  document.title = r ? `${r.label} · Skillcast` : "Skillcast · AI-Powered Labour Market Intelligence Engine";
 
   // Update sidebar active state
   Utils.$$(".sidebar-nav__item").forEach(item => {

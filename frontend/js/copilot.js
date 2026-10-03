@@ -17,7 +17,7 @@ window.CopilotPage = {
   render() {
     const main = Utils.clearMain();
     main.appendChild(Utils.el("h1", { className: "page-title" }, "AI Policy Copilot"));
-    main.appendChild(Utils.el("p", { className: "page-subtitle" }, "Natural-language interface to the Labour Market Intelligence Engine."));
+    main.appendChild(Utils.el("p", { className: "page-subtitle" }, "Natural-language interface to the Skillcast Labour Intelligence Engine."));
 
     const chatContainer = Utils.el("div", { className: "chat-container" });
 
