@@ -9,8 +9,8 @@ class EmployerDashboardModule {
 
     async render() {
         this.container.innerHTML = `
-            <div class="state-message">
-                <div class="state-message__icon"><span class="spinner"></span></div>
+            <div class="state-message state-message--loading" role="status">
+                <div class="state-message__bar"></div>
                 <div class="state-message__text">Loading Employer Market Intelligence...</div>
             </div>
         `;
@@ -22,10 +22,10 @@ class EmployerDashboardModule {
         } catch (err) {
             console.error("Employer overview error:", err);
             this.container.innerHTML = `
-                <div class="card-glass" style="margin: 20px;">
-                    <h3>Unable to load market data</h3>
-                    <p class="text-muted">Ensure the local API server is active.</p>
-                </div>
+                <section class="card">
+                    <div class="card__header">Unable to load market data</div>
+                    <div class="card__body"><p class="text-muted">Ensure the local API server is active.</p></div>
+                </section>
             `;
         }
     }
@@ -35,95 +35,95 @@ class EmployerDashboardModule {
         const optionsHtml = occupations.map(o => `<option value="${o}">${o}</option>`).join('');
 
         this.container.innerHTML = `
-            <div class="dashboard-header">
-                <div>
-                    <h2>Employer Talent Intelligence & Sourcing Hub</h2>
-                    <p class="text-muted">Analyze regional talent pools, predict hiring difficulty, and locate high-supply talent hubs.</p>
-                </div>
+            <h1 class="page-title">Employer Talent Intelligence & Sourcing Hub</h1>
+            <p class="page-subtitle">Analyze regional talent pools, predict hiring difficulty, and locate high-supply talent hubs.</p>
+            <div class="page-actions">
                 <button class="btn btn-secondary" onclick="app.auth.logout()">Logout</button>
             </div>
 
             <!-- Role Sourcing Filter Card -->
-            <div class="card-glass" style="margin-bottom: 25px;">
-                <h3 style="margin-bottom: 12px;">Target Occupation Intelligence</h3>
-                <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
-                    <div style="flex: 1; min-width: 250px;">
-                        <label style="display: block; font-size: 0.85rem; margin-bottom: 5px; color: var(--text-secondary);">Select Target Role</label>
-                        <select id="employer-role-select" class="file-input" style="padding: 10px; background: rgba(15,23,42,0.8); color: white; border: 1px solid var(--border-color); width: 100%; border-radius: 8px;">
+            <section class="card">
+                <div class="card__header">Target Occupation Intelligence</div>
+                <div class="card__body employer-filter">
+                    <label class="control">
+                        <span class="control__label">Select Target Role</span>
+                        <select id="employer-role-select" class="filter-select filter-select--wide">
                             <option value="">-- All Occupations --</option>
                             ${optionsHtml}
                         </select>
-                    </div>
-                    <div style="margin-top: 20px;">
-                        <button class="btn btn-primary" onclick="app.employer.analyzeRole()">Analyze Regional Feasibility</button>
-                    </div>
+                    </label>
+                    <button class="btn btn-primary" onclick="app.employer.analyzeRole()">Analyze Regional Feasibility</button>
                 </div>
-            </div>
+            </section>
 
             <!-- Dynamic Search Results -->
-            <div id="employer-analysis-results" style="margin-bottom: 25px;"></div>
+            <div id="employer-analysis-results"></div>
 
             <!-- Overview Grid: Talent Hubs & High Competition -->
             <div class="grid-2">
                 <!-- Top Talent Supply Hubs -->
-                <div class="card-glass">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                        <h3>Top Regional Talent Pools</h3>
+                <section class="card">
+                    <div class="card__header">
+                        <span>Top Regional Talent Pools</span>
                         <span class="badge badge--balanced">High Supply</span>
                     </div>
-                    <p class="text-muted" style="font-size: 0.9rem; margin-bottom: 15px;">Top states with the largest pools of ready workers:</p>
-                    <div class="table-container">
-                        <table class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>State</th>
-                                    <th>Occupation</th>
-                                    <th>Supply Pool</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                ${(this.data.talent_hubs || []).slice(0, 7).map(hub => `
+                    <div class="card__body">
+                        <p class="text-muted card__lede">Top states with the largest pools of ready workers:</p>
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
                                     <tr>
-                                        <td><strong>${hub.geography_name}</strong></td>
-                                        <td>${hub.entity_name}</td>
-                                        <td><span class="tag" style="background: rgba(16,185,129,0.15); color: #059669;">${Number(hub.supply_pool).toLocaleString()}</span></td>
+                                        <th>State</th>
+                                        <th>Occupation</th>
+                                        <th>Supply Pool</th>
                                     </tr>
-                                `).join('')}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    ${(this.data.talent_hubs || []).slice(0, 7).map(hub => `
+                                        <tr>
+                                            <td>${hub.geography_name}</td>
+                                            <td>${hub.entity_name}</td>
+                                            <td><span class="tag">${Number(hub.supply_pool).toLocaleString()}</span></td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
+                </section>
 
                 <!-- High Competition Watchlist -->
-                <div class="card-glass">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                        <h3>Hiring Scarcity & Competition Watchlist</h3>
+                <section class="card">
+                    <div class="card__header">
+                        <span>Hiring Scarcity & Competition Watchlist</span>
                         <span class="badge badge--critical">Critical Shortage</span>
                     </div>
-                    <p class="text-muted" style="font-size: 0.9rem; margin-bottom: 15px;">Roles with intense competition & candidate scarcity:</p>
-                    <div class="table-container">
-                        <table class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>Role</th>
-                                    <th>State</th>
-                                    <th>Demand</th>
-                                    <th>Competition</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                ${(this.data.high_competition_roles || []).slice(0, 7).map(role => `
+                    <div class="card__body">
+                        <p class="text-muted card__lede">Roles with intense competition & candidate scarcity:</p>
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
                                     <tr>
-                                        <td><strong>${role.entity_name}</strong></td>
-                                        <td>${role.geography_name}</td>
-                                        <td>${role.demand_score.toFixed(1)}</td>
-                                        <td><span class="badge badge--critical">High Scarcity</span></td>
+                                        <th>Role</th>
+                                        <th>State</th>
+                                        <th>Demand</th>
+                                        <th>Competition</th>
                                     </tr>
-                                `).join('')}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    ${(this.data.high_competition_roles || []).slice(0, 7).map(role => `
+                                        <tr>
+                                            <td>${role.entity_name}</td>
+                                            <td>${role.geography_name}</td>
+                                            <td>${role.demand_score.toFixed(1)}</td>
+                                            <td><span class="badge badge--critical">High Scarcity</span></td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
+                </section>
             </div>
         `;
 
@@ -142,8 +142,9 @@ class EmployerDashboardModule {
         if (!resultsContainer) return;
 
         resultsContainer.innerHTML = `
-            <div class="card-glass" style="padding: 20px; text-align: center;">
-                <span class="spinner"></span> Analyzing hiring feasibility for <strong>${role || "all roles"}</strong>...
+            <div class="state-message state-message--loading" role="status">
+                <div class="state-message__bar"></div>
+                <div class="state-message__text">Analyzing hiring feasibility for <strong>${role || "all roles"}</strong>...</div>
             </div>
         `;
 
@@ -158,25 +159,27 @@ class EmployerDashboardModule {
             this.renderAnalysisResults(data, resultsContainer);
         } catch (err) {
             console.error("Talent analysis error:", err);
-            resultsContainer.innerHTML = `<div class="card-glass text-muted">Analysis could not be completed.</div>`;
+            resultsContainer.innerHTML = `<div class="state-message state-message--error" role="alert"><div class="state-message__text">Analysis could not be completed.</div></div>`;
         }
     }
 
     renderAnalysisResults(data, container) {
         if (!data.regions || data.regions.length === 0) {
             container.innerHTML = `
-                <div class="card-glass">
-                    <p class="text-muted">No specific regional shortage data found for this selection.</p>
+                <div class="state-message state-message--empty">
+                    <div class="state-message__text">No specific regional shortage data found for this selection.</div>
                 </div>
             `;
             return;
         }
 
         container.innerHTML = `
-            <div class="card-glass">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                    <h3>Sourcing Feasibility & Strategic Recommendations: <span style="color: var(--accent-blue);">${data.target_role}</span></h3>
+            <section class="card">
+                <div class="card__header">
+                    <span>Sourcing Feasibility & Strategic Recommendations</span>
+                    <span class="card__meta">${data.target_role}</span>
                 </div>
+                <div class="card__body">
                 <div class="table-container">
                     <table class="data-table">
                         <thead>
@@ -205,7 +208,8 @@ class EmployerDashboardModule {
                         </tbody>
                     </table>
                 </div>
-            </div>
+                </div>
+            </section>
         `;
     }
 }

@@ -1,153 +1,363 @@
+/* Visual style for the Labour Market Intelligence Engine.
+   Jev / TypeSafe AI: off-white editorial page, tight grotesk headlines, windows with black mono title bars.
+   Hermes: electric blue (#0000F2) as the single accent, condensed uppercase chrome.
+   The --color-* names are kept from the original stylesheet because page scripts use them in inline styles. */
 :root {
-  --color-bg: #f5f6fa;
-  --color-surface: #ffffff;
-  --color-sidebar: #1a2332;
-  --color-sidebar-hover: #243044;
-  --color-sidebar-active: #2d4a7a;
-  --color-header: #1a2332;
-  --color-text: #2c3e50;
-  --color-text-secondary: #6b7c93;
-  --color-text-light: #95a5b8;
-  --color-border: #e1e8ef;
-  --color-demand: #2563eb;
-  --color-supply: #059669;
-  --color-balanced: #059669;
-  --color-moderate: #d97706;
-  --color-high: #ea580c;
-  --color-critical: #dc2626;
-  --color-forecast: #7c3aed;
-  --color-policy: #0891b2;
-  --color-status-ok: #22c55e;
-  --color-status-warn: #f59e0b;
-  --color-status-error: #ef4444;
-  --radius: 6px;
-  --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
-  --shadow-md: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
-  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-mono: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+  --paper: #fbfbf8;
+  --paper-2: #f2f2ee;
+  --card: #ffffff;
+  --ink: #131313;
+  --ink-2: #3b3b38;
+  --mute: #73736e;
+  --faint: #a7a7a1;
+  --rule: rgba(19, 19, 19, 0.14);
+  --rule-2: rgba(19, 19, 19, 0.07);
+  --blue: #0000f2;
+  --blue-2: #4a4aff;
+  --blue-soft: #ececff;
+  --critical: #e3173e;
+  --critical-soft: #fde5ea;
+  --moderate: #f07800;
+  --balanced-soft: #ececE8;
+  --oversupply: #009e94;
+
+  --font-sans: 'Inter Tight', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-cond: 'Anek Latin', 'Arial Narrow', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+  --max: 1380px;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  /* Original variable names, remapped to the new palette */
+  --color-bg: var(--paper);
+  --color-surface: var(--card);
+  --color-text: var(--ink);
+  --color-text-secondary: var(--mute);
+  --color-text-light: var(--faint);
+  --color-border: var(--rule);
+  --color-demand: var(--blue);
+  --color-supply: var(--ink);
+  --color-balanced: #8a8a84;
+  --color-moderate: var(--moderate);
+  --color-high: var(--moderate);
+  --color-critical: var(--critical);
+  --color-forecast: var(--blue-2);
+  --color-policy: var(--oversupply);
+  --color-status-ok: #7dffb4;
+  --color-status-error: #ff5c7a;
+  --accent-blue: var(--blue);
+  --border-color: var(--rule);
+  --text-secondary: var(--mute);
+  --radius: 0;
+  --font: var(--font-sans);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
 
 body {
-  font-family: var(--font);
-  background: var(--color-bg);
-  color: var(--color-text);
-  font-size: 14px;
-  line-height: 1.5;
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 15px/1.5 var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-h1 { font-size: 1.5rem; font-weight: 700; }
-h2 { font-size: 1.25rem; font-weight: 600; }
-h3 { font-size: 1rem; font-weight: 600; }
-
-a { color: var(--color-demand); text-decoration: none; }
-a:hover { text-decoration: underline; }
-
-input, select, textarea, button {
-  font-family: inherit;
-  font-size: inherit;
+::selection {
+  background: var(--blue);
+  color: #ffffff;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar { width: 6px; height: 6px; }
+h1, h2, h3, h4 {
+  font-weight: 560;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+a {
+  color: var(--blue);
+  text-underline-offset: 3px;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #c1c9d4; border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: rgba(19, 19, 19, 0.25); }
 
-/* Premium UI Additions */
-.auth-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 80vh;
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.text-muted { color: var(--mute); }
+.num { font-variant-numeric: tabular-nums; }
+
+/* Mono eyebrow above page heads */
+.eyebrow {
+  font: 500 11px/1.4 var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+/* ---------- Portal selection (#/auth) ---------- */
+.auth {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: end;
+  padding: 40px 0 24px;
+  animation: rise 0.45s var(--ease) both;
+}
+.auth__intro {
+  position: relative;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--ink);
+}
+.auth-title {
+  margin-top: 12px;
+  font-size: clamp(44px, 5.6vw, 84px);
+  font-weight: 560;
+  line-height: 0.93;
+  letter-spacing: -0.05em;
+}
+.auth-subtitle {
+  margin-top: 16px;
+  max-width: 44ch;
+  font-size: 17px;
+  color: var(--ink-2);
 }
 .auth-card {
-    padding: 40px;
-    text-align: center;
-    max-width: 500px;
-    width: 100%;
+  align-self: end;
 }
 .auth-roles {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 30px;
+  display: grid;
 }
 .btn-role {
-    display: flex;
-    align-items: center;
-    padding: 15px 20px;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    cursor: pointer;
-    transition: all 0.2s ease;
-    font-size: 1.1rem;
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 18px 18px;
+  border: 0;
+  border-top: 1px solid var(--rule);
+  background: var(--card);
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.15s var(--ease), color 0.15s var(--ease);
 }
-.btn-role:hover {
-    border-color: var(--color-demand);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
+.btn-role:first-child {
+  border-top: 0;
 }
-.btn-role .role-icon { font-size: 1.5rem; margin-right: 15px; }
-.card-glass {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 12px;
-    padding: 20px;
-    border: 1px solid rgba(0,0,0,0.05);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
+.btn-role:hover,
+.btn-role:focus-visible {
+  background: var(--blue);
+  color: #ffffff;
+  outline: none;
 }
-.upload-card {
-    text-align: center;
-    padding: 40px;
+.role-icon {
+  padding: 2px 0;
+  background: var(--ink);
+  color: var(--paper);
+  font: 600 10.5px/1.5 var(--font-mono);
+  text-align: center;
+}
+.btn-role:hover .role-icon,
+.btn-role:focus-visible .role-icon {
+  background: #ffffff;
+  color: var(--blue);
+}
+.role-text {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.role-name {
+  font-size: 20px;
+  font-weight: 560;
+  letter-spacing: -0.02em;
+}
+.role-desc {
+  font-size: 13px;
+  color: var(--mute);
+}
+.btn-role:hover .role-desc,
+.btn-role:focus-visible .role-desc {
+  color: rgba(255, 255, 255, 0.82);
+}
+.role-arrow {
+  font: 500 18px var(--font-mono);
+  transition: transform 0.15s var(--ease);
+}
+.btn-role:hover .role-arrow {
+  transform: translateX(4px);
+}
+
+/* ---------- Job seeker & employer portals ---------- */
+.upload-card__body {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
 }
 .file-input {
-    margin: 20px 0;
-    padding: 10px;
-    border: 2px dashed var(--color-border);
-    border-radius: 6px;
-    width: 100%;
-    cursor: pointer;
+  flex: 1;
+  min-width: 260px;
+  padding: 12px 14px;
+  border: 1px dashed var(--ink);
+  background: var(--paper-2);
+  font: 500 12px var(--font-mono);
+  cursor: pointer;
+}
+.file-input::file-selector-button {
+  margin-right: 12px;
+  padding: 6px 11px;
+  border: 1px solid var(--ink);
+  background: var(--card);
+  font: 600 10.5px var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.file-input::file-selector-button:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+.upload-status {
+  flex-basis: 100%;
+  font: 500 11px/1.5 var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+.upload-status:empty {
+  display: none;
+}
+.card-glass {
+  background: var(--card);
+  border: 1px solid var(--ink);
+  padding: 18px;
 }
 .grid-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
 }
 .roles-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 15px;
-    margin-top: 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  background: var(--card);
+  border: 1px solid var(--rule);
+  overflow: hidden;
 }
-.role-card { margin-bottom: 0; }
-.role-meta { display: flex; gap: 10px; margin: 10px 0; }
+/* Same hairline technique as the KPI strip, so a part-filled last row stays white */
+.role-card {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  margin: -1px 0 0 -1px;
+  padding: 16px 18px;
+  box-shadow: inset 1px 0 0 var(--rule), inset 0 1px 0 var(--rule);
+}
+.role-card h4 {
+  font-size: 17px;
+}
+.role-card p {
+  font-size: 13px;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+.role-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
 .skills-list {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 10px;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.card__lede {
+  margin-bottom: 14px;
+  font-size: 13px;
 }
 .tag {
-    background: var(--color-bg);
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    border: 1px solid var(--color-border);
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 9px;
+  background: var(--card);
+  box-shadow: inset 0 0 0 1px var(--ink);
+  color: var(--ink);
+  font: 500 11.5px/1.5 var(--font-mono);
+  white-space: nowrap;
 }
 .tag-warning {
-    background: #fffbeb;
-    border-color: #fcd34d;
-    color: #92400e;
+  background: var(--moderate);
+  box-shadow: none;
+  color: #1f1000;
 }
-.dashboard-header {
-    margin-bottom: 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.employer-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 14px 16px;
+}
+.employer-filter .control {
+  flex: 1;
+  min-width: 260px;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+@keyframes grow-x {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@keyframes boot {
+  from { background-position: 100% 0; }
+  to { background-position: -100% 0; }
+}
+
+@media (max-width: 900px) {
+  .auth {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-top: 12px;
+  }
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
 }

@@ -5,34 +5,40 @@ class SeekerDashboardModule {
 
     render() {
         this.container.innerHTML = `
-            <div class="dashboard-header">
-                <h2>Job Seeker Portal</h2>
-                <p>Upload your resume to instantly see shortage matches and market advantages.</p>
+            <h1 class="page-title">Job Seeker Portal</h1>
+            <p class="page-subtitle">Upload your resume to instantly see shortage matches and market advantages.</p>
+            <div class="page-actions">
                 <button class="btn btn-secondary" onclick="app.auth.logout()">Logout</button>
             </div>
-            
-            <div class="card-glass upload-card">
-                <h3>Upload Resume (PDF)</h3>
-                <input type="file" id="resume-upload" accept=".pdf" class="file-input" />
-                <button class="btn btn-primary" onclick="app.seeker.uploadResume()">Extract Skills & Match Jobs</button>
-                <div id="upload-status" style="margin-top: 15px; color: var(--accent-blue);"></div>
-            </div>
-            
-            <div id="seeker-results" style="display: none; margin-top: 20px;">
-                <div class="grid-2">
-                    <div class="card-glass">
-                        <h3>Your Extracted Skills</h3>
-                        <ul id="extracted-skills-list" class="skills-list"></ul>
-                    </div>
-                    <div class="card-glass">
-                        <h3>Recommended Upskilling</h3>
-                        <p class="text-muted">Skills you need to unlock critical shortage roles:</p>
-                        <ul id="missing-skills-list" class="skills-list"></ul>
-                    </div>
+
+            <section class="card upload-card">
+                <div class="card__header"><span>Upload Resume (PDF)</span><span class="card__meta">Skill extraction · job matching</span></div>
+                <div class="card__body upload-card__body">
+                    <input type="file" id="resume-upload" accept=".pdf" class="file-input" />
+                    <button class="btn btn-primary" onclick="app.seeker.uploadResume()">Extract Skills & Match Jobs</button>
+                    <div id="upload-status" class="upload-status"></div>
                 </div>
-                
-                <h3 style="margin-top: 30px;">Top Matched Shortage Roles</h3>
-                <div id="matched-roles-list" class="roles-grid"></div>
+            </section>
+
+            <div id="seeker-results" style="display: none;">
+                <div class="grid-2">
+                    <section class="card">
+                        <div class="card__header">Your Extracted Skills</div>
+                        <div class="card__body"><ul id="extracted-skills-list" class="skills-list"></ul></div>
+                    </section>
+                    <section class="card">
+                        <div class="card__header">Recommended Upskilling</div>
+                        <div class="card__body">
+                            <p class="text-muted card__lede">Skills you need to unlock critical shortage roles:</p>
+                            <ul id="missing-skills-list" class="skills-list"></ul>
+                        </div>
+                    </section>
+                </div>
+
+                <section class="card">
+                    <div class="card__header">Top Matched Shortage Roles</div>
+                    <div class="card__body"><div id="matched-roles-list" class="roles-grid"></div></div>
+                </section>
             </div>
         `;
     }
@@ -81,7 +87,7 @@ class SeekerDashboardModule {
         
         const rolesList = document.getElementById('matched-roles-list');
         rolesList.innerHTML = (data.job_matches || []).map(job => `
-            <div class="card-glass role-card">
+            <div class="role-card">
                 <h4>${job.occupation}</h4>
                 <div class="role-meta">
                     <span class="badge ${job.shortage_level && job.shortage_level.includes('Critical') ? 'badge--critical' : 'badge--moderate'}">${job.shortage_level}</span>

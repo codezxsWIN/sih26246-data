@@ -3,16 +3,16 @@
  */
 const routes = {
   "/auth": { label: "Login", icon: "🔒", hideInSidebar: true, render: () => app.auth.render() },
-  "/seeker": { label: "Job Seeker Portal", icon: "🧑‍💻", roles: ["seeker"], render: () => app.seeker.render() },
-  "/employer": { label: "Employer Dashboard", icon: "🏢", roles: ["employer"], render: () => app.employer.render() },
-  "/dashboard": { label: "National Overview", icon: "📊", roles: ["policymaker"], render: () => window.DashboardPage.render() },
-  "/demand": { label: "Demand Analysis", icon: "📈", roles: ["policymaker"], render: () => window.DemandPage.render() },
-  "/supply": { label: "Supply Estimation", icon: "👥", roles: ["policymaker"], render: () => window.SupplyPage.render() },
-  "/gap": { label: "Gap & Shortages", icon: "⚡", roles: ["policymaker"], render: () => window.GapPage.render() },
-  "/forecast": { label: "Forecast Explorer", icon: "🔮", roles: ["policymaker"], render: () => window.ForecastPage.render() },
-  "/shortage": { label: "Shortage Risk", icon: "🎯", roles: ["policymaker"], render: () => window.ShortagePage.render() },
-  "/policy": { label: "Policy Recommendations", icon: "📋", roles: ["policymaker"], render: () => window.PolicyPage.render() },
-  "/copilot": { label: "AI Policy Copilot", icon: "🤖", roles: ["policymaker"], render: () => window.CopilotPage.render() }
+  "/seeker": { label: "Job Seeker Portal", nav: "Seeker portal", icon: "🧑‍💻", roles: ["seeker"], render: () => app.seeker.render() },
+  "/employer": { label: "Employer Dashboard", nav: "Employer hub", icon: "🏢", roles: ["employer"], render: () => app.employer.render() },
+  "/dashboard": { label: "National Overview", nav: "Overview", code: "S13", icon: "📊", roles: ["policymaker"], render: () => window.DashboardPage.render() },
+  "/demand": { label: "Demand Analysis", nav: "Demand", code: "S04", icon: "📈", roles: ["policymaker"], render: () => window.DemandPage.render() },
+  "/supply": { label: "Supply Estimation", nav: "Supply", code: "S05", icon: "👥", roles: ["policymaker"], render: () => window.SupplyPage.render() },
+  "/gap": { label: "Gap & Shortages", nav: "Gap", code: "S07", icon: "⚡", roles: ["policymaker"], render: () => window.GapPage.render() },
+  "/forecast": { label: "Forecast Explorer", nav: "Forecast", code: "S08", icon: "🔮", roles: ["policymaker"], render: () => window.ForecastPage.render() },
+  "/shortage": { label: "Shortage Risk", nav: "Risk", code: "S09", icon: "🎯", roles: ["policymaker"], render: () => window.ShortagePage.render() },
+  "/policy": { label: "Policy Recommendations", nav: "Policy", code: "S11", icon: "📋", roles: ["policymaker"], render: () => window.PolicyPage.render() },
+  "/copilot": { label: "AI Policy Copilot", nav: "Copilot", code: "S12", icon: "🤖", roles: ["policymaker"], render: () => window.CopilotPage.render() }
 };
 
 function navigate(hash) {
@@ -50,6 +50,10 @@ function handleRoute() {
   }
 
   const r = routes[route];
+
+  // Drives the page eyebrow (css/layout.css) and the browser tab title
+  document.body.dataset.route = route;
+  document.title = r ? `${r.label} · AI-Powered Labour Market Intelligence Engine` : "AI-Powered Labour Market Intelligence Engine";
 
   // Update sidebar active state
   Utils.$$(".sidebar-nav__item").forEach(item => {

@@ -41,9 +41,9 @@ function riskBadge(category) {
 
 function priorityBadge(level) {
   if (!level) return el("span", { className: "badge" }, "—");
-  const cls = level === "HIGH" ? "badge--critical"
-    : level === "MEDIUM" ? "badge--moderate"
-    : "badge--balanced";
+  const cls = level === "HIGH" ? "badge--prio-high"
+    : level === "MEDIUM" ? "badge--prio-medium"
+    : "badge--prio-low";
   return el("span", { className: `badge ${cls}` }, level);
 }
 
@@ -58,22 +58,20 @@ function scoreBar(val, max, color) {
 }
 
 function loadingState(msg) {
-  return el("div", { className: "state-message" },
-    el("div", { className: "state-message__icon" }, el("span", { className: "spinner" })),
+  return el("div", { className: "state-message state-message--loading", role: "status" },
+    el("div", { className: "state-message__bar" }),
     el("div", { className: "state-message__text" }, msg || "Loading data...")
   );
 }
 
 function errorState(msg) {
-  return el("div", { className: "state-message" },
-    el("div", { className: "state-message__icon" }, "⚠"),
+  return el("div", { className: "state-message state-message--error", role: "alert" },
     el("div", { className: "state-message__text" }, msg || "Unable to connect to the backend. Make sure the FastAPI server is running on port 8000.")
   );
 }
 
 function emptyState(msg) {
-  return el("div", { className: "state-message" },
-    el("div", { className: "state-message__icon" }, "∅"),
+  return el("div", { className: "state-message state-message--empty" },
     el("div", { className: "state-message__text" }, msg || "No data available for this selection.")
   );
 }

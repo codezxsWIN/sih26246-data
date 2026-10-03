@@ -5,65 +5,75 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI-Powered Labour Market Intelligence Engine</title>
   <meta name="description" content="Government labour market intelligence dashboard with demand-supply gap analysis, forecasting, and policy recommendations.">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#0000f2">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anek+Latin:wdth,wght@75..125,200..700&family=Inter+Tight:wght@300..700&family=JetBrains+Mono:wght@400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=lmi-ui-4">
+  <link rel="stylesheet" href="css/layout.css?v=lmi-ui-4">
+  <link rel="stylesheet" href="css/components.css?v=lmi-ui-4">
 </head>
 <body>
   <div class="app-shell">
-    <!-- Sidebar -->
-    <aside class="app-sidebar">
-      <div class="sidebar-brand">
-        <div class="sidebar-brand__name">Labour Market<br>Intelligence Engine</div>
-        <div class="sidebar-brand__sub">AI-Powered Analytics</div>
-      </div>
-      <nav class="sidebar-nav" id="sidebar-nav">
-        <!-- Populated by app.js -->
-      </nav>
-    </aside>
-
-    <!-- Header -->
+    <!-- Top bar -->
     <header class="app-header">
-      <span class="app-header__title">AI-Powered Labour Market Intelligence Engine</span>
-      <div class="app-header__status">
-        <span class="status-item">
-          <span class="status-dot status-dot--error" id="status-backend-dot"></span>
-          Backend: <span id="status-backend-text">Checking...</span>
-        </span>
-        <span class="status-item">
-          <span class="status-dot status-dot--error" id="status-db-dot"></span>
-          Database: <span id="status-db-text">Checking...</span>
-        </span>
+      <div class="app-header__in">
+        <a class="brand" href="#/" aria-label="AI-Powered Labour Market Intelligence Engine home">
+          <span class="brand__word">LMI Engine</span>
+          <span class="brand__sub">
+            <span>AI-Powered Labour Market Intelligence Engine</span>
+            <span id="brand-role">AI-Powered Analytics</span>
+          </span>
+        </a>
+        <nav class="sidebar-nav" id="sidebar-nav" aria-label="Primary">
+          <!-- Populated by app.js -->
+        </nav>
+        <div class="app-header__status" role="status">
+          <span class="status-item">
+            <span class="status-dot status-dot--error" id="status-backend-dot"></span>
+            Backend <b id="status-backend-text">Checking...</b>
+          </span>
+          <span class="status-item">
+            <span class="status-dot status-dot--error" id="status-db-dot"></span>
+            Database <b id="status-db-text">Checking...</b>
+          </span>
+        </div>
+        <button type="button" class="app-header__logout" id="header-logout" hidden>Logout</button>
       </div>
     </header>
 
     <!-- Main Content -->
     <main class="app-main" id="main-content">
-      <div class="state-message">
-        <div class="state-message__icon"><span class="spinner"></span></div>
+      <div class="state-message state-message--loading">
+        <div class="state-message__bar"></div>
         <div class="state-message__text">Initializing Labour Market Intelligence Engine...</div>
       </div>
     </main>
+
+    <footer class="app-foot">
+      <span>AI-Powered Labour Market Intelligence Engine</span>
+      <span>Demand · Supply · Gap · Forecast · Risk · Policy · Copilot</span>
+    </footer>
   </div>
 
   <!-- Scripts (order matters: dependencies first) -->
-  <script src="js/api.js"></script>
-  <script src="js/state.js"></script>
-  <script src="js/utils.js"></script>
-  <script src="js/charts.js"></script>
-  <script src="js/router.js"></script>
-  <script src="js/health.js"></script>
-  <script src="js/dashboard.js"></script>
-  <script src="js/demand.js"></script>
-  <script src="js/supply.js"></script>
-  <script src="js/gap.js"></script>
-  <script src="js/forecast.js"></script>
-  <script src="js/shortage.js"></script>
-  <script src="js/policy.js"></script>
-  <script src="js/auth.js"></script>
-  <script src="js/seeker.js"></script>
-  <script src="js/employer.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/api.js?v=lmi-ui-4"></script>
+  <script src="js/state.js?v=lmi-ui-4"></script>
+  <script src="js/utils.js?v=lmi-ui-4"></script>
+  <script src="js/charts.js?v=lmi-ui-4"></script>
+  <script src="js/router.js?v=lmi-ui-4"></script>
+  <script src="js/health.js?v=lmi-ui-4"></script>
+  <script src="js/dashboard.js?v=lmi-ui-4"></script>
+  <script src="js/demand.js?v=lmi-ui-4"></script>
+  <script src="js/supply.js?v=lmi-ui-4"></script>
+  <script src="js/gap.js?v=lmi-ui-4"></script>
+  <script src="js/forecast.js?v=lmi-ui-4"></script>
+  <script src="js/shortage.js?v=lmi-ui-4"></script>
+  <script src="js/policy.js?v=lmi-ui-4"></script>
+  <script src="js/copilot.js?v=lmi-ui-4"></script>
+  <script src="js/auth.js?v=lmi-ui-4"></script>
+  <script src="js/seeker.js?v=lmi-ui-4"></script>
+  <script src="js/employer.js?v=lmi-ui-4"></script>
+  <script src="js/app.js?v=lmi-ui-4"></script>
 </body>
 </html>

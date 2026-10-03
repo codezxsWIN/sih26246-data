@@ -1,6 +1,14 @@
 /**
  * copilot.js - AI Policy Copilot Chat Page
  */
+
+/** Escape the answer text, then render the **bold** markers the engine uses. */
+function formatCopilotText(text) {
+  const escaped = String(text == null ? "" : text)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  return escaped.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+}
+
 window.CopilotPage = {
   messages: [
     { role: "assistant", text: "Welcome to the AI Policy Copilot. Ask me about labour market shortages, demand forecasts, skill gaps, or policy recommendations.\n\nExample questions:\n• Which skills have the highest shortage in Maharashtra?\n• What occupations are projected to grow in the next 12 months?\n• Where is training capacity insufficient?" }
@@ -45,21 +53,20 @@ window.CopilotPage = {
       const div = Utils.el("div", { className: `chat-msg chat-msg--${msg.role}` });
       div.appendChild(Utils.el("div", { className: "chat-msg__label" }, msg.role === "user" ? "You" : "AI Copilot"));
       const body = Utils.el("div", { className: "chat-msg__body" });
-      body.textContent = msg.text;
+      body.innerHTML = formatCopilotText(msg.text);
       div.appendChild(body);
 
       // Show grounding facts if present
       if (msg.grounding) {
-        const facts = Utils.el("div", { style: { marginTop: "8px", padding: "8px 12px", background: "#f0f9ff", borderRadius: "4px", fontSize: "12px", color: "#1e40af" } });
-        facts.innerHTML = "<strong>Grounding:</strong> " + msg.grounding.map(f =>
+        const facts = Utils.el("div", { className: "chat-grounding" }, Utils.el("b", null, "Grounding: "));
+        facts.appendChild(document.createTextNode(msg.grounding.map(f =>
           `${f.entity} (${f.geography}) — Score: ${f.demand_score}, Risk: ${f.shortage_risk}`
-        ).join(" | ");
+        ).join(" | ")));
         div.appendChild(facts);
       }
       if (msg.usedLLM !== undefined) {
-        const llmBadge = Utils.el("div", { style: { marginTop: "4px", fontSize: "11px", color: "#64748b" } });
-        llmBadge.textContent = msg.usedLLM ? "🟢 Generated with local LLM" : "🔵 Deterministic fallback response";
-        div.appendChild(llmBadge);
+        div.appendChild(Utils.el("span", { className: `badge ${msg.usedLLM ? "badge--demand" : "badge--balanced"}` },
+          msg.usedLLM ? "Generated with local LLM" : "Deterministic fallback response"));
       }
       area.appendChild(div);
     });

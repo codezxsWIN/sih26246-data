@@ -5,26 +5,42 @@ class AuthModule {
 
     render() {
         this.container.innerHTML = `
-            <div class="auth-container">
-                <div class="card-glass auth-card">
-                    <h2 class="auth-title">Welcome to LMI Engine</h2>
-                    <p class="auth-subtitle">Select your portal to continue</p>
-                    
+            <div class="auth">
+                <div class="auth__intro">
+                    <p class="eyebrow">SIH26246 · AI-Powered Labour Market Intelligence Engine</p>
+                    <h2 class="auth-title">Welcome to LMI Engine.</h2>
+                    <p class="auth-subtitle">Select your portal to continue.</p>
+                </div>
+
+                <section class="card auth-card">
+                    <div class="card__header"><span>Select portal</span><span class="card__meta">3 roles</span></div>
                     <div class="auth-roles">
                         <button class="btn-role" onclick="app.auth.login('policymaker')">
-                            <span class="role-icon">🏛️</span>
-                            <span class="role-name">Policymaker</span>
+                            <span class="role-icon">01</span>
+                            <span class="role-text">
+                                <span class="role-name">Policymaker</span>
+                                <span class="role-desc">Overview · demand · supply · gap · forecast · risk · policy · copilot</span>
+                            </span>
+                            <span class="role-arrow" aria-hidden="true">→</span>
                         </button>
                         <button class="btn-role" onclick="app.auth.login('seeker')">
-                            <span class="role-icon">🧑‍💻</span>
-                            <span class="role-name">Job Seeker</span>
+                            <span class="role-icon">02</span>
+                            <span class="role-text">
+                                <span class="role-name">Job Seeker</span>
+                                <span class="role-desc">Upload a resume · extracted skills · matched shortage roles</span>
+                            </span>
+                            <span class="role-arrow" aria-hidden="true">→</span>
                         </button>
                         <button class="btn-role" onclick="app.auth.login('employer')">
-                            <span class="role-icon">🏢</span>
-                            <span class="role-name">Employer</span>
+                            <span class="role-icon">03</span>
+                            <span class="role-text">
+                                <span class="role-name">Employer</span>
+                                <span class="role-desc">Regional talent pools · hiring difficulty · sourcing advice</span>
+                            </span>
+                            <span class="role-arrow" aria-hidden="true">→</span>
                         </button>
                     </div>
-                </div>
+                </section>
             </div>
         `;
     }
